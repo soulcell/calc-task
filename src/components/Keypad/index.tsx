@@ -3,6 +3,7 @@ import Button from "../Button";
 import ButtonType, { isButtonType } from "../../utils/buttonTypes";
 import keypadHandler from "../../utils/keypadHandler";
 import { useCallback, useEffect } from "react";
+import { useAppDispatch } from "../../store/store";
 
 export default function Keypad(): JSX.Element {
   // prettier-ignore
@@ -13,12 +14,17 @@ export default function Keypad(): JSX.Element {
     ".","0","CE"
   ]
 
-  const keyboardHandler = useCallback((ev: KeyboardEvent) => {
-    const key = ev.key.toUpperCase();
-    if (!isButtonType(key)) return;
+  const dispatch = useAppDispatch();
 
-    keypadHandler(key);
-  }, []);
+  const keyboardHandler = useCallback(
+    (ev: KeyboardEvent) => {
+      const key = ev.key.toUpperCase();
+      if (!isButtonType(key)) return;
+
+      keypadHandler(key, dispatch);
+    },
+    [dispatch]
+  );
 
   useEffect(() => {
     document.addEventListener("keypress", keyboardHandler);
@@ -31,7 +37,11 @@ export default function Keypad(): JSX.Element {
   return (
     <StyledKeypad>
       {buttons.map((val, idx) => (
-        <Button key={idx} buttonType={val} onClick={() => keypadHandler(val)} />
+        <Button
+          key={idx}
+          buttonType={val}
+          onClick={() => keypadHandler(val, dispatch)}
+        />
       ))}
     </StyledKeypad>
   );
