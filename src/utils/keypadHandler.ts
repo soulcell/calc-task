@@ -1,6 +1,9 @@
-import { appendDigit } from "../store/actionCreators/calculatorActionCreators";
+import {
+  appendDigit,
+  clearOperand,
+} from "../store/actionCreators/calculatorActionCreators";
 import { AppDispatch } from "../store/store";
-import ButtonType, { isButtonDigit } from "./buttonTypes";
+import ButtonType, { isButtonAction, isButtonDigit } from "./buttonTypes";
 
 export default function keypadHandler(
   buttonType: ButtonType,
@@ -9,5 +12,11 @@ export default function keypadHandler(
   console.log(`Pressed ${buttonType}`);
   if (isButtonDigit(buttonType)) {
     dispatch(appendDigit(buttonType));
+  } else if (isButtonAction(buttonType)) {
+    switch (buttonType) {
+      case "C":
+        dispatch(clearOperand());
+        break;
+    }
   }
 }
