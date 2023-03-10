@@ -12,4 +12,12 @@ export interface AppendDigitAction {
   digit: ButtonDigit;
 }
 
-export type CalculatorAction = SetValueAction | AppendDigitAction;
+export const CLEAR_OPERAND = "CLEAR_OPERAND";
+export interface ClearOperandAction {
+  type: typeof CLEAR_OPERAND;
+}
+
+export type CalculatorAction =
+  | SetValueAction
+  | AppendDigitAction
+  | ClearOperandAction;

@@ -25,6 +25,11 @@ export default function calculatorReducer(
         ...state,
         operand: +(state.operand.toString() + action.digit),
       };
+    case actions.CLEAR_OPERAND:
+      return {
+        ...state,
+        operand: 0,
+      };
     default: {
       return state;
     }

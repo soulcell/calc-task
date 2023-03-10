@@ -14,3 +14,9 @@ export function appendDigit(digit: ButtonDigit): actions.AppendDigitAction {
     digit,
   };
 }
+
+export function clearOperand(): actions.ClearOperandAction {
+  return {
+    type: actions.CLEAR_OPERAND,
+  };
+}
