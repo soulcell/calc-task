@@ -29,6 +29,11 @@ export default function calculatorReducer(
       return {
         ...initialState,
       };
+    case actions.CLEAR_VALUE:
+      return {
+        ...state,
+        value: 0,
+      };
     case actions.SET_COMMAND:
       if (state.command) {
         action.command.operand = state.command.execute(state.value);

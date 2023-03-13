@@ -8,6 +8,7 @@ import {
 import {
   appendDigit,
   clearState,
+  clearValue,
   executeCommand,
   setCommand,
 } from "../store/actionCreators/calculatorActionCreators";
@@ -34,6 +35,9 @@ export default function keypadHandler(
         break;
       case "=":
         dispatch(executeCommand());
+        break;
+      case "CE":
+        dispatch(clearValue());
         break;
     }
   } else if (isButtonOperator(buttonType)) {

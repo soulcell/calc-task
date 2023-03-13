@@ -18,6 +18,11 @@ export interface ClearAction {
   type: typeof CLEAR;
 }
 
+export const CLEAR_VALUE = "CLEAR_VALUE";
+export interface ClearValueAction {
+  type: typeof CLEAR_VALUE;
+}
+
 export const SET_COMMAND = "SET_COMMAND";
 export interface SetCommandAction {
   type: typeof SET_COMMAND;
@@ -33,5 +38,6 @@ export type CalculatorAction =
   | SetValueAction
   | AppendDigitAction
   | ClearAction
+  | ClearValueAction
   | SetCommandAction
   | ExecuteCommandAction;

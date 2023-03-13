@@ -22,6 +22,12 @@ export function clearState(): actions.ClearAction {
   };
 }
 
+export function clearValue(): actions.ClearValueAction {
+  return {
+    type: actions.CLEAR_VALUE,
+  };
+}
+
 export function setCommand(
   command: CalculatorCommand
 ): actions.SetCommandAction {
