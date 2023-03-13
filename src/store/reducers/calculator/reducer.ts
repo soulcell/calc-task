@@ -5,10 +5,12 @@ import * as actions from "../../actionCreators/calculatorActionCreators";
 export interface CalculatorState {
   value: number;
   command?: CalculatorCommand;
+  history: string[];
 }
 
 const initialState: CalculatorState = {
   value: 0,
+  history: [],
 };
 
 const calculatorReducer = createReducer<CalculatorState>(
@@ -28,9 +30,6 @@ const calculatorReducer = createReducer<CalculatorState>(
         state.value = initialState.value;
       })
       .addCase(actions.setCommand, (state, action) => {
-        if (state.command) {
-          action.payload.command.operand = state.command.execute(state.value);
-        }
         state.command = action.payload.command;
         state.value = initialState.value;
       })
