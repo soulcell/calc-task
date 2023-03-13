@@ -29,7 +29,7 @@ export class SubtractCommand extends CalculatorCommand {
   }
 
   execute(currentValue: number): number {
-    return currentValue - this.operand;
+    return this.operand - currentValue;
   }
   undo(currentValue: number): number {
     return currentValue + this.operand;
@@ -60,7 +60,7 @@ export class DivideCommand extends CalculatorCommand {
   }
 
   execute(currentValue: number): number {
-    return currentValue / this.operand;
+    return this.operand / currentValue;
   }
 
   undo(currentValue: number): number {
