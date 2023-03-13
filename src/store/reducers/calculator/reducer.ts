@@ -1,5 +1,6 @@
+import { createReducer } from "@reduxjs/toolkit";
 import { CalculatorCommand } from "../../../commands/calculatorCommands";
-import * as actions from "../../actionTypes/calculatorActionTypes";
+import * as actions from "../../actionCreators/calculatorActionCreators";
 
 export interface CalculatorState {
   value: number;
@@ -10,51 +11,35 @@ const initialState: CalculatorState = {
   value: 0,
 };
 
-export default function calculatorReducer(
-  state: CalculatorState = initialState,
-  action: actions.CalculatorAction
-): CalculatorState {
-  switch (action.type) {
-    case actions.SET_VALUE:
-      return {
-        ...state,
-        value: action.value,
-      };
-    case actions.APPEND_DIGIT:
-      return {
-        ...state,
-        value: +(state.value.toString() + action.digit),
-      };
-    case actions.CLEAR:
-      return {
-        ...initialState,
-      };
-    case actions.CLEAR_VALUE:
-      return {
-        ...state,
-        value: 0,
-      };
-    case actions.SET_COMMAND:
-      if (state.command) {
-        action.command.operand = state.command.execute(state.value);
-      }
-      return {
-        ...state,
-        command: action.command,
-        value: 0,
-      };
-    case actions.EXECUTE_COMMAND:
-      if (!state.command)
-        return {
-          ...state,
-        };
-      return {
-        ...state,
-        value: state.command.execute(state.value),
-        command: undefined,
-      };
-    default: {
-      return state;
-    }
+const calculatorReducer = createReducer<CalculatorState>(
+  initialState,
+  (builder) => {
+    builder
+      .addCase(actions.setValue, (state, action) => {
+        state.value = action.payload.value;
+      })
+      .addCase(actions.appendDigit, (state, action) => {
+        state.value = +(state.value.toString() + action.payload.digit);
+      })
+      .addCase(actions.clearAll, () => {
+        return initialState;
+      })
+      .addCase(actions.clearValue, (state) => {
+        state.value = initialState.value;
+      })
+      .addCase(actions.setCommand, (state, action) => {
+        if (state.command) {
+          action.payload.command.operand = state.command.execute(state.value);
+        }
+        state.command = action.payload.command;
+        state.value = initialState.value;
+      })
+      .addCase(actions.executeCommand, (state) => {
+        if (!state.command) return;
+        state.value = state.command.execute(state.value);
+        state.command = undefined;
+      });
   }
-}
+);
+
+export default calculatorReducer;

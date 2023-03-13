@@ -7,7 +7,7 @@ import {
 } from "../commands/calculatorCommands";
 import {
   appendDigit,
-  clearState,
+  clearAll,
   clearValue,
   executeCommand,
   setCommand,
@@ -27,11 +27,11 @@ export default function keypadHandler(
 ) {
   console.log(`Pressed ${buttonType}`);
   if (isButtonDigit(buttonType)) {
-    dispatch(appendDigit(buttonType));
+    dispatch(appendDigit({ digit: buttonType }));
   } else if (isButtonAction(buttonType)) {
     switch (buttonType) {
       case "C":
-        dispatch(clearState());
+        dispatch(clearAll());
         break;
       case "=":
         dispatch(executeCommand());
@@ -56,6 +56,6 @@ export default function keypadHandler(
         command = new DivideCommand(state.value);
         break;
     }
-    dispatch(setCommand(command));
+    dispatch(setCommand({ command }));
   }
 }
