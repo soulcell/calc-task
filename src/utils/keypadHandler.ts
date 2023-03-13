@@ -1,13 +1,28 @@
 import {
+  AddCommand,
+  CalculatorCommand,
+  DivideCommand,
+  MultiplyCommand,
+  SubtractCommand,
+} from "../commands/calculatorCommands";
+import {
   appendDigit,
-  clearOperand,
+  clearState,
+  executeCommand,
+  setCommand,
 } from "../store/actionCreators/calculatorActionCreators";
+import { CalculatorState } from "../store/reducers/calculator/reducer";
 import { AppDispatch } from "../store/store";
-import ButtonType, { isButtonAction, isButtonDigit } from "./buttonTypes";
+import ButtonType, {
+  isButtonAction,
+  isButtonDigit,
+  isButtonOperator,
+} from "./buttonTypes";
 
 export default function keypadHandler(
   buttonType: ButtonType,
-  dispatch: AppDispatch
+  dispatch: AppDispatch,
+  state: CalculatorState
 ) {
   console.log(`Pressed ${buttonType}`);
   if (isButtonDigit(buttonType)) {
@@ -15,8 +30,28 @@ export default function keypadHandler(
   } else if (isButtonAction(buttonType)) {
     switch (buttonType) {
       case "C":
-        dispatch(clearOperand());
+        dispatch(clearState());
+        break;
+      case "=":
+        dispatch(executeCommand());
         break;
     }
+  } else if (isButtonOperator(buttonType)) {
+    let command: CalculatorCommand;
+    switch (buttonType) {
+      case "+":
+        command = new AddCommand(state.value);
+        break;
+      case "-":
+        command = new SubtractCommand(state.value);
+        break;
+      case "*":
+        command = new MultiplyCommand(state.value);
+        break;
+      case "/":
+        command = new DivideCommand(state.value);
+        break;
+    }
+    dispatch(setCommand(command));
   }
 }

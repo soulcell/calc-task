@@ -1,3 +1,4 @@
+import { CalculatorCommand } from "../../commands/calculatorCommands";
 import { ButtonDigit } from "../../utils/buttonTypes";
 import * as actions from "../actionTypes/calculatorActionTypes";
 
@@ -15,8 +16,23 @@ export function appendDigit(digit: ButtonDigit): actions.AppendDigitAction {
   };
 }
 
-export function clearOperand(): actions.ClearOperandAction {
+export function clearState(): actions.ClearAction {
   return {
-    type: actions.CLEAR_OPERAND,
+    type: actions.CLEAR,
+  };
+}
+
+export function setCommand(
+  command: CalculatorCommand
+): actions.SetCommandAction {
+  return {
+    type: actions.SET_COMMAND,
+    command,
+  };
+}
+
+export function executeCommand(): actions.ExecuteCommandAction {
+  return {
+    type: actions.EXECUTE_COMMAND,
   };
 }

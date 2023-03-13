@@ -1,13 +1,13 @@
+import { CalculatorCommand } from "../../../commands/calculatorCommands";
 import * as actions from "../../actionTypes/calculatorActionTypes";
 
 export interface CalculatorState {
   value: number;
-  operand: number;
+  command?: CalculatorCommand;
 }
 
 const initialState: CalculatorState = {
   value: 0,
-  operand: 0,
 };
 
 export default function calculatorReducer(
@@ -23,12 +23,30 @@ export default function calculatorReducer(
     case actions.APPEND_DIGIT:
       return {
         ...state,
-        operand: +(state.operand.toString() + action.digit),
+        value: +(state.value.toString() + action.digit),
       };
-    case actions.CLEAR_OPERAND:
+    case actions.CLEAR:
+      return {
+        ...initialState,
+      };
+    case actions.SET_COMMAND:
+      if (state.command) {
+        action.command.operand = state.command.execute(state.value);
+      }
       return {
         ...state,
-        operand: 0,
+        command: action.command,
+        value: 0,
+      };
+    case actions.EXECUTE_COMMAND:
+      if (!state.command)
+        return {
+          ...state,
+        };
+      return {
+        ...state,
+        value: state.command.execute(state.value),
+        command: undefined,
       };
     default: {
       return state;

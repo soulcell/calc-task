@@ -4,6 +4,8 @@ import ButtonType, { isButtonType } from "../../utils/buttonTypes";
 import keypadHandler from "../../utils/keypadHandler";
 import { useCallback, useEffect } from "react";
 import { useAppDispatch } from "../../store/store";
+import { useSelector } from "react-redux";
+import selectCalculator from "../../store/reducers/calculator/selector";
 
 export default function Keypad(): JSX.Element {
   // prettier-ignore
@@ -15,13 +17,14 @@ export default function Keypad(): JSX.Element {
   ]
 
   const dispatch = useAppDispatch();
+  const calcState = useSelector(selectCalculator);
 
   const keyboardHandler = useCallback(
     (ev: KeyboardEvent) => {
       const key = ev.key.toUpperCase();
       if (!isButtonType(key)) return;
 
-      keypadHandler(key, dispatch);
+      keypadHandler(key, dispatch, calcState);
     },
     [dispatch]
   );
@@ -40,7 +43,7 @@ export default function Keypad(): JSX.Element {
         <Button
           key={idx}
           buttonType={val}
-          onClick={() => keypadHandler(val, dispatch)}
+          onClick={() => keypadHandler(val, dispatch, calcState)}
         />
       ))}
     </StyledKeypad>

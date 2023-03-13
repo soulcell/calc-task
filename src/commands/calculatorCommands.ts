@@ -1,51 +1,69 @@
-export interface ICalculatorCommand {
-  execute(currentValue: number): number;
-  undo(currentValue: number): number;
+export abstract class CalculatorCommand {
+  public abstract operand: number;
+  public abstract readonly symbol: string;
+  abstract execute(currentValue: number): number;
+  abstract undo(currentValue: number): number;
 }
 
-export class AddCommand implements ICalculatorCommand {
-  constructor(private valueToAdd: number) {}
+export class AddCommand extends CalculatorCommand {
+  public readonly symbol = "+";
+
+  constructor(public operand: number) {
+    super();
+  }
 
   execute(currentValue: number): number {
-    return currentValue + this.valueToAdd;
+    return currentValue + this.operand;
   }
 
   undo(currentValue: number): number {
-    return currentValue - this.valueToAdd;
+    return currentValue - this.operand;
   }
 }
 
-export class SubtractCommand implements ICalculatorCommand {
-  constructor(private valueToSubtract: number) {}
+export class SubtractCommand extends CalculatorCommand {
+  public readonly symbol = "-";
+
+  constructor(public operand: number) {
+    super();
+  }
 
   execute(currentValue: number): number {
-    return currentValue - this.valueToSubtract;
+    return currentValue - this.operand;
   }
   undo(currentValue: number): number {
-    return currentValue + this.valueToSubtract;
+    return currentValue + this.operand;
   }
 }
 
-export class MultiplyCommand implements ICalculatorCommand {
-  constructor(private valueToMultiply: number) {}
+export class MultiplyCommand extends CalculatorCommand {
+  public readonly symbol = "*";
+
+  constructor(public operand: number) {
+    super();
+  }
 
   execute(currentValue: number): number {
-    return currentValue * this.valueToMultiply;
+    return currentValue * this.operand;
   }
 
   undo(currentValue: number): number {
-    return currentValue / this.valueToMultiply;
+    return currentValue / this.operand;
   }
 }
 
-export class DivideCommand implements ICalculatorCommand {
-  constructor(private valueToDivide: number) {}
+export class DivideCommand extends CalculatorCommand {
+  public readonly symbol = "/";
+
+  constructor(public operand: number) {
+    super();
+  }
 
   execute(currentValue: number): number {
-    return currentValue / this.valueToDivide;
+    return currentValue / this.operand;
   }
 
   undo(currentValue: number): number {
-    return currentValue * this.valueToDivide;
+    return currentValue * this.operand;
   }
 }
