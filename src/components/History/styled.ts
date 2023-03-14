@@ -3,9 +3,15 @@ import styled from "styled-components";
 export const StyledHistory = styled.div`
   grid-area: history;
   width: 300px;
-  height: 100;
+  height: 100%;
   border-left: 1px solid ${(props) => props.theme.border};
   overflow: auto;
+
+  @media (max-width: 600px) {
+    width: 100%;
+    border-left: none;
+    border-top: 1px solid ${(props) => props.theme.border};
+  }
 `;
 
 export const H2 = styled.h2`

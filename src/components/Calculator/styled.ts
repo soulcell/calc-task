@@ -7,4 +7,12 @@ export const StyledCalculator = styled.div`
     "keypad history";
   grid-template-columns: 1fr auto;
   height: calc(100vh - 120px);
+
+  @media (max-width: 600px) {
+    grid-template-areas:
+      "display"
+      "keypad"
+      "history";
+    height: unset;
+  }
 `;
