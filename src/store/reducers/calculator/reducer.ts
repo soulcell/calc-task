@@ -8,12 +8,10 @@ import * as actions from "../../actionCreators/calculatorActionCreators";
 export interface CalculatorState {
   value: number;
   command?: CalculatorCommandPlain;
-  history: string[];
 }
 
 const initialState: CalculatorState = {
   value: 0,
-  history: [],
 };
 
 const calculatorReducer = createReducer<CalculatorState>(
