@@ -14,3 +14,19 @@ export const H2 = styled.h2`
   margin: 20px 0;
   text-align: center;
 `;
+
+export const StyledRecord = styled.div`
+  font-size: 0.5em;
+  margin: 10px 20px;
+  padding: 8px;
+  border-radius: 10px;
+
+  &:hover {
+    background-color: ${(props) => props.theme.button};
+  }
+`;
+
+export const RecordResult = styled.span`
+  font-size: 1.5em;
+  font-weight: bold;
+`;

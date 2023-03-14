@@ -4,7 +4,7 @@ import toAccuracy from "../../utils/toAccuracy";
 import { OperandCommand, StyledDisplay } from "./styled";
 
 export default function Display(): JSX.Element {
-  const { command, value } = useSelector(selectCalculator);
+  const { command, value, input } = useSelector(selectCalculator);
 
   return (
     <StyledDisplay>
@@ -13,7 +13,7 @@ export default function Display(): JSX.Element {
           {toAccuracy(command.operand)} {command.symbol}
         </OperandCommand>
       )}
-      {toAccuracy(value)}
+      {input || toAccuracy(value)}
     </StyledDisplay>
   );
 }

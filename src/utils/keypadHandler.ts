@@ -10,6 +10,7 @@ import {
   clearAll,
   clearValue,
   executeCommand,
+  putSeparator,
   setCommand,
 } from "../store/actionCreators/calculatorActionCreators";
 import { CalculatorState } from "../store/reducers/calculator/reducer";
@@ -18,6 +19,7 @@ import ButtonType, {
   isButtonAction,
   isButtonDigit,
   isButtonOperator,
+  isButtonPoint,
 } from "./buttonTypes";
 
 export default function keypadHandler(
@@ -57,5 +59,7 @@ export default function keypadHandler(
         break;
     }
     dispatch(setCommand({ command: command.toPlainObject() }));
+  } else if (isButtonPoint(buttonType)) {
+    dispatch(putSeparator());
   }
 }

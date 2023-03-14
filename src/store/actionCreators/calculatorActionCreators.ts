@@ -15,3 +15,5 @@ export const setCommand = createAction<{ command: CalculatorCommandPlain }>(
 );
 
 export const executeCommand = createAction("EXECUTE_COMMAND");
+
+export const putSeparator = createAction("PUT_SEPARTOR");
