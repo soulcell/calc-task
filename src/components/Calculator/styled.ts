@@ -6,9 +6,9 @@ export const StyledCalculator = styled.div`
     "display history"
     "keypad history";
   grid-template-columns: 1fr auto;
-  height: calc(100vh - 120px);
+  height: calc(100vh - 100px);
 
-  @media (max-width: 600px) {
+  @media (max-width: 700px) {
     grid-template-areas:
       "display"
       "keypad"

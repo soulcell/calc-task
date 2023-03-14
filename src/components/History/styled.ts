@@ -6,8 +6,20 @@ export const StyledHistory = styled.div`
   height: 100%;
   border-left: 1px solid ${(props) => props.theme.border};
   overflow: auto;
+  transition: width 0.07s;
 
-  @media (max-width: 600px) {
+  &.hidden {
+    width: 0px;
+    border: none;
+
+    @media (max-width: 700px) {
+      width: 100%;
+      border-left: none;
+      border-top: 1px solid ${(props) => props.theme.border};
+    }
+  }
+
+  @media (max-width: 700px) {
     width: 100%;
     border-left: none;
     border-top: 1px solid ${(props) => props.theme.border};

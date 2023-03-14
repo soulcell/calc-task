@@ -5,12 +5,14 @@ import { HistoryRecord as Record } from "../../store/reducers/history/reducer";
 import toAccuracy from "../../utils/toAccuracy";
 import { useAppDispatch } from "../../store/store";
 import { setValue } from "../../store/actionCreators/calculatorActionCreators";
+import selectSettings from "../../store/reducers/settings/selector";
 
 export default function History(): JSX.Element {
   const history = useSelector(selectHistory);
+  const { showHistory } = useSelector(selectSettings);
 
   return (
-    <StyledHistory>
+    <StyledHistory className={showHistory ? "" : "hidden"}>
       <H2>History</H2>
       {history.records.map((value, idx) => (
         <HistoryRecord key={idx} record={value} />

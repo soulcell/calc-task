@@ -6,7 +6,7 @@ export const Navbar = styled.nav`
   align-items: center;
   padding: 0 32px;
   background-color: ${(props) => props.theme.header};
-  height: 120px;
+  height: 100px;
 `;
 export const NavbarLeft = styled.div`
   display: flex;

@@ -2,13 +2,17 @@ import Display from "../Display";
 import Keypad from "../Keypad";
 import History from "../History";
 import { StyledCalculator } from "./styled";
+import ControlPanel from "../ControlPanel";
 
 export default function Calculator(): JSX.Element {
   return (
-    <StyledCalculator>
-      <Display />
-      <Keypad />
-      <History />
-    </StyledCalculator>
+    <>
+      <ControlPanel />
+      <StyledCalculator>
+        <Display />
+        <Keypad />
+        <History />
+      </StyledCalculator>
+    </>
   );
 }
