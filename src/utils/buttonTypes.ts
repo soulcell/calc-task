@@ -5,7 +5,7 @@ export type ButtonDigit = (typeof DIGITS)[number];
 const OPERATORS = ["+", "-", "*", "/"] as const;
 export type ButtonOperator = (typeof OPERATORS)[number];
 
-const ACTIONS = ["=", "C", "CE"] as const;
+const ACTIONS = ["±", "=", "C", "CE"] as const;
 export type ButtonAction = (typeof ACTIONS)[number];
 
 export type ButtonPoint = ".";

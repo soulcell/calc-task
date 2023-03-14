@@ -7,6 +7,7 @@ import {
 } from "../commands/calculatorCommands";
 import {
   appendDigit,
+  changeSign,
   clearAll,
   clearValue,
   executeCommand,
@@ -40,6 +41,9 @@ export default function keypadHandler(
         break;
       case "CE":
         dispatch(clearValue());
+        break;
+      case "±":
+        dispatch(changeSign());
         break;
     }
   } else if (isButtonOperator(buttonType)) {

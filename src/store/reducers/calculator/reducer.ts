@@ -51,6 +51,11 @@ const calculatorReducer = createReducer<CalculatorState>(
       .addCase(actions.putSeparator, (state) => {
         state.input = inputAppend(state.input, ".");
         state.value = isNaN(+state.input) ? 0 : +state.input;
+      })
+      .addCase(actions.changeSign, (state) => {
+        state.input =
+          state.input[0] === "-" ? state.input.slice(1) : "-" + state.input;
+        state.value = isNaN(+state.input) ? 0 : +state.input;
       });
   }
 );
