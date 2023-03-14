@@ -1,4 +1,4 @@
-export type CalculatorCommandSymbol = "+" | "-" | "*" | "/";
+export type CalculatorCommandSymbol = "+" | "-" | "*" | "/" | "%";
 
 export type CalculatorCommandPlain = {
   symbol: CalculatorCommandSymbol;
@@ -9,7 +9,6 @@ export abstract class CalculatorCommand implements CalculatorCommandPlain {
   public abstract operand: number;
   public abstract readonly symbol: CalculatorCommandSymbol;
   public abstract execute(currentValue: number): number;
-  public abstract undo(currentValue: number): number;
   public toPlainObject() {
     return {
       symbol: this.symbol,
@@ -30,6 +29,8 @@ export abstract class CalculatorCommand implements CalculatorCommandPlain {
         return new MultiplyCommand(operand);
       case "/":
         return new DivideCommand(operand);
+      case "%":
+        return new RemainderCommand(operand);
       default:
         throw new Error("Failed to convert");
     }
@@ -46,10 +47,6 @@ export class AddCommand extends CalculatorCommand {
   execute(currentValue: number): number {
     return currentValue + this.operand;
   }
-
-  undo(currentValue: number): number {
-    return currentValue - this.operand;
-  }
 }
 
 export class SubtractCommand extends CalculatorCommand {
@@ -61,9 +58,6 @@ export class SubtractCommand extends CalculatorCommand {
 
   execute(currentValue: number): number {
     return this.operand - currentValue;
-  }
-  undo(currentValue: number): number {
-    return currentValue + this.operand;
   }
 }
 
@@ -77,10 +71,6 @@ export class MultiplyCommand extends CalculatorCommand {
   execute(currentValue: number): number {
     return currentValue * this.operand;
   }
-
-  undo(currentValue: number): number {
-    return currentValue / this.operand;
-  }
 }
 
 export class DivideCommand extends CalculatorCommand {
@@ -93,8 +83,16 @@ export class DivideCommand extends CalculatorCommand {
   execute(currentValue: number): number {
     return this.operand / currentValue;
   }
+}
 
-  undo(currentValue: number): number {
-    return currentValue * this.operand;
+export class RemainderCommand extends CalculatorCommand {
+  public readonly symbol = "%";
+
+  constructor(public operand: number) {
+    super();
+  }
+
+  public execute(currentValue: number): number {
+    return this.operand % currentValue;
   }
 }

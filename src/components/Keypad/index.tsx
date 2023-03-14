@@ -12,8 +12,8 @@ export default function Keypad(): JSX.Element {
   const buttons: ButtonType[] = [
     "C","7","8","9","*",
     "-","4","5","6","/",
-    "+","1","2","3","=",
-    "±",".","0","CE"
+    "+","1","2","3","%",
+    "±",".","0","CE","=",
   ]
 
   const dispatch = useAppDispatch();

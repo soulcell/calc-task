@@ -2,7 +2,7 @@
 const DIGITS = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"] as const;
 export type ButtonDigit = (typeof DIGITS)[number];
 
-const OPERATORS = ["+", "-", "*", "/"] as const;
+const OPERATORS = ["+", "-", "*", "/", "%"] as const;
 export type ButtonOperator = (typeof OPERATORS)[number];
 
 const ACTIONS = ["±", "=", "C", "CE"] as const;

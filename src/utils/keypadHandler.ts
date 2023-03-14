@@ -3,6 +3,7 @@ import {
   CalculatorCommand,
   DivideCommand,
   MultiplyCommand,
+  RemainderCommand,
   SubtractCommand,
 } from "../commands/calculatorCommands";
 import {
@@ -60,6 +61,9 @@ export default function keypadHandler(
         break;
       case "/":
         command = new DivideCommand(state.value);
+        break;
+      case "%":
+        command = new RemainderCommand(state.value);
         break;
     }
     dispatch(setCommand({ command: command.toPlainObject() }));
