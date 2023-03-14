@@ -1,10 +1,13 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { CalculatorCommand } from "../../../commands/calculatorCommands";
+import {
+  CalculatorCommand,
+  CalculatorCommandPlain,
+} from "../../../commands/calculatorCommands";
 import * as actions from "../../actionCreators/calculatorActionCreators";
 
 export interface CalculatorState {
   value: number;
-  command?: CalculatorCommand;
+  command?: CalculatorCommandPlain;
   history: string[];
 }
 
@@ -35,7 +38,9 @@ const calculatorReducer = createReducer<CalculatorState>(
       })
       .addCase(actions.executeCommand, (state) => {
         if (!state.command) return;
-        state.value = state.command.execute(state.value);
+        state.value = CalculatorCommand.fromObject(state.command).execute(
+          state.value
+        );
         state.command = undefined;
       });
   }

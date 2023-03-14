@@ -56,6 +56,6 @@ export default function keypadHandler(
         command = new DivideCommand(state.value);
         break;
     }
-    dispatch(setCommand({ command }));
+    dispatch(setCommand({ command: command.toPlainObject() }));
   }
 }

@@ -1,8 +1,39 @@
-export abstract class CalculatorCommand {
+export type CalculatorCommandSymbol = "+" | "-" | "*" | "/";
+
+export type CalculatorCommandPlain = {
+  symbol: CalculatorCommandSymbol;
+  operand: number;
+};
+
+export abstract class CalculatorCommand implements CalculatorCommandPlain {
   public abstract operand: number;
-  public abstract readonly symbol: string;
-  abstract execute(currentValue: number): number;
-  abstract undo(currentValue: number): number;
+  public abstract readonly symbol: CalculatorCommandSymbol;
+  public abstract execute(currentValue: number): number;
+  public abstract undo(currentValue: number): number;
+  public toPlainObject() {
+    return {
+      symbol: this.symbol,
+      operand: this.operand,
+    };
+  }
+
+  static fromObject({
+    symbol,
+    operand,
+  }: ReturnType<CalculatorCommand["toPlainObject"]>): CalculatorCommand {
+    switch (symbol) {
+      case "+":
+        return new AddCommand(operand);
+      case "-":
+        return new SubtractCommand(operand);
+      case "*":
+        return new MultiplyCommand(operand);
+      case "/":
+        return new DivideCommand(operand);
+      default:
+        throw new Error("Failed to convert");
+    }
+  }
 }
 
 export class AddCommand extends CalculatorCommand {
