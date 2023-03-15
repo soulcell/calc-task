@@ -7,6 +7,17 @@ export const Navbar = styled.nav`
   padding: 0 32px;
   background-color: ${(props) => props.theme.header};
   height: 100px;
+
+  a {
+    font-size: 1em;
+    margin-left: 32px;
+    color: ${(props) => props.theme.background};
+    text-decoration: none;
+    &:visited {
+      color: ${(props) => props.theme.background};
+      text-decoration: overline;
+    }
+  }
 `;
 export const NavbarLeft = styled.div`
   display: flex;
@@ -21,19 +32,8 @@ export const NavbarRight = styled.div`
 `;
 
 export const H1 = styled.h1`
-  font-size: 32px;
+  font-size: 1em;
   font-weight: normal;
   margin: 0;
   color: ${(props) => props.theme.background};
-`;
-
-export const Anchor = styled.a`
-  font-size: 32px;
-  margin-left: 32px;
-  color: ${(props) => props.theme.background};
-  text-decoration: none;
-  &:visited {
-    color: ${(props) => props.theme.background};
-    text-decoration: overline;
-  }
 `;

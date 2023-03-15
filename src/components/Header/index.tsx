@@ -1,5 +1,5 @@
-import { useLocation } from "react-router-dom";
-import { Anchor, H1, Navbar, NavbarLeft, NavbarRight } from "./styled";
+import { Link, useLocation } from "react-router-dom";
+import { H1, Navbar, NavbarLeft, NavbarRight } from "./styled";
 
 export default function Header(): JSX.Element {
   const location = useLocation();
@@ -11,11 +11,11 @@ export default function Header(): JSX.Element {
       </NavbarLeft>
       <NavbarRight>
         {location.pathname === "/cc" ? (
-          <Anchor href="/">Home (FC)</Anchor>
+          <Link to={`/`}>Home (FC)</Link>
         ) : (
-          <Anchor href="/cc">Home (CC)</Anchor>
+          <Link to={`/`}>Home (FC)</Link>
         )}
-        <Anchor href="/settings">Settings</Anchor>
+        <Link to={`/settings`}>Settings</Link>
       </NavbarRight>
     </Navbar>
   );

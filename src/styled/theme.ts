@@ -1,6 +1,6 @@
 import { DefaultTheme } from "styled-components";
 
-const theme: DefaultTheme = {
+export const lightTheme: DefaultTheme = {
   background: "#ffffff",
   header: "#434343",
   border: "#707070",
@@ -8,4 +8,10 @@ const theme: DefaultTheme = {
   button: "#f2f2f2",
 };
 
-export default theme;
+export const darkTheme: DefaultTheme = {
+  background: "#171717",
+  header: "#808080",
+  border: "#808080",
+  text: "#CCCCCC",
+  button: "#434343",
+};

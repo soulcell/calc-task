@@ -18,6 +18,10 @@ export const StyledKeypad = styled.div`
   grid-area: keypad;
   display: grid;
   grid-template-columns: repeat(5, auto);
-  gap: 10px;
-  padding: 20px;
+  grid-auto-rows: min-content;
+
+  @media (max-width: 700px) {
+  }
+  gap: 5px;
+  padding: 10px;
 `;
