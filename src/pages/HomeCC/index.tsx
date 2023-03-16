@@ -1,11 +1,16 @@
-import Calculator from "../../components/Calculator";
-import Header from "../../components/Header";
+import React from "react";
+import CalculatorCC from "../../components/Calculator/class";
+import HeaderCC from "../../components/Header/class";
 
-export default function HomePageCC(): JSX.Element {
-  return (
-    <>
-      <Header />
-      <Calculator />
-    </>
-  );
+class HomePageCC extends React.Component {
+  render() {
+    return (
+      <>
+        <HeaderCC />
+        <CalculatorCC />
+      </>
+    );
+  }
 }
+
+export default HomePageCC;
