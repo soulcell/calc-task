@@ -19,7 +19,7 @@ const initialState: HistoryState = {
 const historyReducer = createReducer<HistoryState>(initialState, (builder) => {
   builder
     .addCase(actions.addHistory, (state, action) => {
-      state.records.push(action.payload);
+      state.records.unshift(action.payload);
     })
     .addCase(actions.clearHistory, () => initialState);
 });
