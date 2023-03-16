@@ -20,6 +20,7 @@ export default function SettingsPage(): JSX.Element {
           onSelectedValueChanged={(newTheme) =>
             dispatch(setTheme({ theme: newTheme }))
           }
+          id="themeDropdown"
         >
           <DropdownItem
             title="Light theme"

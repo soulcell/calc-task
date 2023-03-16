@@ -10,12 +10,15 @@ export default function ControlPanel(): JSX.Element {
   return (
     <StyledControlPanel>
       <Button
+        name="showHistory"
         className="hideOnMobile"
         onClick={() => dispatch(toggleHistory())}
       >
         {showHistory ? "Hide" : "Show"} History
       </Button>
-      <Button onClick={() => dispatch(clearHistory())}>Clear History</Button>
+      <Button name="clearHistory" onClick={() => dispatch(clearHistory())}>
+        Clear History
+      </Button>
     </StyledControlPanel>
   );
 }

@@ -7,7 +7,7 @@ export default function Display(): JSX.Element {
   const { command, value, input } = useSelector(selectCalculator);
 
   return (
-    <StyledDisplay>
+    <StyledDisplay id="display">
       {command && (
         <OperandCommand>
           {toAccuracy(command.operand)} {command.symbol}

@@ -14,11 +14,13 @@ import { DropdownButton, DropdownList, StyledDropdown } from "./styled";
 export interface DropdownProps {
   children?: React.ReactNode;
   onSelectedValueChanged?: (value: string) => void;
+  id?: string;
 }
 
 export default function Dropdown({
   children,
   onSelectedValueChanged,
+  id,
 }: DropdownProps): JSX.Element {
   const [isOpen, setOpen] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -65,7 +67,7 @@ export default function Dropdown({
   }, []);
 
   return (
-    <StyledDropdown ref={triggerRef} className={isOpen ? "isOpen" : ""}>
+    <StyledDropdown ref={triggerRef} className={isOpen ? "isOpen" : ""} id={id}>
       <DropdownButton onClick={() => setOpen(!isOpen)}>
         <span>{selectedTitle}</span>
         <ArrowIcon />

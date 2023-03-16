@@ -8,13 +8,13 @@ import { setValue } from "../../store/actionCreators/calculatorActionCreators";
 import selectSettings from "../../store/reducers/settings/selector";
 
 export default function History(): JSX.Element {
-  const history = useSelector(selectHistory);
+  const { records } = useSelector(selectHistory);
   const { showHistory } = useSelector(selectSettings);
 
   return (
-    <StyledHistory className={showHistory ? "" : "hidden"}>
+    <StyledHistory className={showHistory ? "" : "hidden"} id="history">
       <H2>History</H2>
-      {history.records.map((value, idx) => (
+      {records.map((value, idx) => (
         <HistoryRecord key={idx} record={value} />
       ))}
     </StyledHistory>

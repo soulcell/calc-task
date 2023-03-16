@@ -10,12 +10,16 @@ class ControlPanelCC extends React.Component<ConnectedProps<typeof connector>> {
     return (
       <StyledControlPanel>
         <Button
+          name="showHistory"
           className="hideOnMobile"
           onClick={() => this.props.dispatchToggleHistory()}
         >
           {this.props.showHistory ? "Hide" : "Show"} History
         </Button>
-        <Button onClick={() => this.props.dispatchClearHistory()}>
+        <Button
+          name="clearHistory"
+          onClick={() => this.props.dispatchClearHistory()}
+        >
           Clear History
         </Button>
       </StyledControlPanel>

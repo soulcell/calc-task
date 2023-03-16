@@ -10,7 +10,7 @@ class HistoryCC extends React.Component<ConnectedProps<typeof connector>> {
   render() {
     const { showHistory, historyState } = this.props;
     return (
-      <StyledHistory className={showHistory ? "" : "hidden"}>
+      <StyledHistory className={showHistory ? "" : "hidden"} id="history">
         <H2>History</H2>
         {historyState.records.map((value, idx) => (
           <ConnectedHistoryRecord key={idx} record={value} />
