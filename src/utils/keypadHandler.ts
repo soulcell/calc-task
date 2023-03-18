@@ -29,7 +29,6 @@ export default function keypadHandler(
   dispatch: AppDispatch,
   state: CalculatorState
 ) {
-  console.log(`Pressed ${buttonType}`);
   if (isButtonDigit(buttonType)) {
     dispatch(appendDigit({ digit: buttonType }));
   } else if (isButtonAction(buttonType)) {
