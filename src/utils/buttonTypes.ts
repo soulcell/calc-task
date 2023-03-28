@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 const DIGITS = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"] as const;
 export type ButtonDigit = (typeof DIGITS)[number];
 
@@ -13,23 +12,23 @@ export type ButtonPoint = ".";
 type ButtonType = ButtonDigit | ButtonPoint | ButtonOperator | ButtonAction;
 export default ButtonType;
 
-export function isButtonDigit(x: any): x is ButtonDigit {
-  return DIGITS.includes(x);
+export function isButtonDigit(x: unknown): x is ButtonDigit {
+  return DIGITS.includes(x as ButtonDigit);
 }
 
-export function isButtonPoint(x: any): x is ButtonPoint {
+export function isButtonPoint(x: unknown): x is ButtonPoint {
   return x === ".";
 }
 
-export function isButtonOperator(x: any): x is ButtonOperator {
-  return OPERATORS.includes(x);
+export function isButtonOperator(x: unknown): x is ButtonOperator {
+  return OPERATORS.includes(x as ButtonOperator);
 }
 
-export function isButtonAction(x: any): x is ButtonAction {
-  return ACTIONS.includes(x);
+export function isButtonAction(x: unknown): x is ButtonAction {
+  return ACTIONS.includes(x as ButtonAction);
 }
 
-export function isButtonType(x: any): x is ButtonType {
+export function isButtonType(x: unknown): x is ButtonType {
   return (
     isButtonDigit(x) ||
     isButtonOperator(x) ||
