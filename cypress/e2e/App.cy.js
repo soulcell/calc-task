@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 describe("calculator", () => {
   beforeEach(() => {
     cy.visit("/");
