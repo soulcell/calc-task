@@ -12,7 +12,7 @@ class KeypadCC extends React.Component<ConnectedProps<typeof connector>> {
     const key = event.key.toUpperCase();
     if (!isButtonType(key)) return;
 
-    keypadHandler(key, this.props.dispatch, this.props.calcState);
+    keypadHandler(key, this.props.dispatch, this.props.calculatorState);
   };
 
   componentDidMount(): void {
@@ -24,14 +24,14 @@ class KeypadCC extends React.Component<ConnectedProps<typeof connector>> {
   }
 
   render() {
-    const { calcState, dispatch } = this.props;
+    const { calculatorState, dispatch } = this.props;
     return (
       <StyledKeypad>
-        {BUTTONS.map((val, idx) => (
+        {BUTTONS.map((value, idx) => (
           <Button
             key={idx}
-            buttonType={val}
-            onClick={() => keypadHandler(val, dispatch, calcState)}
+            buttonType={value}
+            onClick={() => keypadHandler(value, dispatch, calculatorState)}
           />
         ))}
       </StyledKeypad>
@@ -40,7 +40,7 @@ class KeypadCC extends React.Component<ConnectedProps<typeof connector>> {
 }
 
 const mapStateToProps = (state: AppState) => ({
-  calcState: state.calculator,
+  calculatorState: state.calculator,
 });
 
 const connector = connect(mapStateToProps);

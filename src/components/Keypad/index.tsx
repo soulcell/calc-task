@@ -10,13 +10,13 @@ import { BUTTONS } from "../../constants/calculator";
 
 export default function Keypad(): JSX.Element {
   const dispatch = useAppDispatch();
-  const calcState = useSelector(selectCalculator);
+  const calculatorState = useSelector(selectCalculator);
 
   const keyboardHandler = useCallback((event: KeyboardEvent) => {
     const key = event.key.toUpperCase();
     if (!isButtonType(key)) return;
 
-    keypadHandler(key, dispatch, calcState);
+    keypadHandler(key, dispatch, calculatorState);
   }, []);
 
   useEffect(() => {
@@ -29,11 +29,11 @@ export default function Keypad(): JSX.Element {
 
   return (
     <StyledKeypad>
-      {BUTTONS.map((val, idx) => (
+      {BUTTONS.map((value, idx) => (
         <Button
           key={idx}
-          buttonType={val}
-          onClick={() => keypadHandler(val, dispatch, calcState)}
+          buttonType={value}
+          onClick={() => keypadHandler(value, dispatch, calculatorState)}
         />
       ))}
     </StyledKeypad>
