@@ -33,6 +33,7 @@ const GlobalStyle = createGlobalStyle`
         font-size: 32px;
         color: ${({ theme }) => theme.text};
         background-color: ${({ theme }) => theme.button};
+        cursor: pointer;
     }
 `;
 
