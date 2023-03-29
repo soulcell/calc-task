@@ -8,8 +8,8 @@ import Button from "../Button";
 import { StyledKeypad } from "./styled";
 
 class KeypadCC extends React.Component<ConnectedProps<typeof connector>> {
-  private keyboardHandler = (ev: KeyboardEvent) => {
-    const key = ev.key.toUpperCase();
+  private keyboardHandler = (event: KeyboardEvent) => {
+    const key = event.key.toUpperCase();
     if (!isButtonType(key)) return;
 
     keypadHandler(key, this.props.dispatch, this.props.calcState);

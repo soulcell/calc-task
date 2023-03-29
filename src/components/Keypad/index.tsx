@@ -13,8 +13,8 @@ export default function Keypad(): JSX.Element {
   const calcState = useSelector(selectCalculator);
 
   const keyboardHandler = useCallback(
-    (ev: KeyboardEvent) => {
-      const key = ev.key.toUpperCase();
+    (event: KeyboardEvent) => {
+      const key = event.key.toUpperCase();
       if (!isButtonType(key)) return;
 
       keypadHandler(key, dispatch, calcState);
