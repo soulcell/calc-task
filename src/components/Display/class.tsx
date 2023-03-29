@@ -21,10 +21,10 @@ class DisplayCC extends React.Component<ConnectedProps<typeof connector>> {
   }
 }
 
-const mapState = (state: AppState) => ({
+const mapStateToProps = (state: AppState) => ({
   calculator: state.calculator,
 });
 
-const connector = connect(mapState);
+const connector = connect(mapStateToProps);
 
 export default connector(DisplayCC);

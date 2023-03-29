@@ -35,13 +35,13 @@ class HistoryRecord extends React.Component<
   }
 }
 
-const mapState = (state: AppState) => ({
+const mapStateToProps = (state: AppState) => ({
   historyState: state.history,
   showHistory: state.settings.showHistory,
 });
 
-const connector = connect(mapState);
+const connector = connect(mapStateToProps);
 
-const ConnectedHistoryRecord = connect(mapState)(HistoryRecord);
+const ConnectedHistoryRecord = connect(mapStateToProps)(HistoryRecord);
 
 export default connector(HistoryCC);

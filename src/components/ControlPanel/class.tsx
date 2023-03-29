@@ -27,15 +27,15 @@ class ControlPanelCC extends React.Component<ConnectedProps<typeof connector>> {
   }
 }
 
-const mapState = (state: AppState) => ({
+const mapStateToProps = (state: AppState) => ({
   showHistory: state.settings.showHistory,
 });
 
-const mapDispatch = {
+const mapDispatchToProps = {
   dispatchToggleHistory: toggleHistory,
   dispatchClearHistory: clearHistory,
 };
 
-const connector = connect(mapState, mapDispatch);
+const connector = connect(mapStateToProps, mapDispatchToProps);
 
 export default connector(ControlPanelCC);
