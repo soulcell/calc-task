@@ -6,11 +6,11 @@ export const Button = styled.button`
   width: 1.5em;
   height: 1.5em;
   font-size: 2em;
-  border: 1px solid ${(props) => props.theme.border};
+  border: 1px solid ${({ theme }) => theme.border};
   border-radius: 16px;
   padding: 0;
   &:hover {
-    background-color: ${(props) => props.theme.border};
+    background-color: ${({ theme }) => theme.border};
   }
 `;
 

@@ -4,7 +4,7 @@ export const StyledHistory = styled.div`
   grid-area: history;
   width: 300px;
   height: 100%;
-  border-left: 1px solid ${(props) => props.theme.border};
+  border-left: 1px solid ${({ theme }) => theme.border};
   overflow: auto;
   transition: width 0.07s;
 
@@ -15,14 +15,14 @@ export const StyledHistory = styled.div`
     @media (max-width: 700px) {
       width: 100%;
       border-left: none;
-      border-top: 1px solid ${(props) => props.theme.border};
+      border-top: 1px solid ${({ theme }) => theme.border};
     }
   }
 
   @media (max-width: 700px) {
     width: 100%;
     border-left: none;
-    border-top: 1px solid ${(props) => props.theme.border};
+    border-top: 1px solid ${({ theme }) => theme.border};
   }
 `;
 
@@ -40,7 +40,7 @@ export const StyledRecord = styled.div`
   border-radius: 10px;
 
   &:hover {
-    background-color: ${(props) => props.theme.button};
+    background-color: ${({ theme }) => theme.button};
   }
 `;
 

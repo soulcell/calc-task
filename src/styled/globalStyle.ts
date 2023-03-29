@@ -18,8 +18,8 @@ const GlobalStyle = createGlobalStyle`
         font-size: 32px;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        background-color: ${(props) => props.theme.background};
-        color: ${(props) => props.theme.text};
+        background-color: ${({ theme }) => theme.background};
+        color: ${({ theme }) => theme.text};
 
         @media (max-width: 700px) {
             font-size: 21px;
@@ -31,8 +31,8 @@ const GlobalStyle = createGlobalStyle`
         padding: 0;
         font-family: "Helvetica Neue", "Segoe UI", "Droid Sans", sans-serif;
         font-size: 32px;
-        color: ${(props) => props.theme.text};
-        background-color: ${(props) => props.theme.button};
+        color: ${({ theme }) => theme.text};
+        background-color: ${({ theme }) => theme.button};
     }
 `;
 

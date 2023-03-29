@@ -5,16 +5,16 @@ export const Navbar = styled.nav`
   justify-content: space-between;
   align-items: center;
   padding: 0 32px;
-  background-color: ${(props) => props.theme.header};
+  background-color: ${({ theme }) => theme.header};
   height: 100px;
 
   a {
     font-size: 1em;
     margin-left: 32px;
-    color: ${(props) => props.theme.background};
+    color: ${({ theme }) => theme.background};
     text-decoration: none;
     &:visited {
-      color: ${(props) => props.theme.background};
+      color: ${({ theme }) => theme.background};
       text-decoration: overline;
     }
   }
@@ -35,5 +35,5 @@ export const H1 = styled.h1`
   font-size: 1em;
   font-weight: normal;
   margin: 0;
-  color: ${(props) => props.theme.background};
+  color: ${({ theme }) => theme.background};
 `;

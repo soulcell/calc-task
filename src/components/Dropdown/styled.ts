@@ -12,9 +12,9 @@ export const DropdownButton = styled.button`
   align-items: center;
   font-size: 0.7em;
   padding: 8px;
-  border: 1px solid ${(props) => props.theme.border};
+  border: 1px solid ${({ theme }) => theme.border};
   border-radius: 8px;
-  background-color: ${(props) => props.theme.button};
+  background-color: ${({ theme }) => theme.button};
   cursor: pointer;
 
   & svg {
@@ -35,7 +35,7 @@ export const DropdownList = styled.ul`
   display: none;
   overflow: auto;
   max-height: 50vh;
-  border: 1px solid ${(props) => props.theme.border};
+  border: 1px solid ${({ theme }) => theme.border};
   border-radius: 8px;
   list-style: none;
   padding: 0;
