@@ -3,7 +3,7 @@ import selectHistory from "../../store/reducers/history/selector";
 import { H2, RecordResult, StyledHistory, StyledRecord } from "./styled";
 import { HistoryRecord as Record } from "../../store/reducers/history/reducer";
 import toAccuracy from "../../utils/toAccuracy";
-import { useAppDispatch } from "../../store/store";
+import { useAppDispatch } from "../../store";
 import { setValue } from "../../store/actionCreators/calculatorActionCreators";
 import selectSettings from "../../store/reducers/settings/selector";
 

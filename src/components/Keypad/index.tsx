@@ -3,7 +3,7 @@ import Button from "../Button";
 import { isButtonType } from "../../utils/buttonTypes";
 import keypadHandler from "../../utils/keypadHandler";
 import { useCallback, useEffect } from "react";
-import { useAppDispatch } from "../../store/store";
+import { useAppDispatch } from "../../store";
 import { useSelector } from "react-redux";
 import selectCalculator from "../../store/reducers/calculator/selector";
 import { BUTTONS } from "../../constants/calculator";

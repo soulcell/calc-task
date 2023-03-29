@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import { RouterProvider } from "react-router-dom";
 import router from "./router";
 import reportWebVitals from "./reportWebVitals";
-import { persistor, store } from "./store/store";
+import { persistor, store } from "./store";
 import StyledApp from "./styled";
 import { PersistGate } from "redux-persist/integration/react";
 import ErrorBoundary from "./components/ErrorBoundary";

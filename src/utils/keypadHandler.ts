@@ -16,7 +16,7 @@ import {
   setCommand,
 } from "../store/actionCreators/calculatorActionCreators";
 import { CalculatorState } from "../store/reducers/calculator/reducer";
-import { AppDispatch } from "../store/store";
+import { AppDispatch } from "../store";
 import ButtonType, {
   isButtonAction,
   isButtonDigit,
