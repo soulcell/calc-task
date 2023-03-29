@@ -9,10 +9,11 @@ import { StyledKeypad } from "./styled";
 
 class KeypadCC extends React.Component<ConnectedProps<typeof connector>> {
   private keyboardHandler = (event: KeyboardEvent) => {
+    const { calculatorState, dispatch } = this.props;
     const key = event.key.toUpperCase();
     if (!isButtonType(key)) return;
 
-    keypadHandler(key, this.props.dispatch, this.props.calculatorState);
+    keypadHandler(key, dispatch, calculatorState);
   };
 
   componentDidMount(): void {
