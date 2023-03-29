@@ -12,15 +12,12 @@ export default function Keypad(): JSX.Element {
   const dispatch = useAppDispatch();
   const calcState = useSelector(selectCalculator);
 
-  const keyboardHandler = useCallback(
-    (event: KeyboardEvent) => {
-      const key = event.key.toUpperCase();
-      if (!isButtonType(key)) return;
+  const keyboardHandler = useCallback((event: KeyboardEvent) => {
+    const key = event.key.toUpperCase();
+    if (!isButtonType(key)) return;
 
-      keypadHandler(key, dispatch, calcState);
-    },
-    [dispatch]
-  );
+    keypadHandler(key, dispatch, calcState);
+  }, []);
 
   useEffect(() => {
     document.addEventListener("keypress", keyboardHandler);
