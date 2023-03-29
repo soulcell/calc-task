@@ -10,11 +10,11 @@ export type StyledAppProps = {
 };
 
 export default function StyledApp({ children }: StyledAppProps): JSX.Element {
-  const { theme: themeName } = useSelector(selectSettings);
+  const { currentTheme } = useSelector(selectSettings);
   const [theme, setTheme] = useState<DefaultTheme>(lightTheme);
 
   useEffect(() => {
-    switch (themeName) {
+    switch (currentTheme) {
       case "dark":
         setTheme(darkTheme);
         break;
@@ -25,7 +25,7 @@ export default function StyledApp({ children }: StyledAppProps): JSX.Element {
         setTheme(lightTheme);
         break;
     }
-  }, [themeName]);
+  }, [currentTheme]);
 
   return (
     <ThemeProvider theme={theme}>

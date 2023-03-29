@@ -8,7 +8,7 @@ import { SettingsTitle, Wrapper } from "./styled";
 
 export default function SettingsPage(): JSX.Element {
   const dispatch = useDispatch();
-  const { theme } = useSelector(selectSettings);
+  const { currentTheme: theme } = useSelector(selectSettings);
 
   return (
     <>
