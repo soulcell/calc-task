@@ -93,6 +93,6 @@ export class RemainderCommand extends CalculatorCommand {
   }
 
   public execute(currentValue: number): number {
-    return this.operand % currentValue;
+    return ((this.operand % currentValue) + currentValue) % currentValue;
   }
 }
