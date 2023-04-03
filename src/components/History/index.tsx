@@ -26,7 +26,6 @@ function HistoryRecord({ record }: HistoryRecordProps): JSX.Element {
   const { command, value, result } = record;
   return (
     <StyledRecord onClick={() => dispatch(setValue({ value: result }))}>
-      {toAccuracy(command.operand)} {command.symbol} {toAccuracy(value)} ={" "}
       <RecordResult>{toAccuracy(result)}</RecordResult>
     </StyledRecord>
   );

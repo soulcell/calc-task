@@ -19,3 +19,11 @@ export const executeCommand = createAction("EXECUTE_COMMAND");
 export const putSeparator = createAction("PUT_SEPARTOR");
 
 export const changeSign = createAction("CHANGE_SIGN");
+
+export const appendNumericToken = createAction<{ token: string }>(
+  "APPEND_NUMERIC_TOKEN"
+);
+
+export const appendOperatorToken = createAction<{ token: string }>(
+  "APPEND_OPERATOR_TOKEN"
+);

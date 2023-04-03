@@ -1,7 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
 import { historyMiddleware } from "./middlewares/historyMiddleware";
-import { intermediateValueMiddleware } from "./middlewares/intermediateValueMiddleware";
 import rootReducer, { AppState } from "./reducers/rootReducer";
 import {
   FLUSH,
@@ -29,7 +28,7 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat([intermediateValueMiddleware, historyMiddleware]),
+    }).concat([historyMiddleware]),
 });
 
 export const persistor = persistStore(store);

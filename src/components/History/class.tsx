@@ -28,7 +28,6 @@ class HistoryRecord extends React.Component<
     const dispatch = this.props.dispatch;
     return (
       <StyledRecord onClick={() => dispatch(setValue({ value: result }))}>
-        {toAccuracy(command.operand)} {command.symbol} {toAccuracy(value)} ={" "}
         <RecordResult>{toAccuracy(result)}</RecordResult>
       </StyledRecord>
     );

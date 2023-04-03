@@ -10,11 +10,7 @@ class DisplayCC extends React.Component<ConnectedProps<typeof connector>> {
 
     return (
       <StyledDisplay id="display">
-        {command && (
-          <OperandCommand>
-            {toAccuracy(command.operand)} {command.symbol}
-          </OperandCommand>
-        )}
+        {command && <OperandCommand></OperandCommand>}
         {input || toAccuracy(value)}
       </StyledDisplay>
     );

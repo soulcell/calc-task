@@ -8,6 +8,8 @@ import {
 } from "../commands/calculatorCommands";
 import {
   appendDigit,
+  appendNumericToken,
+  appendOperatorToken,
   changeSign,
   clearAll,
   clearValue,
@@ -30,7 +32,8 @@ export default function keypadHandler(
   state: CalculatorState
 ) {
   if (isButtonDigit(buttonType)) {
-    dispatch(appendDigit({ digit: buttonType }));
+    //dispatch(appendDigit({ digit: buttonType }));
+    dispatch(appendNumericToken({ token: buttonType }));
   } else if (isButtonAction(buttonType)) {
     switch (buttonType) {
       case "C":
@@ -47,26 +50,10 @@ export default function keypadHandler(
         break;
     }
   } else if (isButtonOperator(buttonType)) {
-    let command: CalculatorCommand;
-    switch (buttonType) {
-      case "+":
-        command = new AddCommand(state.value);
-        break;
-      case "-":
-        command = new SubtractCommand(state.value);
-        break;
-      case "*":
-        command = new MultiplyCommand(state.value);
-        break;
-      case "/":
-        command = new DivideCommand(state.value);
-        break;
-      case "%":
-        command = new RemainderCommand(state.value);
-        break;
-    }
-    dispatch(setCommand({ command: command.toPlainObject() }));
+    //dispatch(setCommand({ command: command.toPlainObject() }));
+    dispatch(appendOperatorToken({ token: buttonType }));
   } else if (isButtonPoint(buttonType)) {
-    dispatch(putSeparator());
+    //dispatch(putSeparator());
+    dispatch(appendNumericToken({ token: "." }));
   }
 }
