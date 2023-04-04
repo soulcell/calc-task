@@ -14,6 +14,7 @@ import {
   persistStore,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import { checkTokensMiddleware } from "./middlewares/checkTokensMiddleware";
 
 const persistConfig: PersistConfig<AppState> = {
   key: "root",
@@ -28,7 +29,7 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat([historyMiddleware]),
+    }).concat([checkTokensMiddleware, historyMiddleware]),
 });
 
 export const persistor = persistStore(store);

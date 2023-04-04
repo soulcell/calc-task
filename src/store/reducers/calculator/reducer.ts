@@ -1,5 +1,4 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { CalculatorCommandPlain } from "../../../commands/calculatorCommands";
 import calculateExpression from "../../../utils/calculateExpression";
 import {
   isNumericToken,
@@ -10,14 +9,11 @@ import * as actions from "../../actionCreators/calculatorActionCreators";
 export interface CalculatorState {
   tokens: Array<string>;
   value: number;
-  input: string;
-  command?: CalculatorCommandPlain;
 }
 
 const initialState: CalculatorState = {
   tokens: [],
   value: 0,
-  input: "",
 };
 
 const calculatorReducer = createReducer<CalculatorState>(
@@ -27,9 +23,8 @@ const calculatorReducer = createReducer<CalculatorState>(
       .addCase(actions.clearAll, () => {
         return initialState;
       })
-      .addCase(actions.clearValue, (state) => {
-        state.value = initialState.value;
-        state.input = initialState.input;
+      .addCase(actions.clearValue, ({ tokens }) => {
+        tokens.pop();
       })
       .addCase(actions.executeCommand, (state) => {
         state.value = calculateExpression(state.tokens);

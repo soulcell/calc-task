@@ -1,5 +1,10 @@
+import { ACCURACY } from "../constants/calculator";
+
 export function isNumericToken(token: string) {
-  return /^-?([1-9]\d*(\.)\d{0,3}|0?(\.)\d{0,3}|[1-9]\d{0,3}|0)$/.test(token);
+  const regex = new RegExp(
+    `^-?([1-9]\\d*(\\.)\\d{0,${ACCURACY}}|0?(\\.)\\d{0,${ACCURACY}}|[1-9]\\d{0,${ACCURACY}}|0)$`
+  );
+  return regex.test(token);
 }
 
 export function isOperatorToken(token: string) {
