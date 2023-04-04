@@ -3,8 +3,6 @@ import selectHistory from "../../store/reducers/history/selector";
 import { H2, RecordResult, StyledHistory, StyledRecord } from "./styled";
 import { HistoryRecord as Record } from "../../store/reducers/history/reducer";
 import toAccuracy from "../../utils/toAccuracy";
-import { useAppDispatch } from "../../store";
-import { setValue } from "../../store/actionCreators/calculatorActionCreators";
 import selectSettings from "../../store/reducers/settings/selector";
 
 export default function History(): JSX.Element {
@@ -22,10 +20,10 @@ export default function History(): JSX.Element {
 }
 
 function HistoryRecord({ record }: HistoryRecordProps): JSX.Element {
-  const dispatch = useAppDispatch();
-  const { command, value, result } = record;
+  const { tokens, result } = record;
   return (
-    <StyledRecord onClick={() => dispatch(setValue({ value: result }))}>
+    <StyledRecord>
+      {tokens.join(" ") + " = "}
       <RecordResult>{toAccuracy(result)}</RecordResult>
     </StyledRecord>
   );

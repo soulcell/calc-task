@@ -4,12 +4,12 @@ import toAccuracy from "../../utils/toAccuracy";
 import { OperandCommand, StyledDisplay } from "./styled";
 
 export default function Display(): JSX.Element {
-  const { command, value, input } = useSelector(selectCalculator);
+  const { command, value, input, tokens } = useSelector(selectCalculator);
 
   return (
     <StyledDisplay id="display">
       {command && <OperandCommand></OperandCommand>}
-      {input || toAccuracy(value)}
+      {tokens.join(" ") || toAccuracy(value)}
     </StyledDisplay>
   );
 }

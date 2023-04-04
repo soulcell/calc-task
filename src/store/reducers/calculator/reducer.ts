@@ -31,10 +31,6 @@ const calculatorReducer = createReducer<CalculatorState>(
       .addCase(actions.setValue, (state, action) => {
         state.value = action.payload.value;
       })
-      .addCase(actions.appendDigit, (state, action) => {
-        state.input = inputAppend(state.input, action.payload.digit);
-        state.value = isNaN(+state.input) ? 0 : +state.input;
-      })
       .addCase(actions.clearAll, () => {
         return initialState;
       })
@@ -42,25 +38,25 @@ const calculatorReducer = createReducer<CalculatorState>(
         state.value = initialState.value;
         state.input = initialState.input;
       })
-      .addCase(actions.setCommand, (state, action) => {
-        state.command = action.payload.command;
-        state.value = initialState.value;
-        state.input = initialState.input;
-      })
       .addCase(actions.executeCommand, (state) => {
         //if (!state.command) return;
         state.value = calculateExpression(state.tokens);
-        state.input = initialState.input;
-        state.command = undefined;
+        state.tokens = initialState.tokens;
+        //state.input = initialState.input;
+        //state.command = undefined;
       })
       .addCase(actions.putSeparator, (state) => {
         state.input = inputAppend(state.input, ".");
         state.value = isNaN(+state.input) ? 0 : +state.input;
       })
-      .addCase(actions.changeSign, (state) => {
-        state.input =
-          state.input[0] === "-" ? state.input.slice(1) : "-" + state.input;
-        state.value = isNaN(+state.input) ? 0 : +state.input;
+      .addCase(actions.changeSign, ({ tokens }) => {
+        let lastToken = tokens[tokens.length - 1];
+
+        if (isNumericToken(lastToken)) {
+          lastToken =
+            lastToken.charAt(0) === "-" ? lastToken.slice(1) : "-" + lastToken;
+          tokens[tokens.length - 1] = lastToken;
+        }
       })
       .addCase(actions.appendNumericToken, ({ tokens }, { payload }) => {
         if (isNumericToken(tokens[tokens.length - 1])) {
@@ -70,6 +66,7 @@ const calculatorReducer = createReducer<CalculatorState>(
         } else tokens.push(payload.token);
       })
       .addCase(actions.appendOperatorToken, ({ tokens }, { payload }) => {
+        if (tokens.length === 0) return;
         if (isOperatorToken(tokens[tokens.length - 1]))
           tokens[tokens.length - 1] = payload.token;
         else tokens.push(payload.token);
