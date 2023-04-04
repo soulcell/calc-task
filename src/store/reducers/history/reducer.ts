@@ -1,5 +1,4 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { CalculatorCommandPlain } from "../../../commands/calculatorCommands";
 import * as actions from "../../actionCreators/historyActionCreators";
 
 export interface HistoryRecord {

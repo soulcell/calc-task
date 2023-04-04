@@ -1,5 +1,4 @@
 import { AnyAction, Middleware } from "redux";
-import { CalculatorCommand } from "../../commands/calculatorCommands";
 import { executeCommand } from "../actionCreators/calculatorActionCreators";
 import { addHistory } from "../actionCreators/historyActionCreators";
 import { AppState } from "../reducers/rootReducer";
