@@ -9,11 +9,11 @@ import { StyledKeypad } from "./styled";
 
 class KeypadCC extends React.Component<ConnectedProps<typeof connector>> {
   private keyboardHandler = (event: KeyboardEvent) => {
-    const { calculatorState, dispatch } = this.props;
+    const { dispatch } = this.props;
     const key = event.key.toUpperCase();
     if (!isButtonType(key)) return;
 
-    keypadHandler(key, dispatch, calculatorState);
+    keypadHandler(key, dispatch);
   };
 
   componentDidMount(): void {
@@ -25,14 +25,14 @@ class KeypadCC extends React.Component<ConnectedProps<typeof connector>> {
   }
 
   render() {
-    const { calculatorState, dispatch } = this.props;
+    const { dispatch } = this.props;
     return (
       <StyledKeypad>
         {BUTTONS.map((value, idx) => (
           <Button
             key={idx}
             buttonType={value}
-            onClick={() => keypadHandler(value, dispatch, calculatorState)}
+            onClick={() => keypadHandler(value, dispatch)}
           />
         ))}
       </StyledKeypad>

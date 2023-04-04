@@ -1,10 +1,6 @@
 import { createReducer } from "@reduxjs/toolkit";
-import {
-  CalculatorCommand,
-  CalculatorCommandPlain,
-} from "../../../commands/calculatorCommands";
+import { CalculatorCommandPlain } from "../../../commands/calculatorCommands";
 import calculateExpression from "../../../utils/calculateExpression";
-import inputAppend from "../../../utils/inputAppend";
 import {
   isNumericToken,
   isOperatorToken,
@@ -28,9 +24,6 @@ const calculatorReducer = createReducer<CalculatorState>(
   initialState,
   (builder) => {
     builder
-      .addCase(actions.setValue, (state, action) => {
-        state.value = action.payload.value;
-      })
       .addCase(actions.clearAll, () => {
         return initialState;
       })
@@ -39,15 +32,8 @@ const calculatorReducer = createReducer<CalculatorState>(
         state.input = initialState.input;
       })
       .addCase(actions.executeCommand, (state) => {
-        //if (!state.command) return;
         state.value = calculateExpression(state.tokens);
         state.tokens = initialState.tokens;
-        //state.input = initialState.input;
-        //state.command = undefined;
-      })
-      .addCase(actions.putSeparator, (state) => {
-        state.input = inputAppend(state.input, ".");
-        state.value = isNaN(+state.input) ? 0 : +state.input;
       })
       .addCase(actions.changeSign, ({ tokens }) => {
         let lastToken = tokens[tokens.length - 1];
