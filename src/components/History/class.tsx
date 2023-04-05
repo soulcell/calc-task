@@ -4,7 +4,6 @@ import { HistoryRecord as Record } from "../../store/reducers/history/reducer";
 import { AppState } from "../../store/reducers/rootReducer";
 import { connect, ConnectedProps } from "react-redux";
 import toAccuracy from "../../utils/toAccuracy";
-import { setValue } from "../../store/actionCreators/calculatorActionCreators";
 
 class HistoryCC extends React.Component<ConnectedProps<typeof connector>> {
   render() {
@@ -24,11 +23,10 @@ class HistoryRecord extends React.Component<
   { record: Record } & ConnectedProps<typeof connector>
 > {
   render() {
-    const { command, value, result } = this.props.record;
-    const dispatch = this.props.dispatch;
+    const { tokens, result } = this.props.record;
     return (
-      <StyledRecord onClick={() => dispatch(setValue({ value: result }))}>
-        {toAccuracy(command.operand)} {command.symbol} {toAccuracy(value)} ={" "}
+      <StyledRecord>
+        {tokens.join(" ")}
         <RecordResult>{toAccuracy(result)}</RecordResult>
       </StyledRecord>
     );

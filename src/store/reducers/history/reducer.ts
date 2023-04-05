@@ -1,10 +1,9 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { CalculatorCommandPlain } from "../../../commands/calculatorCommands";
 import * as actions from "../../actionCreators/historyActionCreators";
 
 export interface HistoryRecord {
-  command: CalculatorCommandPlain;
-  value: number;
+  id: number;
+  tokens: string[];
   result: number;
 }
 
@@ -18,8 +17,9 @@ const initialState: HistoryState = {
 
 const historyReducer = createReducer<HistoryState>(initialState, (builder) => {
   builder
-    .addCase(actions.addHistory, (state, action) => {
-      state.records.unshift(action.payload);
+    .addCase(actions.addHistory, ({ records }, { payload }) => {
+      payload.id = records[0] ? records[0].id + 1 : 0;
+      records.unshift(payload);
     })
     .addCase(actions.clearHistory, () => initialState);
 });
