@@ -23,8 +23,9 @@ const calculatorReducer = createReducer<CalculatorState>(
       .addCase(actions.clearAll, () => {
         return initialState;
       })
-      .addCase(actions.clearValue, ({ tokens }) => {
-        tokens.pop();
+      .addCase(actions.clearValue, (state) => {
+        state.value = initialState.value;
+        state.tokens.pop();
       })
       .addCase(actions.executeCommand, (state) => {
         state.value = calculateExpression(state.tokens);
