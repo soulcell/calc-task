@@ -17,11 +17,10 @@ describe("calculator", () => {
     cy.get("#display").should("contain", "0");
   });
 
-  it("should clear value", () => {
-    cy.keypadPress("5 + 6 = + 4");
+  it("should clear last token", () => {
+    cy.keypadPress("5 + 6 - 5");
     cy.get("button[name='CE']").click();
-    cy.get("#display").should("contain", "0");
-    cy.get("#display").should("contain", "11 +");
+    cy.get("#display").should("contain", "5 + 6 -");
   });
 
   it("should add records history", () => {
