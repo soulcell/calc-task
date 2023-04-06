@@ -17,9 +17,11 @@ root.render(
   <React.StrictMode>
     <ErrorBoundary>
       <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
+        <PersistGate loading={<div>Loading...</div>} persistor={persistor}>
           <StyledApp>
-            <RouterProvider router={router} />
+            <React.Suspense fallback={<div>Loading...</div>}>
+              <RouterProvider router={router} />
+            </React.Suspense>
           </StyledApp>
         </PersistGate>
       </Provider>
