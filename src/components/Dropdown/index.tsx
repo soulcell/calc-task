@@ -9,6 +9,8 @@ import {
   useState,
 } from "react";
 
+import SVG from "../SVG";
+
 import { DropdownItemProps } from "./DropdownItem";
 import { DropdownButton, DropdownList, StyledDropdown } from "./styled";
 
@@ -16,28 +18,6 @@ export interface DropdownProps {
   children: React.ReactNode;
   onSelectedValueChanged?: (value: string) => void;
   id?: string;
-}
-
-function ArrowIcon(): JSX.Element {
-  return (
-    <svg
-      width="24px"
-      height="24px"
-      strokeWidth="1.5"
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      color="#000000"
-    >
-      <path
-        d="M6 9l6 6 6-6"
-        stroke="#000000"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
 }
 
 export default function Dropdown({
@@ -93,7 +73,7 @@ export default function Dropdown({
     <StyledDropdown ref={triggerRef} className={isOpen ? "isOpen" : ""} id={id}>
       <DropdownButton onClick={() => setOpen(!isOpen)}>
         <span>{selectedTitle}</span>
-        <ArrowIcon />
+        <SVG icon="arrow" width="24px" height="24px" />
       </DropdownButton>
       <DropdownList>
         {Children.map(children, (child, idx) => {
