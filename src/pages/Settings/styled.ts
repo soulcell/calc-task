@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   height: 100vh;
 `;
 
-export const SettingsTitle = styled.h2`
-  margin: 0.2em 1em;
+export const Title = styled.h2`
+  margin: 0.2em 0;
   font-size: 1.5em;
 `;

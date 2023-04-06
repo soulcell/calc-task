@@ -6,7 +6,7 @@ import Header from "../../components/Header";
 import { setTheme } from "../../store/actionCreators/settingsActionCreators";
 import selectSettings from "../../store/reducers/settings/selector";
 
-import { SettingsTitle, Wrapper } from "./styled";
+import { Title, Wrapper } from "./styled";
 
 export default function SettingsPage(): JSX.Element {
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ export default function SettingsPage(): JSX.Element {
     <>
       <Header />
       <Wrapper>
-        <SettingsTitle>Settings</SettingsTitle>
+        <Title>Settings</Title>
         <span>Theme</span>
         <Dropdown
           onSelectedValueChanged={(newTheme) =>
