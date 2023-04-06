@@ -47,8 +47,8 @@ export default function Dropdown({
 }: DropdownProps): JSX.Element {
   const [isOpen, setOpen] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [selectedValue, setSelectedValue] = useState<string>("");
-  const [selectedTitle, setSelectedTitle] = useState<string>();
+  const [selectedValue, setSelectedValue] = useState("");
+  const [selectedTitle, setSelectedTitle] = useState("");
 
   const triggerRef = useRef<HTMLDivElement>(null);
   const clickHandler = useCallback(

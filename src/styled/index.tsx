@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { DefaultTheme, ThemeProvider } from "styled-components";
+import { ThemeProvider } from "styled-components";
 
 import selectSettings from "../store/reducers/settings/selector";
 
@@ -13,7 +13,7 @@ export type StyledAppProps = {
 
 export default function StyledApp({ children }: StyledAppProps): JSX.Element {
   const { currentTheme } = useSelector(selectSettings);
-  const [theme, setTheme] = useState<DefaultTheme>(lightTheme);
+  const [theme, setTheme] = useState(lightTheme);
 
   useEffect(() => {
     switch (currentTheme) {
