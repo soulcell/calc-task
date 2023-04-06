@@ -7,7 +7,7 @@ export const StyledRecord = styled.div`
   border-radius: 10px;
 
   &:hover {
-    background-color: ${({ theme }) => theme.button};
+    background-color: ${({ theme }) => theme.colors.button};
   }
 `;
 

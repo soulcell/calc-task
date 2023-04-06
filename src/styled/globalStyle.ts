@@ -15,14 +15,14 @@ const GlobalStyle = createGlobalStyle`
         height: 100vh;
         margin: 0;
         font-family: "Helvetica Neue", "Segoe UI", "Droid Sans", sans-serif;
-        font-size: 32px;
+        font-size: ${({ theme }) => theme.fontSizes.l};;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        background-color: ${({ theme }) => theme.background};
-        color: ${({ theme }) => theme.text};
+        background-color: ${({ theme }) => theme.colors.background};
+        color: ${({ theme }) => theme.colors.text};
 
         @media (max-width: 700px) {
-            font-size: 21px;
+            font-size: ${({ theme }) => theme.fontSizes.m};
             height: unset;
         }
     }
@@ -30,9 +30,9 @@ const GlobalStyle = createGlobalStyle`
     button {
         padding: 0;
         font-family: "Helvetica Neue", "Segoe UI", "Droid Sans", sans-serif;
-        font-size: 32px;
-        color: ${({ theme }) => theme.text};
-        background-color: ${({ theme }) => theme.button};
+        font-size: ${({ theme }) => theme.fontSizes.m};
+        color: ${({ theme }) => theme.colors.text};
+        background-color: ${({ theme }) => theme.colors.button};
         cursor: pointer;
     }
 `;

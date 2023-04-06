@@ -6,13 +6,13 @@ export const StyledHistory = styled.div<{ isHidden?: boolean }>`
   overflow: auto;
   transition: width 0.07s;
   border-left: ${({ isHidden, theme }) =>
-    isHidden ? "none" : `1px solid ${theme.border}`};
+    isHidden ? "none" : `1px solid ${theme.colors.border}`};
   width: ${({ isHidden }) => (isHidden ? "0px" : "300px")};
 
   @media (max-width: 700px) {
     width: 100%;
     border-left: none;
-    border-top: 1px solid ${({ theme }) => theme.border};
+    border-top: 1px solid ${({ theme }) => theme.colors.border};
   }
 `;
 

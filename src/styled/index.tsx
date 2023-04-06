@@ -5,7 +5,7 @@ import { ThemeProvider } from "styled-components";
 import selectSettings from "../store/reducers/settings/selector";
 
 import GlobalStyle from "./globalStyle";
-import { darkTheme, lightTheme } from "./theme";
+import { defaultTheme, THEMES } from "./theme";
 
 export type StyledAppProps = {
   children: React.ReactNode;
@@ -13,20 +13,13 @@ export type StyledAppProps = {
 
 export default function StyledApp({ children }: StyledAppProps): JSX.Element {
   const { currentTheme } = useSelector(selectSettings);
-  const [theme, setTheme] = useState(lightTheme);
+  const [theme, setTheme] = useState(defaultTheme);
 
   useEffect(() => {
-    switch (currentTheme) {
-      case "dark":
-        setTheme(darkTheme);
-        break;
-      case "light":
-        setTheme(lightTheme);
-        break;
-      default:
-        setTheme(lightTheme);
-        break;
-    }
+    setTheme({
+      ...defaultTheme,
+      ...THEMES[currentTheme as keyof typeof THEMES],
+    });
   }, [currentTheme]);
 
   return (
