@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledCalculator = styled.div`
+const StyledCalculator = styled.div`
   display: grid;
   grid-template-areas:
     "display history"
@@ -16,3 +16,5 @@ export const StyledCalculator = styled.div`
     height: unset;
   }
 `;
+
+export default StyledCalculator;

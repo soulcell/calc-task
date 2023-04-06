@@ -1,4 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit";
+
 import calculateExpression from "../../../utils/calculateExpression";
 import {
   isNumericToken,
@@ -20,9 +21,7 @@ const calculatorReducer = createReducer<CalculatorState>(
   initialState,
   (builder) => {
     builder
-      .addCase(actions.clearAll, () => {
-        return initialState;
-      })
+      .addCase(actions.clearAll, () => initialState)
       .addCase(actions.clearValue, (state) => {
         state.value = initialState.value;
         state.tokens.pop();
@@ -36,7 +35,7 @@ const calculatorReducer = createReducer<CalculatorState>(
 
         if (isNumericToken(lastToken)) {
           lastToken =
-            lastToken.charAt(0) === "-" ? lastToken.slice(1) : "-" + lastToken;
+            lastToken.charAt(0) === "-" ? lastToken.slice(1) : `-${lastToken}`;
           tokens[tokens.length - 1] = lastToken;
         }
       })

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledDropdownItem = styled.button`
+const StyledDropdownItem = styled.button`
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -14,3 +14,5 @@ export const StyledDropdownItem = styled.button`
   border: none;
   font-size: 0.5em;
 `;
+
+export default StyledDropdownItem;

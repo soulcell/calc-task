@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledButton = styled.button`
+const StyledButton = styled.button`
   align-self: center;
   justify-self: center;
   width: 1.5em;
@@ -14,3 +14,5 @@ export const StyledButton = styled.button`
     background-color: ${({ theme }) => theme.border};
   }
 `;
+
+export default StyledButton;

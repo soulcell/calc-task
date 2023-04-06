@@ -1,8 +1,9 @@
 import React from "react";
-import { ButtonProps } from ".";
-import { StyledButton } from "./styled";
 
-class ButtonCC extends React.Component<
+import StyledButton from "./styled";
+import { ButtonProps } from ".";
+
+class ButtonCC extends React.PureComponent<
   ButtonProps & React.HTMLAttributes<HTMLButtonElement>
 > {
   render() {

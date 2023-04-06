@@ -1,9 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
+
 import Dropdown from "../../components/Dropdown";
 import DropdownItem from "../../components/Dropdown/DropdownItem";
 import Header from "../../components/Header";
 import { setTheme } from "../../store/actionCreators/settingsActionCreators";
 import selectSettings from "../../store/reducers/settings/selector";
+
 import { SettingsTitle, Wrapper } from "./styled";
 
 export default function SettingsPage(): JSX.Element {

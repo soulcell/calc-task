@@ -1,9 +1,10 @@
 import ButtonType from "../../utils/buttonTypes";
-import { StyledButton } from "./styled";
+
+import StyledButton from "./styled";
 
 export default function Button({
   buttonType,
-  onClick,
+  onClick = () => {},
 }: ButtonProps): JSX.Element {
   return (
     <StyledButton name={buttonType} onClick={onClick}>

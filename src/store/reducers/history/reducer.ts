@@ -1,15 +1,8 @@
 import { createReducer } from "@reduxjs/toolkit";
+
 import * as actions from "../../actionCreators/historyActionCreators";
 
-export interface HistoryRecord {
-  id: number;
-  tokens: string[];
-  result: number;
-}
-
-export interface HistoryState {
-  records: HistoryRecord[];
-}
+import { HistoryState } from "./types";
 
 const initialState: HistoryState = {
   records: [],

@@ -1,4 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit";
+
 import {
   DEFAULT_SHOW_HISTORY,
   DEFAULT_THEME,

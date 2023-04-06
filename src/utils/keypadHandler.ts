@@ -1,3 +1,4 @@
+import { AppDispatch } from "../store";
 import {
   appendNumericToken,
   appendOperatorToken,
@@ -6,7 +7,7 @@ import {
   clearValue,
   executeCommand,
 } from "../store/actionCreators/calculatorActionCreators";
-import { AppDispatch } from "../store";
+
 import ButtonType, {
   isButtonAction,
   isButtonDigit,
@@ -33,6 +34,8 @@ export default function keypadHandler(
         break;
       case "±":
         dispatch(changeSign());
+        break;
+      default:
         break;
     }
   } else if (isButtonOperator(buttonType)) {

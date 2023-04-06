@@ -1,7 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
+
 import { clearHistory } from "../../store/actionCreators/historyActionCreators";
 import { toggleHistory } from "../../store/actionCreators/settingsActionCreators";
 import selectSettings from "../../store/reducers/settings/selector";
+
 import { Button, StyledControlPanel } from "./styled";
 
 export default function ControlPanel(): JSX.Element {

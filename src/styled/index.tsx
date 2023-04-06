@@ -1,7 +1,9 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { DefaultTheme, ThemeProvider } from "styled-components";
+
 import selectSettings from "../store/reducers/settings/selector";
+
 import GlobalStyle from "./globalStyle";
 import { darkTheme, lightTheme } from "./theme";
 

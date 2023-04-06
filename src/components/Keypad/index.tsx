@@ -1,10 +1,12 @@
-import { StyledKeypad } from "./styled";
-import Button from "../Button";
+import { useCallback, useEffect } from "react";
+
+import { BUTTONS } from "../../constants/calculator";
+import { useAppDispatch } from "../../store";
 import { isButtonType } from "../../utils/buttonTypes";
 import keypadHandler from "../../utils/keypadHandler";
-import { useCallback, useEffect } from "react";
-import { useAppDispatch } from "../../store";
-import { BUTTONS } from "../../constants/calculator";
+import Button from "../Button";
+
+import { StyledKeypad } from "./styled";
 
 export default function Keypad(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -26,9 +28,9 @@ export default function Keypad(): JSX.Element {
 
   return (
     <StyledKeypad>
-      {BUTTONS.map((value, idx) => (
+      {BUTTONS.map((value) => (
         <Button
-          key={idx}
+          key={value}
           buttonType={value}
           onClick={() => keypadHandler(value, dispatch)}
         />

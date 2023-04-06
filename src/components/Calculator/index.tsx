@@ -1,8 +1,9 @@
-import Display from "../Display";
-import Keypad from "../Keypad";
-import History from "../History";
-import { StyledCalculator } from "./styled";
 import ControlPanel from "../ControlPanel";
+import Display from "../Display";
+import History from "../History";
+import Keypad from "../Keypad";
+
+import StyledCalculator from "./styled";
 
 export default function Calculator(): JSX.Element {
   return (

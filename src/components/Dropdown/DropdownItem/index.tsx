@@ -1,4 +1,4 @@
-import { StyledDropdownItem } from "./styled";
+import StyledDropdownItem from "./styled";
 
 export type DropdownItemProps = {
   title: string;
@@ -32,7 +32,7 @@ export default function DropdownItem({
             strokeWidth="1.5"
             strokeLinecap="round"
             strokeLinejoin="round"
-          ></path>
+          />
         </svg>
       )}
     </StyledDropdownItem>

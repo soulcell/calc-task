@@ -1,15 +1,11 @@
-import { isNumericToken, isOperatorToken } from "./tokenValidation";
-import precendence from "./operatorPrecedence";
 import {
   CalculatorCommand,
   CalculatorCommandSymbol,
-} from "../commands/calculatorCommands";
+  createCommandFromObject,
+} from "../commands";
 
-export default function calculateExpression(tokens: string[]) {
-  const postfixTokens = toPostfixNotation(tokens);
-  const commandTree = createCommandTree(postfixTokens);
-  return typeof commandTree === "number" ? commandTree : commandTree.execute();
-}
+import precendence from "./operatorPrecedence";
+import { isNumericToken, isOperatorToken } from "./tokenValidation";
 
 function toPostfixNotation(infix: string[]) {
   const outputQueue: string[] = [];
@@ -49,7 +45,7 @@ function createCommandTree(postfixTokens: string[]) {
         throw new Error("Failed to create tree");
       }
 
-      const command: CalculatorCommand = CalculatorCommand.fromObject({
+      const command: CalculatorCommand = createCommandFromObject({
         operator: token as CalculatorCommandSymbol,
         operand1,
         operand2,
@@ -59,4 +55,10 @@ function createCommandTree(postfixTokens: string[]) {
     }
   });
   return stack[0];
+}
+
+export default function calculateExpression(tokens: string[]) {
+  const postfixTokens = toPostfixNotation(tokens);
+  const commandTree = createCommandTree(postfixTokens);
+  return typeof commandTree === "number" ? commandTree : commandTree.execute();
 }
