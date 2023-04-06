@@ -1,3 +1,3 @@
-const ICONS = ["arrow", "check"] as const;
+const ICONS = ["arrow", "check", "hamburger"] as const;
 
 export default ICONS;

@@ -14,13 +14,7 @@
     />
   </symbol>
 
-  <symbol
-    id="check"
-    width="24px"
-    height="24px"
-    strokeWidth="1.5"
-    fill="none"
-  >
+  <symbol id="check" width="24px" height="24px" strokeWidth="1.5" fill="none">
     <path
       d="M5 13l4 4L19 7"
       stroke="currentColor"
@@ -29,4 +23,33 @@
       strokeLinejoin="round"
     />
   </symbol>
+
+  <symbol id="hamburger" viewBox="0 0 24 24" fill="none">
+    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+    <g
+      id="SVGRepo_tracerCarrier"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    ></g>
+    <g id="SVGRepo_iconCarrier">
+      <path
+        d="M4 18L20 18"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+      ></path>
+      <path
+        d="M4 12L20 12"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+      ></path>
+      <path
+        d="M4 6L20 6"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+      ></path>
+    </g>
+  </svg>
 </svg>
