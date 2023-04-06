@@ -21,7 +21,9 @@ class HeaderCC extends React.PureComponent<{
         <NavbarRight>
           {ROUTES.filter(({ path }) => path !== pathname).map(
             ({ path, name }) => (
-              <Link to={path}>{name}</Link>
+              <Link key={path} to={path}>
+                {name}
+              </Link>
             )
           )}
         </NavbarRight>
