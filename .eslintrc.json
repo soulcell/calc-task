@@ -45,6 +45,7 @@
   },
   "plugins": ["@typescript-eslint", "import", "prettier", "simple-import-sort"],
   "rules": {
+    "no-console": "off",
     "no-param-reassign": ["error", { "props": false }],
     "consistent-return": "off",
     "react/react-in-jsx-scope": "off",
