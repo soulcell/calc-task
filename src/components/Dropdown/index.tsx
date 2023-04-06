@@ -70,12 +70,12 @@ export default function Dropdown({
   }, []);
 
   return (
-    <StyledDropdown ref={triggerRef} className={isOpen ? "isOpen" : ""} id={id}>
-      <DropdownButton onClick={() => setOpen(!isOpen)}>
+    <StyledDropdown ref={triggerRef} id={id}>
+      <DropdownButton isOpen={isOpen} onClick={() => setOpen(!isOpen)}>
         <span>{selectedTitle}</span>
         <SVG icon="arrow" width="24px" height="24px" />
       </DropdownButton>
-      <DropdownList>
+      <DropdownList isOpen={isOpen}>
         {Children.map(children, (child, idx) => {
           if (isValidElement(child)) {
             return cloneElement(child as ReactElement<DropdownItemProps>, {

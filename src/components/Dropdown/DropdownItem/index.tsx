@@ -17,7 +17,7 @@ export default function DropdownItem({
 }: DropdownItemProps) {
   return (
     <StyledDropdownItem onClick={onClick}>
-      <span className="title">{title}</span>
+      <span>{title}</span>
       {isSelected && <SVG icon="check" width="24px" height="24px" />}
     </StyledDropdownItem>
   );

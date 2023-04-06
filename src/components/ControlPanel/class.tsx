@@ -17,7 +17,7 @@ class ControlPanelCC extends React.PureComponent<
       <StyledControlPanel>
         <Button
           name="showHistory"
-          className="hideOnMobile"
+          hideOnMobile
           onClick={() => dispatchToggleHistory()}
         >
           {showHistory ? "Hide" : "Show"} History

@@ -13,7 +13,7 @@ export default function ControlPanel(): JSX.Element {
     <StyledControlPanel>
       <Button
         name="showHistory"
-        className="hideOnMobile"
+        hideOnMobile
         onClick={() => dispatch(toggleHistory())}
       >
         {showHistory ? "Hide" : "Show"} History

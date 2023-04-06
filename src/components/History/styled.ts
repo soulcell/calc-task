@@ -1,23 +1,13 @@
 import styled from "styled-components";
 
-export const StyledHistory = styled.div`
+export const StyledHistory = styled.div<{ isHidden?: boolean }>`
   grid-area: history;
-  width: 300px;
   height: 100%;
-  border-left: 1px solid ${({ theme }) => theme.border};
   overflow: auto;
   transition: width 0.07s;
-
-  &.hidden {
-    width: 0px;
-    border: none;
-
-    @media (max-width: 700px) {
-      width: 100%;
-      border-left: none;
-      border-top: 1px solid ${({ theme }) => theme.border};
-    }
-  }
+  border-left: ${({ isHidden, theme }) =>
+    isHidden ? "none" : `1px solid ${theme.border}`};
+  width: ${({ isHidden }) => (isHidden ? "0px" : "300px")};
 
   @media (max-width: 700px) {
     width: 100%;

@@ -11,7 +11,7 @@ export default function History(): JSX.Element {
   const { showHistory } = useSelector(selectSettings);
 
   return (
-    <StyledHistory className={showHistory ? "" : "hidden"} id="history">
+    <StyledHistory isHidden={!showHistory} id="history">
       <H2>History</H2>
       {records.map((value) => (
         <HistoryRecord key={value.id} record={value} />
