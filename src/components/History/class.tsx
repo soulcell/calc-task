@@ -10,7 +10,7 @@ class HistoryCC extends React.PureComponent<ConnectedProps<typeof connector>> {
   render() {
     const { showHistory, historyState } = this.props;
     return (
-      <StyledHistory isHidden={!showHistory} id="history">
+      <StyledHistory isHidden={!showHistory} data-cy="history">
         <H2>History</H2>
         {historyState.records.map((value) => (
           <HistoryRecord key={value.id} record={value} />

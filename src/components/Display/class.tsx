@@ -12,7 +12,7 @@ class DisplayCC extends React.PureComponent<ConnectedProps<typeof connector>> {
     const { tokens, value } = calculator;
 
     return (
-      <StyledDisplay id="display">
+      <StyledDisplay data-cy="display">
         {tokens.join(" ") || toAccuracy(value)}
       </StyledDisplay>
     );

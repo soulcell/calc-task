@@ -9,7 +9,7 @@ export default function Display(): JSX.Element {
   const { value, tokens } = useSelector(selectCalculator);
 
   return (
-    <StyledDisplay id="display">
+    <StyledDisplay data-cy="display">
       {tokens.join(" ") || toAccuracy(value)}
     </StyledDisplay>
   );

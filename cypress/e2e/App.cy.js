@@ -14,18 +14,18 @@ describe("calculator", () => {
   it("should clear state", () => {
     cy.keypadPress("5 + 5 = + 4");
     cy.get("button[name='C']").click();
-    cy.get("#display").should("contain", "0");
+    cy.get("[data-cy='display']").should("contain", "0");
   });
 
   it("should clear last token", () => {
     cy.keypadPress("5 + 6 - 5");
     cy.get("button[name='CE']").click();
-    cy.get("#display").should("contain", "5 + 6 -");
+    cy.get("[data-cy='display']").should("contain", "5 + 6 -");
   });
 
   it("should add records history", () => {
     cy.keypadPress("5 - 5 =");
-    cy.get("#history > div").should(($div) => {
+    cy.get("[data-cy='history'] > div").should(($div) => {
       expect($div.eq(0), "latest record").to.contain("5 - 5 = 0");
     });
   });
@@ -33,16 +33,16 @@ describe("calculator", () => {
   it("should clear history", () => {
     cy.keypadPress("5 - 5 =");
     cy.get("button[name='clearHistory']").click();
-    cy.get("#history > div").should("not.exist");
+    cy.get("[data-cy='history'] > div").should("not.exist");
   });
 
   it("should hide and show history", () => {
     cy.viewport(800, 600);
-    cy.get("#history").should("be.visible");
+    cy.get("[data-cy='history']").should("be.visible");
     cy.get("button[name='showHistory']").click();
-    cy.get("#history").should("not.be.visible");
+    cy.get("[data-cy='history']").should("not.be.visible");
     cy.get("button[name='showHistory']").click();
-    cy.get("#history").should("be.visible");
+    cy.get("[data-cy='history']").should("be.visible");
   });
 
   it("should hide showHistory button on small screens", () => {
@@ -83,12 +83,12 @@ describe("settings", () => {
   });
 
   it("should change theme", () => {
-    cy.get("#themeDropdown").click();
-    cy.get("#themeDropdown > ul > button:nth-child(2)").click();
+    cy.get("[data-cy='themeDropdown']").click();
+    cy.get("[data-cy='themeDropdown'] > ul > button:nth-child(2)").click();
     cy.get("body").should("have.css", "background-color", "rgb(23, 23, 23)");
 
-    cy.get("#themeDropdown").click();
-    cy.get("#themeDropdown > ul > button:nth-child(1)").click();
+    cy.get("[data-cy='themeDropdown']").click();
+    cy.get("[data-cy='themeDropdown'] > ul > button:nth-child(1)").click();
     cy.get("body").should("have.css", "background-color", "rgb(255, 255, 255)");
   });
 });

@@ -17,13 +17,13 @@ import { DropdownButton, DropdownList, StyledDropdown } from "./styled";
 export interface DropdownProps {
   children: React.ReactNode;
   onSelectedValueChanged?: (value: string) => void;
-  id?: string;
+  dataCy?: string;
 }
 
 export default function Dropdown({
   children,
   onSelectedValueChanged,
-  id,
+  dataCy,
 }: DropdownProps): JSX.Element {
   const [isOpen, setOpen] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -70,7 +70,7 @@ export default function Dropdown({
   }, []);
 
   return (
-    <StyledDropdown ref={triggerRef} id={id}>
+    <StyledDropdown ref={triggerRef} data-cy={dataCy}>
       <DropdownButton isOpen={isOpen} onClick={() => setOpen(!isOpen)}>
         <span>{selectedTitle}</span>
         <SVG icon="arrow" width="24px" height="24px" />
