@@ -1,11 +1,7 @@
+import * as actions from "@actionCreators/calculatorActionCreators";
 import { createReducer } from "@reduxjs/toolkit";
-
-import calculateExpression from "../../../utils/calculateExpression";
-import {
-  isNumericToken,
-  isOperatorToken,
-} from "../../../utils/tokenValidation";
-import * as actions from "../../actionCreators/calculatorActionCreators";
+import calculateExpression from "@utils/calculateExpression";
+import { isNumericToken, isOperatorToken } from "@utils/tokenValidation";
 
 export interface CalculatorState {
   tokens: Array<string>;

@@ -1,6 +1,5 @@
 import { createAction } from "@reduxjs/toolkit";
-
-import { ButtonDigit } from "../../utils/buttonTypes";
+import { ButtonDigit } from "@utils/buttonTypes";
 
 export const appendDigit = createAction<{ digit: ButtonDigit }>("APPEND_DIGIT");
 

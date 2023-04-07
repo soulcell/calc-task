@@ -1,4 +1,3 @@
-import { AppDispatch } from "../store";
 import {
   appendNumericToken,
   appendOperatorToken,
@@ -6,7 +5,8 @@ import {
   clearAll,
   clearValue,
   executeCommand,
-} from "../store/actionCreators/calculatorActionCreators";
+} from "@store/actionCreators/calculatorActionCreators";
+import { AppDispatch } from "@store/index";
 
 import ButtonType, {
   isButtonAction,

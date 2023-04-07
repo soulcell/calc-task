@@ -1,5 +1,5 @@
-import Header from "../../components/Header";
-import ThemeDropdown from "../../components/ThemeDropdown";
+import Header from "@components/Header";
+import ThemeDropdown from "@components/ThemeDropdown";
 
 import { Title, Wrapper } from "./styled";
 

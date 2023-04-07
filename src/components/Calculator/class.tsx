@@ -1,9 +1,8 @@
 import React from "react";
-
-import ControlPanelCC from "../ControlPanel/class";
-import DisplayCC from "../Display/class";
-import HistoryCC from "../History/class";
-import KeypadCC from "../Keypad/class";
+import ControlPanelCC from "@components/ControlPanel/class";
+import DisplayCC from "@components/Display/class";
+import HistoryCC from "@components/History/class";
+import KeypadCC from "@components/Keypad/class";
 
 import StyledCalculator from "./styled";
 

@@ -1,8 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-
-import ROUTES from "../../constants/routes";
-import SVG from "../SVG";
+import SVG from "@components/SVG";
+import ROUTES from "@constants/routes";
 
 import { Menu, Navbar, NavbarLeft, NavbarRight, Title } from "./styled";
 

@@ -1,12 +1,11 @@
-import { AnyAction, Middleware } from "redux";
-
-import { isNumericToken, isOperatorToken } from "../../utils/tokenValidation";
 import {
   appendOperatorToken,
   clearValue,
   executeCommand,
-} from "../actionCreators/calculatorActionCreators";
-import { AppState } from "../reducers/rootReducer";
+} from "@actionCreators/calculatorActionCreators";
+import { AppState } from "@store/reducers/rootReducer";
+import { isNumericToken, isOperatorToken } from "@utils/tokenValidation";
+import { AnyAction, Middleware } from "redux";
 
 const checkTokensMiddleware: Middleware<object, AppState> =
   (api) => (next) => (action: AnyAction) => {

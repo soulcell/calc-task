@@ -1,10 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
-
-import { setTheme } from "../../store/actionCreators/settingsActionCreators";
-import selectSettings from "../../store/reducers/settings/selector";
-import { THEMES } from "../../styled/theme";
-import Dropdown from "../Dropdown";
-import DropdownItem from "../Dropdown/DropdownItem";
+import { setTheme } from "@actionCreators/settingsActionCreators";
+import Dropdown from "@components/Dropdown";
+import DropdownItem from "@components/Dropdown/DropdownItem";
+import selectSettings from "@store/reducers/settings/selector";
+import { THEMES } from "@styled/theme";
 
 import { Title } from "./styled";
 

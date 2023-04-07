@@ -1,10 +1,9 @@
-import { createReducer } from "@reduxjs/toolkit";
-
+import * as actions from "@actionCreators/settingsActionCreators";
 import {
   DEFAULT_SHOW_HISTORY,
   DEFAULT_THEME,
-} from "../../../constants/defaultSettings";
-import * as actions from "../../actionCreators/settingsActionCreators";
+} from "@constants/defaultSettings";
+import { createReducer } from "@reduxjs/toolkit";
 
 export interface SettingsState {
   currentTheme: string;

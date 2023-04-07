@@ -1,8 +1,7 @@
 import React from "react";
 import { connect, ConnectedProps } from "react-redux";
-
-import { AppState } from "../../store/reducers/rootReducer";
-import toAccuracy from "../../utils/toAccuracy";
+import { AppState } from "@store/reducers/rootReducer";
+import toAccuracy from "@utils/toAccuracy";
 
 import { StyledDisplay } from "./styled";
 

@@ -1,6 +1,5 @@
 import { SVGAttributes, useMemo } from "react";
-
-import ICONS from "../../constants/icons";
+import ICONS from "@constants/icons";
 
 type SVGProps = {
   icon: (typeof ICONS)[number];

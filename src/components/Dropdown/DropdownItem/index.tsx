@@ -1,4 +1,4 @@
-import SVG from "../../SVG";
+import SVG from "@components/SVG";
 
 import StyledDropdownItem from "./styled";
 

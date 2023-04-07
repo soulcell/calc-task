@@ -1,7 +1,7 @@
-import ControlPanel from "../ControlPanel";
-import Display from "../Display";
-import History from "../History";
-import Keypad from "../Keypad";
+import ControlPanel from "@components/ControlPanel";
+import Display from "@components/Display";
+import History from "@components/History";
+import Keypad from "@components/Keypad";
 
 import StyledCalculator from "./styled";
 

@@ -1,9 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
-import ROUTES from "../../constants/routes";
-import withRouter, { WithRouterProps } from "../HOC/withRouter";
-import SVG from "../SVG";
+import withRouter, { WithRouterProps } from "@components/HOC/withRouter";
+import SVG from "@components/SVG";
+import ROUTES from "@constants/routes";
 
 import { Menu, Navbar, NavbarLeft, NavbarRight, Title } from "./styled";
 

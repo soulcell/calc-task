@@ -1,8 +1,7 @@
+import { executeCommand } from "@actionCreators/calculatorActionCreators";
+import { addHistory } from "@actionCreators/historyActionCreators";
+import { AppState } from "@store/reducers/rootReducer";
 import { AnyAction, Middleware } from "redux";
-
-import { executeCommand } from "../actionCreators/calculatorActionCreators";
-import { addHistory } from "../actionCreators/historyActionCreators";
-import { AppState } from "../reducers/rootReducer";
 
 const historyMiddleware: Middleware<object, AppState> =
   (api) => (next) => (action: AnyAction) => {

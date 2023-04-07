@@ -1,9 +1,8 @@
 import React from "react";
 import { connect, ConnectedProps } from "react-redux";
-
-import { clearHistory } from "../../store/actionCreators/historyActionCreators";
-import { toggleHistory } from "../../store/actionCreators/settingsActionCreators";
-import { AppState } from "../../store/reducers/rootReducer";
+import { clearHistory } from "@actionCreators/historyActionCreators";
+import { toggleHistory } from "@actionCreators/settingsActionCreators";
+import { AppState } from "@store/reducers/rootReducer";
 
 import { Button, StyledControlPanel } from "./styled";
 

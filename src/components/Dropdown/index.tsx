@@ -8,8 +8,7 @@ import {
   useRef,
   useState,
 } from "react";
-
-import SVG from "../SVG";
+import SVG from "@components/SVG";
 
 import { DropdownItemProps } from "./DropdownItem";
 import { DropdownButton, DropdownList, StyledDropdown } from "./styled";

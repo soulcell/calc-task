@@ -1,4 +1,4 @@
-import { ACCURACY } from "../constants/calculator";
+import { ACCURACY } from "@constants/calculator";
 
 export function isNumericToken(token: string) {
   const regex = new RegExp(

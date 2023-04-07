@@ -1,10 +1,9 @@
 import { useCallback, useEffect } from "react";
-
-import { BUTTONS } from "../../constants/calculator";
-import { useAppDispatch } from "../../store";
-import { isButtonType } from "../../utils/buttonTypes";
-import keypadHandler from "../../utils/keypadHandler";
-import Button from "../Button";
+import Button from "@components/Button";
+import { BUTTONS } from "@constants/calculator";
+import { useAppDispatch } from "@store/index";
+import { isButtonType } from "@utils/buttonTypes";
+import keypadHandler from "@utils/keypadHandler";
 
 import { StyledKeypad } from "./styled";
 
