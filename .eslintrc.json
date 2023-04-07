@@ -56,5 +56,10 @@
     "react/require-default-props": "off",
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error"
-  }
+  },
+  "ignorePatterns": [
+    "craco.config.js",
+    "cypress.config.mjs",
+    "webpack.config.js"
+  ]
 }
