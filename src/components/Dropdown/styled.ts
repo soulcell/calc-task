@@ -5,44 +5,37 @@ export const StyledDropdown = styled.div`
   position: relative;
 `;
 
-export const DropdownButton = styled.button`
+export const DropdownButton = styled.button<{ isOpen: boolean }>`
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 0.7em;
   padding: 8px;
-  border: 1px solid ${(props) => props.theme.border};
+  border: 1px solid ${({ theme }) => theme.colors.border};
   border-radius: 8px;
-  background-color: ${(props) => props.theme.button};
+  background-color: ${({ theme }) => theme.colors.button};
   cursor: pointer;
 
   & svg {
     transition: transform 0.2s;
-  }
-
-  .isOpen & svg {
-    transform: rotate(180deg);
+    transform: ${({ isOpen }) => (isOpen ? "rotate(180deg)" : "initial")};
   }
 `;
 
-export const DropdownList = styled.ul`
+export const DropdownList = styled.ul<{ isOpen: boolean }>`
   box-sizing: border-box;
   width: 100%;
   position: absolute;
   margin: 0;
   top: calc(100% + 8px);
-  display: none;
+  display: ${({ isOpen }) => (isOpen ? "block" : "none")};
   overflow: auto;
   max-height: 50vh;
-  border: 1px solid ${(props) => props.theme.border};
+  border: 1px solid ${({ theme }) => theme.colors.border};
   border-radius: 8px;
   list-style: none;
   padding: 0;
-
-  .isOpen & {
-    display: block;
-  }
 `;
 
 export const DropdownTitle = styled.span`

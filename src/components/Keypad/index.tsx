@@ -1,26 +1,21 @@
-import { StyledKeypad } from "./styled";
-import Button from "../Button";
-import { isButtonType } from "../../utils/buttonTypes";
-import keypadHandler from "../../utils/keypadHandler";
 import { useCallback, useEffect } from "react";
-import { useAppDispatch } from "../../store/store";
-import { useSelector } from "react-redux";
-import selectCalculator from "../../store/reducers/calculator/selector";
-import { BUTTONS } from "../../constants/calculator";
+import Button from "@components/Button";
+import { BUTTONS } from "@constants/calculator";
+import { useAppDispatch } from "@store/index";
+import { isButtonType } from "@utils/buttonTypes";
+import keypadHandler from "@utils/keypadHandler";
+
+import { StyledKeypad } from "./styled";
 
 export default function Keypad(): JSX.Element {
   const dispatch = useAppDispatch();
-  const calcState = useSelector(selectCalculator);
 
-  const keyboardHandler = useCallback(
-    (ev: KeyboardEvent) => {
-      const key = ev.key.toUpperCase();
-      if (!isButtonType(key)) return;
+  const keyboardHandler = useCallback((event: KeyboardEvent) => {
+    const key = event.key.toUpperCase();
+    if (!isButtonType(key)) return;
 
-      keypadHandler(key, dispatch, calcState);
-    },
-    [dispatch]
-  );
+    keypadHandler(key, dispatch);
+  }, []);
 
   useEffect(() => {
     document.addEventListener("keypress", keyboardHandler);
@@ -32,11 +27,11 @@ export default function Keypad(): JSX.Element {
 
   return (
     <StyledKeypad>
-      {BUTTONS.map((val, idx) => (
+      {BUTTONS.map((value) => (
         <Button
-          key={idx}
-          buttonType={val}
-          onClick={() => keypadHandler(val, dispatch, calcState)}
+          key={value}
+          buttonType={value}
+          onClick={() => keypadHandler(value, dispatch)}
         />
       ))}
     </StyledKeypad>

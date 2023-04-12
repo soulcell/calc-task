@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@commands/*": ["./src/commands/*"],
+      "@components/*": ["./src/components/*"],
+      "@constants/*": ["./src/constants/*"],
+      "@pages/*": ["./src/pages/*"],
+      "@store/*": ["./src/store/*"],
+      "@actionCreators/*": ["./src/store/actionCreators/*"],
+      "@styled/*": ["./src/styled/*"],
+      "@utils/*": ["./src/utils/*"]
+    }
+  }
+}

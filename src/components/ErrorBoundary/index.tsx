@@ -1,21 +1,21 @@
 import { Component, ErrorInfo, ReactNode } from "react";
 
 interface Props {
-  children?: ReactNode;
+  children: ReactNode;
 }
 
 interface State {
-  hasError: boolean;
+  error?: Error;
 }
 
 class ErrorBoundary extends Component<Props, State> {
   public state: State = {
-    hasError: false,
+    error: undefined,
   };
 
-  public static getDerivedStateFromError(): State {
+  public static getDerivedStateFromError(error: Error): State {
     // Update state so the next render will show the fallback UI.
-    return { hasError: true };
+    return { error };
   }
 
   public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
@@ -23,11 +23,19 @@ class ErrorBoundary extends Component<Props, State> {
   }
 
   public render() {
-    if (this.state.hasError) {
-      return <h1>Sorry.. there was an error</h1>;
+    const { error } = this.state;
+    const { children } = this.props;
+
+    if (error) {
+      return (
+        <>
+          <h1>Sorry.. there was an error</h1>
+          {error.message}
+        </>
+      );
     }
 
-    return this.props.children;
+    return children;
   }
 }
 

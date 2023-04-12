@@ -3,22 +3,21 @@ import styled from "styled-components";
 export const StyledControlPanel = styled.div`
   display: flex;
   flex-direction: row-reverse;
-  border-bottom: 1px solid ${(props) => props.theme.border};
+  height: 40px;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.border};
 `;
 
-export const Button = styled.button`
+export const Button = styled.button<{ hideOnMobile?: boolean }>`
   font-size: 0.5em;
   margin: 4px 10px;
-  border: 1px solid ${(props) => props.theme.border};
-  background-color: ${(props) => props.theme.button};
+  border: 1px solid ${({ theme }) => theme.colors.border};
+  background-color: ${({ theme }) => theme.colors.button};
   border-radius: 4px;
   padding: 2px 8px;
   &:hover {
-    background-color: ${(props) => props.theme.border};
+    background-color: ${({ theme }) => theme.colors.border};
   }
-  &.hideOnMobile {
-    @media (max-width: 700px) {
-      display: none;
-    }
+  @media (max-width: 700px) {
+    display: ${({ hideOnMobile }) => (hideOnMobile ? "none" : "revert")};
   }
 `;

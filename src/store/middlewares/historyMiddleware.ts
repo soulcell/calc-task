@@ -1,21 +1,29 @@
+import { executeCommand } from "@actionCreators/calculatorActionCreators";
+import { addHistory } from "@actionCreators/historyActionCreators";
+import { AppState } from "@store/reducers/rootReducer";
 import { AnyAction, Middleware } from "redux";
-import { CalculatorCommand } from "../../commands/calculatorCommands";
-import { executeCommand } from "../actionCreators/calculatorActionCreators";
-import { addHistory } from "../actionCreators/historyActionCreators";
-import { AppState } from "../reducers/rootReducer";
 
-export const historyMiddleware: Middleware<object, AppState> =
+const historyMiddleware: Middleware<object, AppState> =
   (api) => (next) => (action: AnyAction) => {
-    const { command, value } = api.getState().calculator;
+    if (!executeCommand.match(action)) return next(action);
 
-    if (!executeCommand.match(action) || !command) return next(action);
+    const { tokens } = api.getState().calculator;
+
+    next(action);
+
+    const { errorMessage } = api.getState().calculator;
+
+    if (errorMessage) return;
+
+    const { value } = api.getState().calculator;
 
     api.dispatch(
       addHistory({
-        command,
-        value,
-        result: CalculatorCommand.fromObject(command).execute(value),
+        id: 0,
+        tokens,
+        result: value,
       })
     );
-    return next(action);
   };
+
+export default historyMiddleware;

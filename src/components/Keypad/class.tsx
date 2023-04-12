@@ -1,20 +1,14 @@
 import React from "react";
 import { connect, ConnectedProps } from "react-redux";
-import { BUTTONS } from "../../constants/calculator";
-import { AppState } from "../../store/reducers/rootReducer";
-import { isButtonType } from "../../utils/buttonTypes";
-import keypadHandler from "../../utils/keypadHandler";
-import Button from "../Button";
+import Button from "@components/Button";
+import { BUTTONS } from "@constants/calculator";
+import { AppState } from "@store/reducers/rootReducer";
+import { isButtonType } from "@utils/buttonTypes";
+import keypadHandler from "@utils/keypadHandler";
+
 import { StyledKeypad } from "./styled";
 
 class KeypadCC extends React.Component<ConnectedProps<typeof connector>> {
-  private keyboardHandler = (ev: KeyboardEvent) => {
-    const key = ev.key.toUpperCase();
-    if (!isButtonType(key)) return;
-
-    keypadHandler(key, this.props.dispatch, this.props.calcState);
-  };
-
   componentDidMount(): void {
     document.addEventListener("keypress", this.keyboardHandler);
   }
@@ -23,15 +17,23 @@ class KeypadCC extends React.Component<ConnectedProps<typeof connector>> {
     document.removeEventListener("keypress", this.keyboardHandler);
   }
 
+  private keyboardHandler = (event: KeyboardEvent) => {
+    const { dispatch } = this.props;
+    const key = event.key.toUpperCase();
+    if (!isButtonType(key)) return;
+
+    keypadHandler(key, dispatch);
+  };
+
   render() {
-    const { calcState, dispatch } = this.props;
+    const { dispatch } = this.props;
     return (
       <StyledKeypad>
-        {BUTTONS.map((val, idx) => (
+        {BUTTONS.map((value) => (
           <Button
-            key={idx}
-            buttonType={val}
-            onClick={() => keypadHandler(val, dispatch, calcState)}
+            key={value}
+            buttonType={value}
+            onClick={() => keypadHandler(value, dispatch)}
           />
         ))}
       </StyledKeypad>
@@ -39,10 +41,10 @@ class KeypadCC extends React.Component<ConnectedProps<typeof connector>> {
   }
 }
 
-const mapState = (state: AppState) => ({
-  calcState: state.calculator,
+const mapStateToProps = (state: AppState) => ({
+  calculatorState: state.calculator,
 });
 
-const connector = connect(mapState);
+const connector = connect(mapStateToProps);
 
 export default connector(KeypadCC);

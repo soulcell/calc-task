@@ -1,30 +1,27 @@
 import React from "react";
 import { connect, ConnectedProps } from "react-redux";
-import { AppState } from "../../store/reducers/rootReducer";
-import toAccuracy from "../../utils/toAccuracy";
-import { OperandCommand, StyledDisplay } from "./styled";
+import { AppState } from "@store/reducers/rootReducer";
+import toAccuracy from "@utils/toAccuracy";
 
-class DisplayCC extends React.Component<ConnectedProps<typeof connector>> {
+import { StyledDisplay } from "./styled";
+
+class DisplayCC extends React.PureComponent<ConnectedProps<typeof connector>> {
   render() {
-    const { command, input, value } = this.props.calculator;
+    const { calculator } = this.props;
+    const { value, tokens, errorMessage } = calculator;
 
     return (
-      <StyledDisplay id="display">
-        {command && (
-          <OperandCommand>
-            {toAccuracy(command.operand)} {command.symbol}
-          </OperandCommand>
-        )}
-        {input || toAccuracy(value)}
+      <StyledDisplay data-cy="display">
+        {errorMessage || tokens.join(" ") || toAccuracy(value)}
       </StyledDisplay>
     );
   }
 }
 
-const mapState = (state: AppState) => ({
+const mapStateToProps = (state: AppState) => ({
   calculator: state.calculator,
 });
 
-const connector = connect(mapState);
+const connector = connect(mapStateToProps);
 
 export default connector(DisplayCC);

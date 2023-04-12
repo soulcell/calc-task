@@ -1,7 +1,9 @@
+import React from "react";
 import { createBrowserRouter, RouteObject } from "react-router-dom";
-import HomePage from "./pages/Home";
-import HomePageCC from "./pages/HomeCC";
-import SettingsPage from "./pages/Settings";
+
+const HomePage = React.lazy(() => import("./pages/Home"));
+const HomePageCC = React.lazy(() => import("./pages/HomeCC"));
+const SettingsPage = React.lazy(() => import("./pages/Settings"));
 
 const routes: RouteObject[] = [
   {

@@ -16,6 +16,10 @@
 # testing
 /coverage
 /cypress/videos
+/cypress/screenshots
+
+# dev
+/dist
 
 # production
 /build

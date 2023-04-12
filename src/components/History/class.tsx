@@ -1,47 +1,29 @@
 import React from "react";
-import { H2, RecordResult, StyledHistory, StyledRecord } from "./styled";
-import { HistoryRecord as Record } from "../../store/reducers/history/reducer";
-import { AppState } from "../../store/reducers/rootReducer";
 import { connect, ConnectedProps } from "react-redux";
-import toAccuracy from "../../utils/toAccuracy";
-import { setValue } from "../../store/actionCreators/calculatorActionCreators";
+import { AppState } from "@store/reducers/rootReducer";
 
-class HistoryCC extends React.Component<ConnectedProps<typeof connector>> {
+import HistoryRecord from "./HistoryRecord";
+import { H2, StyledHistory } from "./styled";
+
+class HistoryCC extends React.PureComponent<ConnectedProps<typeof connector>> {
   render() {
     const { showHistory, historyState } = this.props;
     return (
-      <StyledHistory className={showHistory ? "" : "hidden"} id="history">
+      <StyledHistory isHidden={!showHistory} data-cy="history">
         <H2>History</H2>
-        {historyState.records.map((value, idx) => (
-          <ConnectedHistoryRecord key={idx} record={value} />
+        {historyState.records.map((value) => (
+          <HistoryRecord key={value.id} record={value} />
         ))}
       </StyledHistory>
     );
   }
 }
 
-class HistoryRecord extends React.Component<
-  { record: Record } & ConnectedProps<typeof connector>
-> {
-  render() {
-    const { command, value, result } = this.props.record;
-    const dispatch = this.props.dispatch;
-    return (
-      <StyledRecord onClick={() => dispatch(setValue({ value: result }))}>
-        {toAccuracy(command.operand)} {command.symbol} {toAccuracy(value)} ={" "}
-        <RecordResult>{toAccuracy(result)}</RecordResult>
-      </StyledRecord>
-    );
-  }
-}
-
-const mapState = (state: AppState) => ({
+const mapStateToProps = (state: AppState) => ({
   historyState: state.history,
   showHistory: state.settings.showHistory,
 });
 
-const connector = connect(mapState);
-
-const ConnectedHistoryRecord = connect(mapState)(HistoryRecord);
+const connector = connect(mapStateToProps);
 
 export default connector(HistoryCC);

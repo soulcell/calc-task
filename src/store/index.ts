@@ -1,20 +1,21 @@
-import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
-import { historyMiddleware } from "./middlewares/historyMiddleware";
-import { intermediateValueMiddleware } from "./middlewares/intermediateValueMiddleware";
-import rootReducer, { AppState } from "./reducers/rootReducer";
+import { configureStore } from "@reduxjs/toolkit";
 import {
   FLUSH,
   PAUSE,
   PERSIST,
   PersistConfig,
   persistReducer,
+  persistStore,
   PURGE,
   REGISTER,
   REHYDRATE,
-  persistStore,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+
+import checkTokensMiddleware from "./middlewares/checkTokensMiddleware";
+import historyMiddleware from "./middlewares/historyMiddleware";
+import rootReducer, { AppState } from "./reducers/rootReducer";
 
 const persistConfig: PersistConfig<AppState> = {
   key: "root",
@@ -29,7 +30,7 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat([intermediateValueMiddleware, historyMiddleware]),
+    }).concat([checkTokensMiddleware, historyMiddleware]),
 });
 
 export const persistor = persistStore(store);

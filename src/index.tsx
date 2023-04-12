@@ -2,12 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 import { RouterProvider } from "react-router-dom";
-import router from "./router";
-import reportWebVitals from "./reportWebVitals";
-import { persistor, store } from "./store/store";
-import StyledApp from "./styled";
 import { PersistGate } from "redux-persist/integration/react";
+
 import ErrorBoundary from "./components/ErrorBoundary";
+import reportWebVitals from "./reportWebVitals";
+import router from "./router";
+import { persistor, store } from "./store";
+import StyledApp from "./styled";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -16,9 +17,11 @@ root.render(
   <React.StrictMode>
     <ErrorBoundary>
       <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
+        <PersistGate loading={<div>Loading...</div>} persistor={persistor}>
           <StyledApp>
-            <RouterProvider router={router} />
+            <React.Suspense fallback={<div>Loading...</div>}>
+              <RouterProvider router={router} />
+            </React.Suspense>
           </StyledApp>
         </PersistGate>
       </Provider>

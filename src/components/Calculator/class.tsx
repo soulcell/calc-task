@@ -1,11 +1,12 @@
 import React from "react";
-import KeypadCC from "../Keypad/class";
-import HistoryCC from "../History/class";
-import DisplayCC from "../Display/class";
-import { StyledCalculator } from "./styled";
-import ControlPanelCC from "../ControlPanel/class";
+import ControlPanelCC from "@components/ControlPanel/class";
+import DisplayCC from "@components/Display/class";
+import HistoryCC from "@components/History/class";
+import KeypadCC from "@components/Keypad/class";
 
-class CalculatorCC extends React.Component {
+import StyledCalculator from "./styled";
+
+class CalculatorCC extends React.PureComponent {
   render() {
     return (
       <>

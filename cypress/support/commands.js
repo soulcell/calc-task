@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 Cypress.Commands.add("keypadPress", (keyString) => {
   const keys = keyString.split(" ");
 
@@ -9,5 +8,5 @@ Cypress.Commands.add("keypadPress", (keyString) => {
 
 Cypress.Commands.add("testExpression", (expression) => {
   cy.keypadPress(expression.body);
-  cy.get("#display").should("contain.text", expression.result);
+  cy.get("[data-cy='display']").should("contain.text", expression.result);
 });

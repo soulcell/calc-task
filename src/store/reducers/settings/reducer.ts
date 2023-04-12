@@ -1,17 +1,17 @@
-import { createReducer } from "@reduxjs/toolkit";
+import * as actions from "@actionCreators/settingsActionCreators";
 import {
   DEFAULT_SHOW_HISTORY,
   DEFAULT_THEME,
-} from "../../../constants/defaultSettings";
-import * as actions from "../../actionCreators/settingsActionCreators";
+} from "@constants/defaultSettings";
+import { createReducer } from "@reduxjs/toolkit";
 
 export interface SettingsState {
-  theme: string;
+  currentTheme: string;
   showHistory: boolean;
 }
 
 const initialState: SettingsState = {
-  theme: DEFAULT_THEME,
+  currentTheme: DEFAULT_THEME,
   showHistory: DEFAULT_SHOW_HISTORY,
 };
 
@@ -23,7 +23,7 @@ const settingsReducer = createReducer<SettingsState>(
         state.showHistory = !state.showHistory;
       })
       .addCase(actions.setTheme, (state, action) => {
-        state.theme = action.payload.theme;
+        state.currentTheme = action.payload.theme;
       });
   }
 );

@@ -1,4 +1,4 @@
-import { AppState } from "../rootReducer";
+import { AppState } from "@store/reducers/rootReducer";
 
 const selectCalculator = (state: AppState) => state.calculator;
 

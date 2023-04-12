@@ -8,24 +8,26 @@ import {
   useRef,
   useState,
 } from "react";
+import SVG from "@components/SVG";
+
 import { DropdownItemProps } from "./DropdownItem";
 import { DropdownButton, DropdownList, StyledDropdown } from "./styled";
 
 export interface DropdownProps {
-  children?: React.ReactNode;
+  children: React.ReactNode;
   onSelectedValueChanged?: (value: string) => void;
-  id?: string;
+  dataCy?: string;
 }
 
 export default function Dropdown({
   children,
   onSelectedValueChanged,
-  id,
+  dataCy,
 }: DropdownProps): JSX.Element {
   const [isOpen, setOpen] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [selectedValue, setSelectedValue] = useState<string>("");
-  const [selectedTitle, setSelectedTitle] = useState<string>();
+  const [selectedValue, setSelectedValue] = useState("");
+  const [selectedTitle, setSelectedTitle] = useState("");
 
   const triggerRef = useRef<HTMLDivElement>(null);
   const clickHandler = useCallback(
@@ -67,12 +69,12 @@ export default function Dropdown({
   }, []);
 
   return (
-    <StyledDropdown ref={triggerRef} className={isOpen ? "isOpen" : ""} id={id}>
-      <DropdownButton onClick={() => setOpen(!isOpen)}>
+    <StyledDropdown ref={triggerRef} data-cy={dataCy}>
+      <DropdownButton isOpen={isOpen} onClick={() => setOpen(!isOpen)}>
         <span>{selectedTitle}</span>
-        <ArrowIcon />
+        <SVG icon="arrow" width="24px" height="24px" />
       </DropdownButton>
-      <DropdownList>
+      <DropdownList isOpen={isOpen}>
         {Children.map(children, (child, idx) => {
           if (isValidElement(child)) {
             return cloneElement(child as ReactElement<DropdownItemProps>, {
@@ -86,27 +88,5 @@ export default function Dropdown({
         })}
       </DropdownList>
     </StyledDropdown>
-  );
-}
-
-function ArrowIcon(): JSX.Element {
-  return (
-    <svg
-      width="24px"
-      height="24px"
-      strokeWidth="1.5"
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      color="#000000"
-    >
-      <path
-        d="M6 9l6 6 6-6"
-        stroke="#000000"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      ></path>
-    </svg>
   );
 }
