@@ -12,6 +12,7 @@ class DivideCommand extends CalculatorCommand {
 
   execute(): number {
     this.executeOperands();
+    if (this.operand2 === 0) throw new Error("Division by zero");
     return (this.operand1 as number) / (this.operand2 as number);
   }
 }

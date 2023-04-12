@@ -8,11 +8,11 @@ import { StyledDisplay } from "./styled";
 class DisplayCC extends React.PureComponent<ConnectedProps<typeof connector>> {
   render() {
     const { calculator } = this.props;
-    const { tokens, value } = calculator;
+    const { value, tokens, errorMessage } = calculator;
 
     return (
       <StyledDisplay data-cy="display">
-        {tokens.join(" ") || toAccuracy(value)}
+        {errorMessage || tokens.join(" ") || toAccuracy(value)}
       </StyledDisplay>
     );
   }

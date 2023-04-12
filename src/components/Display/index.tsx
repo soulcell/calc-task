@@ -5,11 +5,11 @@ import toAccuracy from "@utils/toAccuracy";
 import { StyledDisplay } from "./styled";
 
 export default function Display(): JSX.Element {
-  const { value, tokens } = useSelector(selectCalculator);
+  const { value, tokens, errorMessage } = useSelector(selectCalculator);
 
   return (
     <StyledDisplay data-cy="display">
-      {tokens.join(" ") || toAccuracy(value)}
+      {errorMessage || tokens.join(" ") || toAccuracy(value)}
     </StyledDisplay>
   );
 }

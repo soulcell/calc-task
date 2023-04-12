@@ -11,6 +11,10 @@ const historyMiddleware: Middleware<object, AppState> =
 
     next(action);
 
+    const { errorMessage } = api.getState().calculator;
+
+    if (errorMessage) return;
+
     const { value } = api.getState().calculator;
 
     api.dispatch(
