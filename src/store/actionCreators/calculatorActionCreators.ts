@@ -18,3 +18,7 @@ export const appendNumericToken = createAction<{ token: string }>(
 export const appendOperatorToken = createAction<{ token: string }>(
   "APPEND_OPERATOR_TOKEN"
 );
+
+export const appendParenthesisToken = createAction<{ token: string }>(
+  "APPEND_PARENTHESIS_TOKEN"
+);

@@ -1,7 +1,8 @@
 import * as actions from "@actionCreators/calculatorActionCreators";
 import { createReducer } from "@reduxjs/toolkit";
 import calculateExpression from "@utils/calculateExpression";
-import { isNumericToken, isOperatorToken } from "@utils/tokenValidation";
+import preExecute from "@utils/preExecute";
+import { isNumericToken } from "@utils/tokenValidation";
 
 export interface CalculatorState {
   tokens: Array<string>;
@@ -23,6 +24,7 @@ const calculatorReducer = createReducer<CalculatorState>(
         state.tokens.pop();
       })
       .addCase(actions.executeCommand, (state) => {
+        state.tokens = preExecute(state.tokens);
         state.value = calculateExpression(state.tokens);
         state.tokens = initialState.tokens;
       })
@@ -43,10 +45,10 @@ const calculatorReducer = createReducer<CalculatorState>(
         } else tokens.push(payload.token);
       })
       .addCase(actions.appendOperatorToken, ({ tokens }, { payload }) => {
-        if (tokens.length === 0) return;
-        if (isOperatorToken(tokens[tokens.length - 1]))
-          tokens[tokens.length - 1] = payload.token;
-        else tokens.push(payload.token);
+        tokens.push(payload.token);
+      })
+      .addCase(actions.appendParenthesisToken, ({ tokens }, { payload }) => {
+        tokens.push(payload.token);
       });
   }
 );

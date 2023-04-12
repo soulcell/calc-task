@@ -11,6 +11,10 @@ export function isOperatorToken(token: string) {
   return /^[+\-*/%]$/.test(token);
 }
 
-export function isParenthesisToken(token: string) {
-  return /\(\)/.test(token);
+export function isLeftParenthesisToken(token: string) {
+  return /\(/.test(token);
+}
+
+export function isRightParenthesisToken(token: string) {
+  return /\)/.test(token);
 }

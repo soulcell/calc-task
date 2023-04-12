@@ -1,6 +1,7 @@
 import {
   appendNumericToken,
   appendOperatorToken,
+  appendParenthesisToken,
   changeSign,
   clearAll,
   clearValue,
@@ -12,6 +13,7 @@ import ButtonType, {
   isButtonAction,
   isButtonDigit,
   isButtonOperator,
+  isButtonParentheses,
   isButtonPoint,
 } from "./buttonTypes";
 
@@ -42,5 +44,7 @@ export default function keypadHandler(
     dispatch(appendOperatorToken({ token: buttonType }));
   } else if (isButtonPoint(buttonType)) {
     dispatch(appendNumericToken({ token: "." }));
+  } else if (isButtonParentheses(buttonType)) {
+    dispatch(appendParenthesisToken({ token: buttonType }));
   }
 }
