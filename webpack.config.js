@@ -1,12 +1,23 @@
 const path = require("path");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.tsx",
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "build"),
     filename: "bundle.js",
     publicPath: "/",
   },
+  plugins: [
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      template: "./public/index.html",
+      filename: "./index.html",
+      favicon: "./public/favicon.ico",
+      manifest: "./public/manifest.json",
+    }),
+  ],
   module: {
     rules: [
       {
@@ -17,21 +28,7 @@ module.exports = {
         },
       },
       {
-        test: /\.svg$/,
-        use: [
-          {
-            loader: "babel-loader",
-          },
-          {
-            loader: "react-svg-loader",
-            options: {
-              jsx: true,
-            },
-          },
-        ],
-      },
-      {
-        test: /\.(jpg|png)$/,
+        test: /\.(jpg|png|webp|ico|svg)$/,
         use: {
           loader: "url-loader",
         },

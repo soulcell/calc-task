@@ -60,6 +60,8 @@
   "ignorePatterns": [
     "craco.config.js",
     "cypress.config.mjs",
-    "webpack.config.js"
+    "webpack.config.js",
+    "webpack.prod.js",
+    "webpack.dev.js"
   ]
 }

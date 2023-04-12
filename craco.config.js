@@ -1,5 +1,8 @@
 module.exports = {
   webpack: {
-    configure: require("./webpack.config"),
+    configure: (webpackConfig, { env }) =>
+      env === "production"
+        ? require("./webpack.prod")
+        : require("./webpack.dev"),
   },
 };
