@@ -1,6 +1,5 @@
-import ButtonType from "@utils/buttonTypes";
-
 import StyledButton from "./styled";
+import { ButtonProps } from "./types";
 
 export default function Button({
   buttonType,
@@ -12,8 +11,3 @@ export default function Button({
     </StyledButton>
   );
 }
-
-export type ButtonProps = {
-  buttonType: ButtonType;
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
-};

@@ -10,14 +10,9 @@ import {
 import SVG from "@components/SVG";
 import useClickOutside from "@hooks/useClickOutside";
 
-import { DropdownItemProps } from "./DropdownItem";
+import { DropdownItemProps } from "./DropdownItem/types";
 import { DropdownButton, DropdownList, StyledDropdown } from "./styled";
-
-export interface DropdownProps {
-  children: React.ReactNode;
-  onSelectedValueChanged?: (value: string) => void;
-  dataCy?: string;
-}
+import { DropdownProps } from "./types";
 
 export default function Dropdown({
   children,

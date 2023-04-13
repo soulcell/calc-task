@@ -1,9 +1,6 @@
-import { SVGAttributes, useMemo } from "react";
-import ICONS from "@constants/icons";
+import { useMemo } from "react";
 
-type SVGProps = {
-  icon: (typeof ICONS)[number];
-} & SVGAttributes<SVGSVGElement>;
+import { SVGProps } from "./types";
 
 export default function SVG(props: SVGProps) {
   const { icon } = props;
