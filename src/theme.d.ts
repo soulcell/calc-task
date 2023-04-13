@@ -10,6 +10,7 @@ declare module "styled-components" {
       button: string;
     };
     headerHeight: string;
+    controlPanelHeight: string;
     fonts: string[];
     fontSizes: {
       xs: string;
