@@ -4,6 +4,7 @@ import {
   appendParenthesisToken,
   clearValue,
 } from "@actionCreators/calculatorActionCreators";
+import { MAX_TOKENS } from "@constants/calculator";
 import { AppState } from "@store/reducers/rootReducer";
 import {
   isLeftParenthesisToken,
@@ -19,9 +20,11 @@ const checkTokensMiddleware: Middleware<object, AppState> =
     const lastToken = tokens.at(-1);
 
     if (appendNumericToken.match(action)) {
+      if (tokens.length >= MAX_TOKENS) return;
       if (action.payload.token === "." && lastToken === ".") return;
     } else if (appendOperatorToken.match(action)) {
       if (!lastToken) return;
+      if (tokens.length >= MAX_TOKENS) return;
 
       if (isNumericToken(lastToken) && !Number.isFinite(+lastToken)) return;
 
@@ -35,6 +38,7 @@ const checkTokensMiddleware: Middleware<object, AppState> =
         !Number.isFinite(+lastToken)
       )
         return;
+      if (tokens.length >= MAX_TOKENS) return;
 
       if (isRightParenthesisToken(action.payload.token)) {
         if (!lastToken) return;
