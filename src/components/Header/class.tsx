@@ -23,8 +23,6 @@ class HeaderCC extends React.PureComponent<{
 
   menuRef = React.createRef<HTMLDivElement>();
 
-  menuTriggerRef = React.createRef<HTMLElement>();
-
   componentDidMount(): void {
     document.addEventListener("mousedown", this.clickOutsideHandler);
   }
@@ -34,10 +32,7 @@ class HeaderCC extends React.PureComponent<{
   }
 
   clickOutsideHandler = (e: Event) => {
-    if (
-      !this.menuRef.current?.contains(e.target as Node) &&
-      !this.menuTriggerRef.current?.contains(e.target as Node)
-    ) {
+    if (!this.menuRef.current?.contains(e.target as Node)) {
       this.setState({ isMenuOpen: false });
     }
   };
@@ -67,18 +62,16 @@ class HeaderCC extends React.PureComponent<{
             <Title>Calculator App</Title>
           </NavbarLeft>
           <NavbarRight>
-            {screenWidth >= ScreenSizes.Desktop ? (
-              links
-            ) : (
-              <span ref={this.menuTriggerRef}>
-                <SVG
-                  onClick={this.handleClick}
-                  width="64px"
-                  height="64px"
-                  icon="hamburger"
-                />
-              </span>
-            )}
+            {screenWidth >= ScreenSizes.Desktop
+              ? links
+              : !isMenuOpen && (
+                  <SVG
+                    onClick={this.handleClick}
+                    width="48px"
+                    height="48px"
+                    icon="hamburger"
+                  />
+                )}
           </NavbarRight>
         </Navbar>
         {screenWidth < ScreenSizes.Desktop && isMenuOpen && (

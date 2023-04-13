@@ -5,10 +5,10 @@ import {
   ReactElement,
   useCallback,
   useEffect,
-  useRef,
   useState,
 } from "react";
 import SVG from "@components/SVG";
+import useClickOutside from "@hooks/useClickOutside";
 
 import { DropdownItemProps } from "./DropdownItem";
 import { DropdownButton, DropdownList, StyledDropdown } from "./styled";
@@ -29,15 +29,8 @@ export default function Dropdown({
   const [selectedValue, setSelectedValue] = useState("");
   const [selectedTitle, setSelectedTitle] = useState("");
 
-  const triggerRef = useRef<HTMLDivElement>(null);
-  const clickHandler = useCallback(
-    (e: Event) => {
-      if (!triggerRef.current?.contains(e.target as Node)) {
-        setOpen(false);
-      }
-    },
-    [triggerRef]
-  );
+  const handleClickOutside = useCallback(() => setOpen(false), []);
+  const triggerRef = useClickOutside<HTMLDivElement>(handleClickOutside);
 
   useEffect(() => {
     const el = Children.toArray(children)[selectedIndex];
@@ -63,9 +56,6 @@ export default function Dropdown({
       }
     });
     setSelectedIndex(idx);
-
-    document.addEventListener("mousedown", clickHandler);
-    return () => document.removeEventListener("mousedown", clickHandler);
   }, []);
 
   return (
