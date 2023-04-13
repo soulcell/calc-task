@@ -58,6 +58,7 @@
     "@typescript-eslint/eslint-plugin": "latest",
     "@typescript-eslint/parser": "latest",
     "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^11.0.0",
     "cypress": "^12.8.1",
     "eslint": "latest",
     "eslint-config-airbnb": "^19.0.4",

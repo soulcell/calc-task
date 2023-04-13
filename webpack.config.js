@@ -1,6 +1,7 @@
 const path = require("path");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.tsx",
@@ -16,6 +17,12 @@ module.exports = {
       filename: "./index.html",
       favicon: "./public/favicon.ico",
       manifest: "./public/manifest.json",
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: "public/_redirects", to: "" },
+        { from: "public/robots.txt", to: "robots.txt" },
+      ],
     }),
   ],
   module: {
