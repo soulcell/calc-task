@@ -3,46 +3,36 @@ import { Link } from "react-router-dom";
 import withRouter, { WithRouterProps } from "@components/HOC/withRouter";
 import SVG from "@components/SVG";
 import ROUTES from "@constants/routes";
+import ScreenSizes from "@constants/screenSizes";
+import ScreenSizeContext from "@contexts/ScreenSize";
 
 import { Menu, Navbar, NavbarLeft, NavbarRight, Title } from "./styled";
 
 class HeaderCC extends React.PureComponent<{
   router: WithRouterProps;
 }> {
+  static contextType = ScreenSizeContext;
+
+  declare context: React.ContextType<typeof ScreenSizeContext>;
+
   state: Readonly<{
-    screenSize: "desktop" | "mobile";
     isMenuOpen: boolean;
   }> = {
-    screenSize: "desktop",
     isMenuOpen: false,
   };
 
   menuRef = React.createRef<HTMLDivElement>();
 
-  menuTriggerRef = React.createRef<HTMLElement>();
-
   componentDidMount(): void {
-    window.addEventListener("resize", this.handleResize);
-    this.handleResize();
     document.addEventListener("mousedown", this.clickOutsideHandler);
   }
 
   componentWillUnmount(): void {
     document.removeEventListener("mousedown", this.clickOutsideHandler);
-    window.removeEventListener("resize", this.handleResize);
   }
 
-  handleResize = () => {
-    this.setState({
-      screenSize: window.innerWidth > 700 ? "desktop" : "mobile",
-    });
-  };
-
   clickOutsideHandler = (e: Event) => {
-    if (
-      !this.menuRef.current?.contains(e.target as Node) &&
-      !this.menuTriggerRef.current?.contains(e.target as Node)
-    ) {
+    if (!this.menuRef.current?.contains(e.target as Node)) {
       this.setState({ isMenuOpen: false });
     }
   };
@@ -54,7 +44,8 @@ class HeaderCC extends React.PureComponent<{
   render() {
     const { router } = this.props;
     const { pathname } = router.location;
-    const { isMenuOpen, screenSize } = this.state;
+    const { isMenuOpen } = this.state;
+    const { x: screenWidth } = this.context;
 
     const links = ROUTES.filter(({ path }) => path !== pathname).map(
       ({ path, name }) => (
@@ -71,20 +62,19 @@ class HeaderCC extends React.PureComponent<{
             <Title>Calculator App</Title>
           </NavbarLeft>
           <NavbarRight>
-            {screenSize === "desktop" && links}
-            {screenSize === "mobile" && (
-              <span ref={this.menuTriggerRef}>
-                <SVG
-                  onClick={this.handleClick}
-                  width="64px"
-                  height="64px"
-                  icon="hamburger"
-                />
-              </span>
-            )}
+            {screenWidth >= ScreenSizes.Desktop
+              ? links
+              : !isMenuOpen && (
+                  <SVG
+                    onClick={this.handleClick}
+                    width="48px"
+                    height="48px"
+                    icon="hamburger"
+                  />
+                )}
           </NavbarRight>
         </Navbar>
-        {screenSize === "mobile" && isMenuOpen && (
+        {screenWidth < ScreenSizes.Desktop && isMenuOpen && (
           <Menu ref={this.menuRef}>{links}</Menu>
         )}
       </>

@@ -1,3 +1,4 @@
+import ScreenSizes from "@constants/screenSizes";
 import styled from "styled-components";
 
 export const StyledHistory = styled.div<{ isHidden?: boolean }>`
@@ -9,7 +10,7 @@ export const StyledHistory = styled.div<{ isHidden?: boolean }>`
     isHidden ? "none" : `1px solid ${theme.colors.border}`};
   width: ${({ isHidden }) => (isHidden ? "0px" : "300px")};
 
-  @media (max-width: 700px) {
+  @media (max-width: ${`${ScreenSizes.Desktop}px`}) {
     width: 100%;
     border-left: none;
     border-top: 1px solid ${({ theme }) => theme.colors.border};

@@ -1,3 +1,4 @@
+import ScreenSizes from "@constants/screenSizes";
 import styled from "styled-components";
 
 const StyledCalculator = styled.div`
@@ -6,9 +7,10 @@ const StyledCalculator = styled.div`
     "display history"
     "keypad history";
   grid-template-columns: 1fr auto;
-  height: calc(100vh - 140px);
+  height: ${({ theme }) =>
+    `calc(100vh - ${theme.headerHeight} - ${theme.controlPanelHeight})`};
 
-  @media (max-width: 700px) {
+  @media (max-width: ${`${ScreenSizes.Desktop}px`}) {
     grid-template-areas:
       "display"
       "keypad"

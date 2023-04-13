@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import ScreenSizeProvider from "@contexts/ScreenSize/provider";
 import selectSettings from "@store/reducers/settings/selector";
 import { ThemeProvider } from "styled-components";
 
 import GlobalStyle from "./globalStyle";
 import { defaultTheme, THEMES } from "./theme";
 
-export type StyledAppProps = {
-  children: React.ReactNode;
-};
-
-export default function StyledApp({ children }: StyledAppProps): JSX.Element {
+export default function StyledApp({
+  children,
+}: React.PropsWithChildren): JSX.Element {
   const { currentTheme } = useSelector(selectSettings);
   const [theme, setTheme] = useState(defaultTheme);
 
@@ -22,9 +21,11 @@ export default function StyledApp({ children }: StyledAppProps): JSX.Element {
   }, [currentTheme]);
 
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      {children}
-    </ThemeProvider>
+    <ScreenSizeProvider>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        {children}
+      </ThemeProvider>
+    </ScreenSizeProvider>
   );
 }

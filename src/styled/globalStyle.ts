@@ -1,3 +1,4 @@
+import ScreenSizes from "@constants/screenSizes";
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
@@ -21,7 +22,7 @@ const GlobalStyle = createGlobalStyle`
         background-color: ${({ theme }) => theme.colors.background};
         color: ${({ theme }) => theme.colors.text};
 
-        @media (max-width: 700px) {
+        @media (max-width: ${`${ScreenSizes.Desktop}px`}) {
             font-size: ${({ theme }) => theme.fontSizes.m};
             height: unset;
         }

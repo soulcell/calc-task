@@ -5,7 +5,9 @@ import { RecordResult, StyledRecord } from "./styled";
 
 export default function HistoryRecord({
   record,
-}: HistoryRecordProps): JSX.Element {
+}: {
+  record: Record;
+}): JSX.Element {
   const { tokens, result } = record;
   return (
     <StyledRecord>
@@ -14,7 +16,3 @@ export default function HistoryRecord({
     </StyledRecord>
   );
 }
-
-type HistoryRecordProps = {
-  record: Record;
-};

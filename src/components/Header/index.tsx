@@ -1,43 +1,22 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useContext, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import SVG from "@components/SVG";
 import ROUTES from "@constants/routes";
+import ScreenSizes from "@constants/screenSizes";
+import ScreenSizeContext from "@contexts/ScreenSize";
+import useClickOutside from "@hooks/useClickOutside";
 
 import { Menu, Navbar, NavbarLeft, NavbarRight, Title } from "./styled";
 
 export default function Header(): JSX.Element {
   const { pathname } = useLocation();
-  const [screenSize, setScreenSize] = useState<"desktop" | "mobile">("desktop");
   const [isMenuOpen, setMenuOpen] = useState(false);
-  const menuRef = useRef<HTMLDivElement>(null);
-  const menuTriggerRef = useRef<HTMLElement>(null);
+  const { x: screenWidth } = useContext(ScreenSizeContext);
 
-  const handleResize = useCallback(() => {
-    setScreenSize(window.innerWidth > 700 ? "desktop" : "mobile");
-  }, []);
+  const handleClickOutside = () => setMenuOpen(false);
+  const menuRef = useClickOutside<HTMLDivElement>(handleClickOutside);
 
-  function clickOutsideHandler(e: Event) {
-    if (
-      !menuRef.current?.contains(e.target as Node) &&
-      !menuTriggerRef.current?.contains(e.target as Node)
-    ) {
-      setMenuOpen(false);
-    }
-  }
-
-  const handleClick = () => {
-    setMenuOpen(true);
-  };
-
-  useEffect(() => {
-    window.addEventListener("resize", handleResize);
-    handleResize();
-    document.addEventListener("mousedown", clickOutsideHandler);
-    return () => {
-      document.removeEventListener("mousedown", clickOutsideHandler);
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  const handleClick = useCallback(() => setMenuOpen(true), []);
 
   const links = ROUTES.filter(({ path }) => path !== pathname).map(
     ({ path, name }) => (
@@ -54,20 +33,19 @@ export default function Header(): JSX.Element {
           <Title>Calculator App</Title>
         </NavbarLeft>
         <NavbarRight>
-          {screenSize === "desktop" && links}
-          {screenSize === "mobile" && (
-            <span ref={menuTriggerRef}>
-              <SVG
-                onClick={handleClick}
-                width="64px"
-                height="64px"
-                icon="hamburger"
-              />
-            </span>
-          )}
+          {screenWidth >= ScreenSizes.Desktop
+            ? links
+            : !isMenuOpen && (
+                <SVG
+                  onClick={handleClick}
+                  width="48px"
+                  height="48px"
+                  icon="hamburger"
+                />
+              )}
         </NavbarRight>
       </Navbar>
-      {screenSize === "mobile" && isMenuOpen && (
+      {screenWidth < ScreenSizes.Desktop && isMenuOpen && (
         <Menu ref={menuRef}>{links}</Menu>
       )}
     </>

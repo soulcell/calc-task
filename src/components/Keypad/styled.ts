@@ -1,3 +1,4 @@
+import ScreenSizes from "@constants/screenSizes";
 import styled from "styled-components";
 
 export const Button = styled.button`
@@ -20,7 +21,7 @@ export const StyledKeypad = styled.div`
   grid-template-columns: repeat(6, auto);
   grid-auto-rows: min-content;
 
-  @media (max-width: 700px) {
+  @media (max-width: ${`${ScreenSizes.Desktop}px`}) {
   }
   gap: 5px;
   padding: 10px;

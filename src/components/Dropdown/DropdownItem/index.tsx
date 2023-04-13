@@ -1,14 +1,7 @@
 import SVG from "@components/SVG";
 
 import StyledDropdownItem from "./styled";
-
-export type DropdownItemProps = {
-  title: string;
-  isSelected?: boolean;
-  default?: boolean;
-  value: string;
-  onClick?: () => void;
-};
+import { DropdownItemProps } from "./types";
 
 export default function DropdownItem({
   title,

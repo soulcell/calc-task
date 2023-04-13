@@ -1,7 +1,7 @@
 import React from "react";
 
 import StyledButton from "./styled";
-import { ButtonProps } from ".";
+import { ButtonProps } from "./types";
 
 class ButtonCC extends React.PureComponent<
   ButtonProps & React.HTMLAttributes<HTMLButtonElement>

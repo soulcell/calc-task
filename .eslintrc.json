@@ -53,6 +53,7 @@
     "react/state-in-constructor": "off",
     "react/prop-types": "off",
     "react/no-unused-prop-types": "off",
+    "react/static-property-placement": "off",
     "react/require-default-props": "off",
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error"

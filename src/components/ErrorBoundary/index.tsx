@@ -1,14 +1,10 @@
-import { Component, ErrorInfo, ReactNode } from "react";
-
-interface Props {
-  children: ReactNode;
-}
+import React, { ErrorInfo } from "react";
 
 interface State {
   error?: Error;
 }
 
-class ErrorBoundary extends Component<Props, State> {
+class ErrorBoundary extends React.Component<React.PropsWithChildren, State> {
   public state: State = {
     error: undefined,
   };

@@ -31,6 +31,7 @@ export const defaultTheme: DefaultTheme = {
     button: "#f2f2f2",
   },
   headerHeight: "100px",
+  controlPanelHeight: "40px",
   fonts: ["Helvetica Neue", "Segoe UI", "Droid Sans", "sans-serif"],
   fontSizes: {
     xs: "10px",

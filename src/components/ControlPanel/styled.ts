@@ -1,9 +1,10 @@
+import ScreenSizes from "@constants/screenSizes";
 import styled from "styled-components";
 
 export const StyledControlPanel = styled.div`
   display: flex;
   flex-direction: row-reverse;
-  height: 40px;
+  height: ${({ theme }) => theme.controlPanelHeight};
   border-bottom: 1px solid ${({ theme }) => theme.colors.border};
 `;
 
@@ -17,7 +18,7 @@ export const Button = styled.button<{ hideOnMobile?: boolean }>`
   &:hover {
     background-color: ${({ theme }) => theme.colors.border};
   }
-  @media (max-width: 700px) {
+  @media (max-width: ${`${ScreenSizes.Desktop}px`}) {
     display: ${({ hideOnMobile }) => (hideOnMobile ? "none" : "revert")};
   }
 `;
