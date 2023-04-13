@@ -1,4 +1,14 @@
-# Calculator App
+﻿# Calculator App
+
+![Calculator](/docs/screenshot1.png)
+
+Calculator written in Typescript using React, Redux. Calculating algorithm implemented using Expression Tree and Shunting Yard Algorithm without "eval()" function and its analogues.
+
+The app has light and dark themes and basic adaptivity.
+
+![Dark theme mobile](/docs/screenshot2.png)
+
+Main page implemented using both Functional and Class Components.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
