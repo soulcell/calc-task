@@ -7,6 +7,7 @@ export const StyledDisplay = styled.div`
   border-bottom: 1px solid ${({ theme }) => theme.colors.border};
   font-size: 2em;
   text-align: right;
+  overflow: hidden;
 `;
 
 export const OperandCommand = styled.div`

@@ -12,4 +12,4 @@ export const BUTTONS: ButtonType[] = [
     ".","(","0",")",
   ]
 
-export const MAX_TOKENS = 10;
+export const MAX_TOKENS = 20;
