@@ -6,6 +6,7 @@
       "@commands/*": ["./src/commands/*"],
       "@components/*": ["./src/components/*"],
       "@constants/*": ["./src/constants/*"],
+      "@contexts/*": ["./src/contexts/*"],
       "@pages/*": ["./src/pages/*"],
       "@store/*": ["./src/store/*"],
       "@actionCreators/*": ["./src/store/actionCreators/*"],

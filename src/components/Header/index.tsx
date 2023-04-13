@@ -1,20 +1,18 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import SVG from "@components/SVG";
 import ROUTES from "@constants/routes";
+import ScreenSizes from "@constants/screenSizes";
+import ScreenSizeContext from "@contexts/ScreenSize";
 
 import { Menu, Navbar, NavbarLeft, NavbarRight, Title } from "./styled";
 
 export default function Header(): JSX.Element {
   const { pathname } = useLocation();
-  const [screenSize, setScreenSize] = useState<"desktop" | "mobile">("desktop");
   const [isMenuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const menuTriggerRef = useRef<HTMLElement>(null);
-
-  const handleResize = useCallback(() => {
-    setScreenSize(window.innerWidth > 700 ? "desktop" : "mobile");
-  }, []);
+  const { x: screenWidth } = useContext(ScreenSizeContext);
 
   function clickOutsideHandler(e: Event) {
     if (
@@ -30,12 +28,9 @@ export default function Header(): JSX.Element {
   };
 
   useEffect(() => {
-    window.addEventListener("resize", handleResize);
-    handleResize();
     document.addEventListener("mousedown", clickOutsideHandler);
     return () => {
       document.removeEventListener("mousedown", clickOutsideHandler);
-      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -54,8 +49,9 @@ export default function Header(): JSX.Element {
           <Title>Calculator App</Title>
         </NavbarLeft>
         <NavbarRight>
-          {screenSize === "desktop" && links}
-          {screenSize === "mobile" && (
+          {screenWidth >= ScreenSizes.Desktop ? (
+            links
+          ) : (
             <span ref={menuTriggerRef}>
               <SVG
                 onClick={handleClick}
@@ -67,7 +63,7 @@ export default function Header(): JSX.Element {
           )}
         </NavbarRight>
       </Navbar>
-      {screenSize === "mobile" && isMenuOpen && (
+      {screenWidth < ScreenSizes.Desktop && isMenuOpen && (
         <Menu ref={menuRef}>{links}</Menu>
       )}
     </>
