@@ -1,5 +1,7 @@
 ﻿# Calculator App
 
+[Deployed version](https://calculator-soulcell.netlify.app/)
+
 ![Calculator](/docs/screenshot1.png)
 
 Calculator written in Typescript using React, Redux. Calculating algorithm implemented using Expression Tree and Shunting Yard Algorithm without "eval()" function and its analogues.
