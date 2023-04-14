@@ -8,6 +8,9 @@ import { Button, StyledControlPanel } from "./styled";
 export default function ControlPanel(): JSX.Element {
   const { showHistory } = useSelector(selectSettings);
   const dispatch = useDispatch();
+
+  const handleClearHistoryClick = () => dispatch(clearHistory());
+
   return (
     <StyledControlPanel>
       <Button
@@ -17,7 +20,7 @@ export default function ControlPanel(): JSX.Element {
       >
         {showHistory ? "Hide" : "Show"} History
       </Button>
-      <Button name="clearHistory" onClick={() => dispatch(clearHistory())}>
+      <Button name="clearHistory" onClick={handleClearHistoryClick}>
         Clear History
       </Button>
     </StyledControlPanel>

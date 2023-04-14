@@ -12,6 +12,9 @@ class ControlPanelCC extends React.PureComponent<
   render() {
     const { dispatchToggleHistory, dispatchClearHistory, showHistory } =
       this.props;
+
+    const handleClearHistoryClick = () => dispatchClearHistory();
+
     return (
       <StyledControlPanel>
         <Button
@@ -21,7 +24,7 @@ class ControlPanelCC extends React.PureComponent<
         >
           {showHistory ? "Hide" : "Show"} History
         </Button>
-        <Button name="clearHistory" onClick={() => dispatchClearHistory()}>
+        <Button name="clearHistory" onClick={handleClearHistoryClick}>
           Clear History
         </Button>
       </StyledControlPanel>

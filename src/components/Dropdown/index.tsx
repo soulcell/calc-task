@@ -53,9 +53,11 @@ export default function Dropdown({
     setSelectedIndex(idx);
   }, []);
 
+  const toggleOpen = useCallback(() => setOpen(!isOpen), [isOpen]);
+
   return (
     <StyledDropdown ref={triggerRef} data-cy={dataCy}>
-      <DropdownButton isOpen={isOpen} onClick={() => setOpen(!isOpen)}>
+      <DropdownButton isOpen={isOpen} onClick={toggleOpen}>
         <span>{selectedTitle}</span>
         <SVG icon="arrow" width="24px" height="24px" />
       </DropdownButton>
