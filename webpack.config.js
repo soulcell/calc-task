@@ -22,6 +22,7 @@ module.exports = {
       patterns: [
         { from: "public/_redirects", to: "" },
         { from: "public/robots.txt", to: "robots.txt" },
+        { from: "public/icons.svg", to: "" },
       ],
     }),
   ],
