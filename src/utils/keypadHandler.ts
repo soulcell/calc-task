@@ -13,7 +13,7 @@ import ButtonType, {
   isButtonAction,
   isButtonDigit,
   isButtonOperator,
-  isButtonParentheses,
+  isButtonParenthesis,
   isButtonPoint,
 } from "./buttonTypes";
 
@@ -44,7 +44,7 @@ export default function keypadHandler(
     dispatch(appendOperatorToken({ token: buttonType }));
   } else if (isButtonPoint(buttonType)) {
     dispatch(appendNumericToken({ token: "." }));
-  } else if (isButtonParentheses(buttonType)) {
+  } else if (isButtonParenthesis(buttonType)) {
     dispatch(appendParenthesisToken({ token: buttonType }));
   }
 }

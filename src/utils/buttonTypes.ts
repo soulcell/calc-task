@@ -8,7 +8,7 @@ const ACTIONS = ["±", "=", "C", "CE"] as const;
 export type ButtonAction = (typeof ACTIONS)[number];
 
 const PARENTHESES = ["(", ")"] as const;
-export type ButtonParentheses = (typeof PARENTHESES)[number];
+export type ButtonParenthesis = (typeof PARENTHESES)[number];
 
 export type ButtonPoint = ".";
 
@@ -17,7 +17,7 @@ type ButtonType =
   | ButtonPoint
   | ButtonOperator
   | ButtonAction
-  | ButtonParentheses;
+  | ButtonParenthesis;
 export default ButtonType;
 
 export function isButtonDigit(x: unknown): x is ButtonDigit {
@@ -36,8 +36,8 @@ export function isButtonAction(x: unknown): x is ButtonAction {
   return ACTIONS.includes(x as ButtonAction);
 }
 
-export function isButtonParentheses(x: unknown): x is ButtonParentheses {
-  return PARENTHESES.includes(x as ButtonParentheses);
+export function isButtonParenthesis(x: unknown): x is ButtonParenthesis {
+  return PARENTHESES.includes(x as ButtonParenthesis);
 }
 
 export function isButtonType(x: unknown): x is ButtonType {
@@ -46,6 +46,6 @@ export function isButtonType(x: unknown): x is ButtonType {
     isButtonOperator(x) ||
     isButtonAction(x) ||
     isButtonPoint(x) ||
-    isButtonParentheses(x)
+    isButtonParenthesis(x)
   );
 }
