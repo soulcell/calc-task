@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
-import selectHistory from "@store/reducers/history/selector";
-import selectSettings from "@store/reducers/settings/selector";
+import selectHistory from "@store/selectors/history";
+import selectSettings from "@store/selectors/settings";
 
 import HistoryRecord from "./HistoryRecord";
 import { StyledHistory, Title } from "./styled";

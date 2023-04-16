@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import ScreenSizeProvider from "@contexts/ScreenSize/provider";
-import selectSettings from "@store/reducers/settings/selector";
+import selectSettings from "@store/selectors/settings";
 import { ThemeProvider } from "styled-components";
 
 import GlobalStyle from "./globalStyle";
