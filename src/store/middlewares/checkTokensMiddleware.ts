@@ -1,10 +1,10 @@
+import { MAX_TOKENS } from "@constants/calculator";
 import {
   appendNumericToken,
   appendOperatorToken,
   appendParenthesisToken,
   clearValue,
-} from "@actionCreators/calculatorActionCreators";
-import { MAX_TOKENS } from "@constants/calculator";
+} from "@store/actionCreators/calculatorActionCreators";
 import { AppState } from "@store/reducers/rootReducer";
 import {
   isLeftParenthesisToken,

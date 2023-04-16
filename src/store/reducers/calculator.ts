@@ -1,5 +1,5 @@
-import * as actions from "@actionCreators/calculatorActionCreators";
 import { createReducer } from "@reduxjs/toolkit";
+import * as actions from "@store/actionCreators/calculatorActionCreators";
 import calculateExpression from "@utils/calculateExpression";
 import preExecute from "@utils/preExecute";
 import { isNumericToken } from "@utils/tokenValidation";

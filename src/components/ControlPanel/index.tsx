@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { clearHistory } from "@actionCreators/historyActionCreators";
-import { toggleHistory } from "@actionCreators/settingsActionCreators";
+import { clearHistory } from "@store/actionCreators/historyActionCreators";
+import { toggleHistory } from "@store/actionCreators/settingsActionCreators";
 import selectSettings from "@store/selectors/settings";
 
 import { Button, StyledControlPanel } from "./styled";
