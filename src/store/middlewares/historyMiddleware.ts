@@ -1,5 +1,5 @@
-import { executeCommand } from "@store/actionCreators/calculatorActionCreators";
-import { addHistory } from "@store/actionCreators/historyActionCreators";
+import { executeCommand } from "@store/actionCreators/calculator";
+import { addHistory } from "@store/actionCreators/history";
 import { AppState } from "@store/reducers/rootReducer";
 import { AnyAction, Middleware } from "redux";
 

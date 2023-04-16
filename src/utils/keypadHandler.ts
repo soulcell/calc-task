@@ -6,7 +6,7 @@ import {
   clearAll,
   clearValue,
   executeCommand,
-} from "@store/actionCreators/calculatorActionCreators";
+} from "@store/actionCreators/calculator";
 import { AppDispatch } from "@store/index";
 
 import ButtonType, {

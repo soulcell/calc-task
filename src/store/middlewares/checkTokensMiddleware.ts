@@ -4,7 +4,7 @@ import {
   appendOperatorToken,
   appendParenthesisToken,
   clearValue,
-} from "@store/actionCreators/calculatorActionCreators";
+} from "@store/actionCreators/calculator";
 import { AppState } from "@store/reducers/rootReducer";
 import {
   isLeftParenthesisToken,

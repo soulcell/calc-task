@@ -3,7 +3,7 @@ import {
   DEFAULT_THEME,
 } from "@constants/defaultSettings";
 import { createReducer } from "@reduxjs/toolkit";
-import * as actions from "@store/actionCreators/settingsActionCreators";
+import * as actions from "@store/actionCreators/settings";
 
 export interface SettingsState {
   currentTheme: string;
