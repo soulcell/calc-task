@@ -3,7 +3,7 @@ import selectHistory from "@store/reducers/history/selector";
 import selectSettings from "@store/reducers/settings/selector";
 
 import HistoryRecord from "./HistoryRecord";
-import { H2, StyledHistory } from "./styled";
+import { StyledHistory, Title } from "./styled";
 
 export default function History(): JSX.Element {
   const { records } = useSelector(selectHistory);
@@ -11,7 +11,7 @@ export default function History(): JSX.Element {
 
   return (
     <StyledHistory isHidden={!showHistory} data-cy="history">
-      <H2>History</H2>
+      <Title>History</Title>
       {records.map((value) => (
         <HistoryRecord key={value.id} record={value} />
       ))}

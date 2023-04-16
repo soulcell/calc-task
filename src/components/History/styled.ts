@@ -17,7 +17,7 @@ export const StyledHistory = styled.div<{ isHidden?: boolean }>`
   }
 `;
 
-export const H2 = styled.h2`
+export const Title = styled.h2`
   font-size: 1em;
   font-weight: normal;
   margin: 20px 0;
