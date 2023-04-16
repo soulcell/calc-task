@@ -1,5 +1,6 @@
-import ScreenSizes from "@constants/screenSizes";
 import { createGlobalStyle } from "styled-components";
+
+import ScreenSizes from "@/constants/screenSizes";
 
 const GlobalStyle = createGlobalStyle`
     *,

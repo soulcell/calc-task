@@ -1,10 +1,11 @@
 import { useCallback, useContext, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import SVG from "@components/SVG";
-import ROUTES from "@constants/routes";
-import ScreenSizes from "@constants/screenSizes";
-import ScreenSizeContext from "@contexts/ScreenSize";
-import useClickOutside from "@hooks/useClickOutside";
+
+import SVG from "@/components/SVG";
+import ROUTES from "@/constants/routes";
+import ScreenSizes from "@/constants/screenSizes";
+import ScreenSizeContext from "@/contexts/ScreenSize";
+import useClickOutside from "@/hooks/useClickOutside";
 
 import { Menu, Navbar, NavbarLeft, NavbarRight, Title } from "./styled";
 

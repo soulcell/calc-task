@@ -1,4 +1,4 @@
-import { AppState } from "@store/reducers/rootReducer";
+import { AppState } from "@/store/reducers/rootReducer";
 
 const selectHistory = (state: AppState) => state.history;
 

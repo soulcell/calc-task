@@ -1,6 +1,7 @@
 import React from "react";
 import { connect, ConnectedProps } from "react-redux";
-import { AppState } from "@store/reducers/rootReducer";
+
+import { AppState } from "@/store/reducers/rootReducer";
 
 import HistoryRecord from "./HistoryRecord";
 import { StyledHistory, Title } from "./styled";

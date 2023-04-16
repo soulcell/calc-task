@@ -6,8 +6,8 @@ import {
   clearAll,
   clearValue,
   executeCommand,
-} from "@store/actionCreators/calculator";
-import { AppDispatch } from "@store/index";
+} from "@/store/actionCreators/calculator";
+import { AppDispatch } from "@/store/index";
 
 import ButtonType, {
   isButtonAction,

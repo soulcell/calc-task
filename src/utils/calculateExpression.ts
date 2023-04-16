@@ -1,4 +1,4 @@
-import PRECENDENCE from "@constants/operatorPrecedence";
+import PRECENDENCE from "@/constants/operatorPrecedence";
 
 import {
   CalculatorCommand,

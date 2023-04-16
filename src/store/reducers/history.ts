@@ -1,5 +1,6 @@
 import { createReducer } from "@reduxjs/toolkit";
-import * as actions from "@store/actionCreators/history";
+
+import * as actions from "@/store/actionCreators/history";
 
 import { HistoryState } from "./history/types";
 

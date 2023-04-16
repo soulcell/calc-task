@@ -7,8 +7,9 @@ import {
   useEffect,
   useState,
 } from "react";
-import SVG from "@components/SVG";
-import useClickOutside from "@hooks/useClickOutside";
+
+import SVG from "@/components/SVG";
+import useClickOutside from "@/hooks/useClickOutside";
 
 import { DropdownItemProps } from "./DropdownItem/types";
 import { DropdownButton, DropdownList, StyledDropdown } from "./styled";

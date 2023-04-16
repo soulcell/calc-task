@@ -1,4 +1,4 @@
-import ButtonType from "@utils/buttonTypes";
+import ButtonType from "@/utils/buttonTypes";
 
 export type ButtonProps = {
   buttonType: ButtonType;

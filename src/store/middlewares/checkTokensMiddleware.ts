@@ -1,18 +1,19 @@
-import { MAX_TOKENS } from "@constants/calculator";
+import { AnyAction, Middleware } from "redux";
+
+import { MAX_TOKENS } from "@/constants/calculator";
 import {
   appendNumericToken,
   appendOperatorToken,
   appendParenthesisToken,
   clearValue,
-} from "@store/actionCreators/calculator";
-import { AppState } from "@store/reducers/rootReducer";
+} from "@/store/actionCreators/calculator";
+import { AppState } from "@/store/reducers/rootReducer";
 import {
   isLeftParenthesisToken,
   isNumericToken,
   isOperatorToken,
   isRightParenthesisToken,
-} from "@utils/tokenValidation";
-import { AnyAction, Middleware } from "redux";
+} from "@/utils/tokenValidation";
 
 const checkTokensMiddleware: Middleware<object, AppState> =
   (api) => (next) => (action: AnyAction) => {

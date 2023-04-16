@@ -11,6 +11,11 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:import/typescript"
   ],
+  "settings": {
+    "import/resolver": {
+      "typescript": true
+    }
+  },
   "overrides": [
     {
       "files": ["*.js", "*.jsx", "*.ts", "*.tsx"],

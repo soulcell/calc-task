@@ -1,10 +1,11 @@
 import React from "react";
 import { connect, ConnectedProps } from "react-redux";
-import Button from "@components/Button";
-import { BUTTONS } from "@constants/calculator";
-import { AppState } from "@store/reducers/rootReducer";
-import { isButtonType } from "@utils/buttonTypes";
-import keypadHandler from "@utils/keypadHandler";
+
+import Button from "@/components/Button";
+import { BUTTONS } from "@/constants/calculator";
+import { AppState } from "@/store/reducers/rootReducer";
+import { isButtonType } from "@/utils/buttonTypes";
+import keypadHandler from "@/utils/keypadHandler";
 
 import { StyledKeypad } from "./styled";
 

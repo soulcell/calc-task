@@ -1,5 +1,6 @@
-import ScreenSizes from "@constants/screenSizes";
 import styled from "styled-components";
+
+import ScreenSizes from "@/constants/screenSizes";
 
 export const Button = styled.button`
   align-self: center;

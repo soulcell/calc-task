@@ -1,5 +1,6 @@
-import ScreenSizes from "@constants/screenSizes";
 import styled from "styled-components";
+
+import ScreenSizes from "@/constants/screenSizes";
 
 const StyledCalculator = styled.div`
   display: grid;

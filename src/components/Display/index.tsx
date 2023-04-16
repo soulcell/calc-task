@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
-import selectCalculator from "@store/selectors/calculator";
-import toAccuracy from "@utils/toAccuracy";
+
+import selectCalculator from "@/store/selectors/calculator";
+import toAccuracy from "@/utils/toAccuracy";
 
 import { StyledDisplay } from "./styled";
 

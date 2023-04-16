@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import withRouter, { WithRouterProps } from "@components/HOC/withRouter";
-import SVG from "@components/SVG";
-import ROUTES from "@constants/routes";
-import ScreenSizes from "@constants/screenSizes";
-import ScreenSizeContext from "@contexts/ScreenSize";
+
+import withRouter, { WithRouterProps } from "@/components/HOC/withRouter";
+import SVG from "@/components/SVG";
+import ROUTES from "@/constants/routes";
+import ScreenSizes from "@/constants/screenSizes";
+import ScreenSizeContext from "@/contexts/ScreenSize";
 
 import { Menu, Navbar, NavbarLeft, NavbarRight, Title } from "./styled";
 

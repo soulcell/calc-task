@@ -1,5 +1,5 @@
-import { HistoryRecord as Record } from "@store/reducers/history/types";
-import toAccuracy from "@utils/toAccuracy";
+import { HistoryRecord as Record } from "@/store/reducers/history/types";
+import toAccuracy from "@/utils/toAccuracy";
 
 import { RecordResult, StyledRecord } from "./styled";
 
