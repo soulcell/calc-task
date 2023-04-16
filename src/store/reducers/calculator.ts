@@ -1,15 +1,10 @@
 import { createReducer } from "@reduxjs/toolkit";
 
 import * as actions from "@/store/actionCreators/calculator";
+import { CalculatorState } from "@/types/states";
 import calculateExpression from "@/utils/calculateExpression";
 import preExecute from "@/utils/preExecute";
 import { isNumericToken } from "@/utils/tokenValidation";
-
-export interface CalculatorState {
-  tokens: Array<string>;
-  value: number;
-  errorMessage?: string;
-}
 
 const initialState: CalculatorState = {
   tokens: [],

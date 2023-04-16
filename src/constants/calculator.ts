@@ -1,4 +1,4 @@
-import ButtonType from "@/utils/buttonTypes";
+import ButtonType from "@/types/button";
 
 export const ACCURACY = 3;
 

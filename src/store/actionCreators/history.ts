@@ -1,6 +1,6 @@
 import { createAction } from "@reduxjs/toolkit";
 
-import { HistoryRecord } from "@/store/reducers/history/types";
+import { HistoryRecord } from "@/types/historyRecord";
 
 export const addHistory = createAction<HistoryRecord>("ADD_HISTORY");
 

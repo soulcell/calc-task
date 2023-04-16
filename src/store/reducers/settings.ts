@@ -5,11 +5,7 @@ import {
   DEFAULT_THEME,
 } from "@/constants/defaultSettings";
 import * as actions from "@/store/actionCreators/settings";
-
-export interface SettingsState {
-  currentTheme: string;
-  showHistory: boolean;
-}
+import { SettingsState } from "@/types/states";
 
 const initialState: SettingsState = {
   currentTheme: DEFAULT_THEME,

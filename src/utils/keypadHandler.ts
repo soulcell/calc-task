@@ -8,14 +8,13 @@ import {
   executeCommand,
 } from "@/store/actionCreators/calculator";
 import { AppDispatch } from "@/store/index";
-
 import ButtonType, {
   isButtonAction,
   isButtonDigit,
   isButtonOperator,
   isButtonParenthesis,
   isButtonPoint,
-} from "./buttonTypes";
+} from "@/types/button";
 
 export default function keypadHandler(
   buttonType: ButtonType,
