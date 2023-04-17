@@ -43,3 +43,5 @@ export const DropdownList = styled.ul<{ isOpen: boolean }>`
   list-style: none;
   padding: ${({ theme }) => theme.paddings.zero};
 `;
+
+export const SelectedTitle = styled.span``;

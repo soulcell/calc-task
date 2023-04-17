@@ -12,7 +12,12 @@ import SVG from "@/components/SVG";
 import useClickOutside from "@/hooks/useClickOutside";
 
 import { DropdownItemProps } from "./DropdownItem/types";
-import { DropdownButton, DropdownList, StyledDropdown } from "./styled";
+import {
+  DropdownButton,
+  DropdownList,
+  SelectedTitle,
+  StyledDropdown,
+} from "./styled";
 import { DropdownProps } from "./types";
 
 export default function Dropdown({
@@ -59,7 +64,7 @@ export default function Dropdown({
   return (
     <StyledDropdown ref={triggerRef} data-cy={dataCy}>
       <DropdownButton isOpen={isOpen} onClick={toggleOpen}>
-        <span>{selectedTitle}</span>
+        <SelectedTitle>{selectedTitle}</SelectedTitle>
         <SVG icon="arrow" width="24px" height="24px" />
       </DropdownButton>
       <DropdownList isOpen={isOpen}>
