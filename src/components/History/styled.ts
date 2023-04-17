@@ -19,8 +19,12 @@ export const StyledHistory = styled.div<{ isHidden?: boolean }>`
 `;
 
 export const Title = styled.h2`
-  font-size: 1em;
+  font-size: ${({ theme }) => theme.fontSizes.l};
   font-weight: normal;
   margin: ${({ theme }) => theme.margins.m} ${({ theme }) => theme.margins.zero};
   text-align: center;
+
+  @media (max-width: ${ScreenSizes.Desktop}px) {
+    font-size: ${({ theme }) => theme.fontSizes.m};
+  }
 `;

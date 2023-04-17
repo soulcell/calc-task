@@ -7,7 +7,7 @@ import { AppState } from "@/store/reducers/rootReducer";
 import { isButtonType } from "@/types/button";
 import keypadHandler from "@/utils/keypadHandler";
 
-import { StyledKeypad } from "./styled";
+import StyledKeypad from "./styled";
 
 class KeypadCC extends React.Component<ConnectedProps<typeof connector>> {
   componentDidMount(): void {

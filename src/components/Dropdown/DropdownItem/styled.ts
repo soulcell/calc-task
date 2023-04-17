@@ -13,7 +13,7 @@ const StyledDropdownItem = styled.button`
   text-align: left;
   white-space: nowrap;
   border: none;
-  font-size: 0.5em;
+  font-size: ${({ theme }) => theme.fontSizes.s};
 `;
 
 export default StyledDropdownItem;

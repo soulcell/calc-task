@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import ScreenSizes from "@/constants/screenSizes";
+
 export const StyledDropdown = styled.div`
   width: 200px;
   position: relative;
@@ -10,12 +12,16 @@ export const DropdownButton = styled.button<{ isOpen: boolean }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 0.7em;
+  font-size: ${({ theme }) => theme.fontSizes.m};
   padding: ${({ theme }) => theme.paddings.s};
   border: 1px solid ${({ theme }) => theme.colors.border};
   border-radius: ${({ theme }) => theme.borderRadiuses.s};
   background-color: ${({ theme }) => theme.colors.button};
   cursor: pointer;
+
+  @media (max-width: ${ScreenSizes.Desktop}px) {
+    font-size: ${({ theme }) => theme.fontSizes.s};
+  }
 
   & svg {
     transition: transform 0.2s;
@@ -36,12 +42,4 @@ export const DropdownList = styled.ul<{ isOpen: boolean }>`
   border-radius: ${({ theme }) => theme.borderRadiuses.s};
   list-style: none;
   padding: ${({ theme }) => theme.paddings.zero};
-`;
-
-export const DropdownTitle = styled.span`
-  font-size: 0.7em;
-  margin: ${({ theme }) => {
-    const { xs, s } = theme.margins;
-    return `${s} ${s} ${xs} ${s}`;
-  }};
 `;

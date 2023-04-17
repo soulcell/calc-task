@@ -10,7 +10,7 @@ export const StyledControlPanel = styled.div`
 `;
 
 export const Button = styled.button<{ hideOnMobile?: boolean }>`
-  font-size: 0.5em;
+  font-size: ${({ theme }) => theme.fontSizes.s};
   margin: ${({ theme }) => theme.margins.xs} ${({ theme }) => theme.margins.sm};
   border: 1px solid ${({ theme }) => theme.colors.border};
   background-color: ${({ theme }) => theme.colors.button};
@@ -22,5 +22,6 @@ export const Button = styled.button<{ hideOnMobile?: boolean }>`
   }
   @media (max-width: ${`${ScreenSizes.Desktop}px`}) {
     display: ${({ hideOnMobile }) => (hideOnMobile ? "none" : "revert")};
+    font-size: ${({ theme }) => theme.fontSizes.xs};
   }
 `;

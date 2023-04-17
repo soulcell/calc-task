@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import ScreenSizes from "@/constants/screenSizes";
+
 export const Navbar = styled.nav`
   display: flex;
   justify-content: space-between;
@@ -10,7 +12,7 @@ export const Navbar = styled.nav`
   height: ${({ theme }) => theme.headerHeight};
 
   a {
-    font-size: 1em;
+    font-size: ${({ theme }) => theme.fontSizes.l};
     margin-left: ${({ theme }) => theme.margins.l};
     color: ${({ theme }) => theme.colors.background};
     text-decoration: none;
@@ -34,10 +36,14 @@ export const NavbarRight = styled.div`
 `;
 
 export const Title = styled.h1`
-  font-size: 1em;
+  font-size: ${({ theme }) => theme.fontSizes.l};
   font-weight: normal;
   margin: ${({ theme }) => theme.margins.zero};
   color: ${({ theme }) => theme.colors.background};
+
+  @media (max-width: ${ScreenSizes.Desktop}px) {
+    font-size: ${({ theme }) => theme.fontSizes.m};
+  }
 `;
 
 export const Menu = styled.div`

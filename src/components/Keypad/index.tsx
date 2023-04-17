@@ -6,7 +6,7 @@ import { useAppDispatch } from "@/store/index";
 import { isButtonType } from "@/types/button";
 import keypadHandler from "@/utils/keypadHandler";
 
-import { StyledKeypad } from "./styled";
+import StyledKeypad from "./styled";
 
 export default function Keypad(): JSX.Element {
   const dispatch = useAppDispatch();
