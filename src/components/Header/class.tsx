@@ -1,4 +1,5 @@
 import React from "react";
+import MediaQuery from "react-responsive";
 import { Link } from "react-router-dom";
 
 import { WithRouterProps } from "@/components/HOC/types";
@@ -6,17 +7,12 @@ import withRouter from "@/components/HOC/withRouter";
 import SVG from "@/components/SVG";
 import ROUTES from "@/constants/routes";
 import ScreenSizes from "@/constants/screenSizes";
-import ScreenSizeContext from "@/contexts/ScreenSize";
 
 import { Menu, Navbar, NavbarLeft, NavbarRight, Title } from "./styled";
 
 class HeaderCC extends React.PureComponent<{
   router: WithRouterProps;
 }> {
-  static contextType = ScreenSizeContext;
-
-  declare context: React.ContextType<typeof ScreenSizeContext>;
-
   state: Readonly<{
     isMenuOpen: boolean;
   }> = {
@@ -47,7 +43,6 @@ class HeaderCC extends React.PureComponent<{
     const { router } = this.props;
     const { pathname } = router.location;
     const { isMenuOpen } = this.state;
-    const { x: screenWidth } = this.context;
 
     const links = ROUTES.filter(({ path }) => path !== pathname).map(
       ({ path, name }) => (
@@ -64,21 +59,25 @@ class HeaderCC extends React.PureComponent<{
             <Title>Calculator App</Title>
           </NavbarLeft>
           <NavbarRight>
-            {screenWidth >= ScreenSizes.Desktop
-              ? links
-              : !isMenuOpen && (
-                  <SVG
-                    onClick={this.handleClick}
-                    width="48px"
-                    height="48px"
-                    icon="hamburger"
-                  />
-                )}
+            <MediaQuery minWidth={ScreenSizes.Desktop}>
+              {(matches) =>
+                matches
+                  ? links
+                  : !isMenuOpen && (
+                      <SVG
+                        onClick={this.handleClick}
+                        width="48px"
+                        height="48px"
+                        icon="hamburger"
+                      />
+                    )
+              }
+            </MediaQuery>
           </NavbarRight>
         </Navbar>
-        {screenWidth < ScreenSizes.Desktop && isMenuOpen && (
-          <Menu ref={this.menuRef}>{links}</Menu>
-        )}
+        <MediaQuery maxWidth={ScreenSizes.Desktop}>
+          {isMenuOpen && <Menu ref={this.menuRef}>{links}</Menu>}
+        </MediaQuery>
       </>
     );
   }
