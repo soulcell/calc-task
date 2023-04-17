@@ -10,7 +10,7 @@ export const Navbar = styled.nav`
 
   a {
     font-size: 1em;
-    margin-left: 32px;
+    margin-left: ${({ theme }) => theme.margins.l};
     color: ${({ theme }) => theme.colors.background};
     text-decoration: none;
     &:visited {
@@ -35,14 +35,15 @@ export const NavbarRight = styled.div`
 export const Title = styled.h1`
   font-size: 1em;
   font-weight: normal;
-  margin: 0;
+  margin: ${({ theme }) => theme.margins.zero};
   color: ${({ theme }) => theme.colors.background};
 `;
 
 export const Menu = styled.div`
   background: ${({ theme }) => theme.colors.header};
   a {
-    margin: 0 8px;
+    margin: ${({ theme }) => theme.margins.zero}
+      ${({ theme }) => theme.margins.s};
     padding: 8px 8px;
     display: block;
     color: ${({ theme }) => theme.colors.background};

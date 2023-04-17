@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Title = styled.h2`
-  margin: 0.2em 0;
+  margin: ${({ theme }) => theme.margins.xs}
+    ${({ theme }) => theme.margins.zero};
   font-size: 1.5em;
 `;

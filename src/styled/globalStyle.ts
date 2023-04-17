@@ -15,7 +15,7 @@ const GlobalStyle = createGlobalStyle`
 
     body {
         height: 100vh;
-        margin: 0;
+        margin: ${({ theme }) => theme.margins.zero};
         font-family: "Helvetica Neue", "Segoe UI", "Droid Sans", sans-serif;
         font-size: ${({ theme }) => theme.fontSizes.l};;
         -webkit-font-smoothing: antialiased;

@@ -27,7 +27,7 @@ export const DropdownList = styled.ul<{ isOpen: boolean }>`
   box-sizing: border-box;
   width: 100%;
   position: absolute;
-  margin: 0;
+  margin: ${({ theme }) => theme.margins.zero};
   top: calc(100% + 8px);
   display: ${({ isOpen }) => (isOpen ? "block" : "none")};
   overflow: auto;
@@ -40,5 +40,8 @@ export const DropdownList = styled.ul<{ isOpen: boolean }>`
 
 export const DropdownTitle = styled.span`
   font-size: 0.7em;
-  margin: 8px 8px 4px 8px;
+  margin: ${({ theme }) => {
+    const { xs, s } = theme.margins;
+    return `${s} ${s} ${xs} ${s}`;
+  }};
 `;

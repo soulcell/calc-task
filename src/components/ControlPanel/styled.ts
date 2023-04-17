@@ -11,7 +11,7 @@ export const StyledControlPanel = styled.div`
 
 export const Button = styled.button<{ hideOnMobile?: boolean }>`
   font-size: 0.5em;
-  margin: 4px 10px;
+  margin: ${({ theme }) => theme.margins.xs} ${({ theme }) => theme.margins.sm};
   border: 1px solid ${({ theme }) => theme.colors.border};
   background-color: ${({ theme }) => theme.colors.button};
   border-radius: ${({ theme }) => theme.borderRadiuses.xs};

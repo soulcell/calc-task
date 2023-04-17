@@ -46,6 +46,14 @@ export const defaultTheme: DefaultTheme = {
     s: "8px",
     m: "16px",
   },
+  margins: {
+    zero: "0",
+    xs: "4px",
+    s: "8px",
+    sm: "10px",
+    m: "16px",
+    l: "32px",
+  },
 };
 
 export const THEMES: { [id: string]: typeof lightTheme } = {

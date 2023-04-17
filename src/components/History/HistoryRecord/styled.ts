@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledRecord = styled.div`
   font-size: 0.5em;
-  margin: 10px 20px;
+  margin: ${({ theme }) => theme.margins.sm} ${({ theme }) => theme.margins.m};
   padding: 8px;
   border-radius: ${({ theme }) => theme.borderRadiuses.s};
 
