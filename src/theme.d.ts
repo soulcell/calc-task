@@ -20,5 +20,10 @@ declare module "styled-components" {
       xl: string;
       xxl: string;
     };
+    borderRadiuses: {
+      xs: string;
+      s: string;
+      m: string;
+    };
   }
 }

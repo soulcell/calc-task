@@ -1,17 +1,23 @@
 import styled from "styled-components";
 
+import ScreenSizes from "@/constants/screenSizes";
+
 const StyledButton = styled.button`
   align-self: center;
   justify-self: center;
   width: 1.5em;
   height: 1.5em;
-  font-size: 2em;
+  font-size: ${({ theme }) => theme.fontSizes.xxl};
   border: 1px solid ${({ theme }) => theme.colors.border};
   background-color: ${({ theme }) => theme.colors.button};
-  border-radius: 16px;
+  border-radius: ${({ theme }) => theme.borderRadiuses.m};
   padding: 0;
   &:hover {
     background-color: ${({ theme }) => theme.colors.border};
+  }
+
+  @media (max-width: ${ScreenSizes.Desktop}px) {
+    font-size: ${({ theme }) => theme.fontSizes.l};
   }
 `;
 
