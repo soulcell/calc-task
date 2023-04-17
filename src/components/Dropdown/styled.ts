@@ -11,7 +11,7 @@ export const DropdownButton = styled.button<{ isOpen: boolean }>`
   justify-content: space-between;
   align-items: center;
   font-size: 0.7em;
-  padding: 8px;
+  padding: ${({ theme }) => theme.paddings.s};
   border: 1px solid ${({ theme }) => theme.colors.border};
   border-radius: ${({ theme }) => theme.borderRadiuses.s};
   background-color: ${({ theme }) => theme.colors.button};
@@ -35,7 +35,7 @@ export const DropdownList = styled.ul<{ isOpen: boolean }>`
   border: 1px solid ${({ theme }) => theme.colors.border};
   border-radius: ${({ theme }) => theme.borderRadiuses.s};
   list-style: none;
-  padding: 0;
+  padding: ${({ theme }) => theme.paddings.zero};
 `;
 
 export const DropdownTitle = styled.span`

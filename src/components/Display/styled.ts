@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const StyledDisplay = styled.div`
   grid-area: display;
   height: 2em;
-  padding: 20px;
+  padding: ${({ theme }) => theme.paddings.m};
   border-bottom: 1px solid ${({ theme }) => theme.colors.border};
   font-size: 2em;
   text-align: right;

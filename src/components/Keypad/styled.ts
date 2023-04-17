@@ -10,7 +10,7 @@ export const Button = styled.button`
   font-size: 2em;
   border: 1px solid ${({ theme }) => theme.colors.border};
   border-radius: ${({ theme }) => theme.borderRadiuses.m};
-  padding: 0;
+  padding: ${({ theme }) => theme.paddings.zero};
   &:hover {
     background-color: ${({ theme }) => theme.colors.border};
   }
@@ -25,5 +25,5 @@ export const StyledKeypad = styled.div`
   @media (max-width: ${`${ScreenSizes.Desktop}px`}) {
   }
   gap: 5px;
-  padding: 10px;
+  padding: ${({ theme }) => theme.paddings.sm};
 `;

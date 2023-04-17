@@ -4,7 +4,8 @@ export const Navbar = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 32px;
+  padding: ${({ theme }) => theme.paddings.zero}
+    ${({ theme }) => theme.paddings.l};
   background-color: ${({ theme }) => theme.colors.header};
   height: ${({ theme }) => theme.headerHeight};
 
@@ -44,7 +45,8 @@ export const Menu = styled.div`
   a {
     margin: ${({ theme }) => theme.margins.zero}
       ${({ theme }) => theme.margins.s};
-    padding: 8px 8px;
+    padding: ${({ theme }) => theme.paddings.s}
+      ${({ theme }) => theme.paddings.s};
     display: block;
     color: ${({ theme }) => theme.colors.background};
     border-top: 1px solid ${({ theme }) => theme.colors.border};

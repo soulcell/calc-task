@@ -54,6 +54,15 @@ export const defaultTheme: DefaultTheme = {
     m: "16px",
     l: "32px",
   },
+  paddings: {
+    zero: "0",
+    xxs: "2px",
+    xs: "4px",
+    s: "8px",
+    sm: "10px",
+    m: "16px",
+    l: "32px",
+  },
 };
 
 export const THEMES: { [id: string]: typeof lightTheme } = {

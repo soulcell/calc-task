@@ -30,7 +30,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     button {
-        padding: 0;
+        padding: ${({ theme }) => theme.paddings.zero};
         font-family: "Helvetica Neue", "Segoe UI", "Droid Sans", sans-serif;
         font-size: ${({ theme }) => theme.fontSizes.m};
         color: ${({ theme }) => theme.colors.text};

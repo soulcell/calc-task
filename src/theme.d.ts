@@ -33,5 +33,14 @@ declare module "styled-components" {
       m: string;
       l: string;
     };
+    paddings: {
+      zero: string;
+      xxs: string;
+      xs: string;
+      s: string;
+      sm: string;
+      m: string;
+      l: string;
+    };
   }
 }

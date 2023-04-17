@@ -11,7 +11,7 @@ const StyledButton = styled.button`
   border: 1px solid ${({ theme }) => theme.colors.border};
   background-color: ${({ theme }) => theme.colors.button};
   border-radius: ${({ theme }) => theme.borderRadiuses.m};
-  padding: 0;
+  padding: ${({ theme }) => theme.paddings.zero};
   &:hover {
     background-color: ${({ theme }) => theme.colors.border};
   }

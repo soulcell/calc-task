@@ -15,7 +15,8 @@ export const Button = styled.button<{ hideOnMobile?: boolean }>`
   border: 1px solid ${({ theme }) => theme.colors.border};
   background-color: ${({ theme }) => theme.colors.button};
   border-radius: ${({ theme }) => theme.borderRadiuses.xs};
-  padding: 2px 8px;
+  padding: ${({ theme }) => theme.paddings.xxs}
+    ${({ theme }) => theme.paddings.s};
   &:hover {
     background-color: ${({ theme }) => theme.colors.border};
   }
