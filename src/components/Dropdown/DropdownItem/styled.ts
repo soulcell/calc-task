@@ -6,7 +6,7 @@ const StyledDropdownItem = styled.button`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 50px;
+  height: ${({ theme }) => theme.heights.m};
   padding: ${({ theme }) => theme.paddings.zero}
     ${({ theme }) => theme.paddings.m};
   cursor: pointer;

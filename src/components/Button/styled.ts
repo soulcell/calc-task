@@ -5,8 +5,8 @@ import ScreenSizes from "@/constants/screenSizes";
 const StyledButton = styled.button`
   align-self: center;
   justify-self: center;
-  width: 1.5em;
-  height: 1.5em;
+  width: ${({ theme }) => theme.widths.l};
+  height: ${({ theme }) => theme.heights.l};
   font-size: ${({ theme }) => theme.fontSizes.xxl};
   border: 1px solid ${({ theme }) => theme.colors.border};
   background-color: ${({ theme }) => theme.colors.button};
@@ -18,6 +18,8 @@ const StyledButton = styled.button`
 
   @media (max-width: ${ScreenSizes.Desktop}px) {
     font-size: ${({ theme }) => theme.fontSizes.l};
+    width: ${({ theme }) => theme.widths.m};
+    height: ${({ theme }) => theme.heights.m};
   }
 `;
 

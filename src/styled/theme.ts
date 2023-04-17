@@ -63,6 +63,18 @@ export const defaultTheme: DefaultTheme = {
     m: "16px",
     l: "32px",
   },
+  widths: {
+    m: "48px",
+    l: "96px",
+    xl: "128px",
+    xxl: "200px",
+  },
+  heights: {
+    m: "48px",
+    l: "96px",
+    xl: "128px",
+    xxl: "200px",
+  },
 };
 
 export const THEMES: { [id: string]: typeof lightTheme } = {

@@ -42,5 +42,17 @@ declare module "styled-components" {
       m: string;
       l: string;
     };
+    widths: {
+      m: string;
+      l: string;
+      xl: string;
+      xxl: string;
+    };
+    heights: {
+      m: string;
+      l: string;
+      xl: string;
+      xxl: string;
+    };
   }
 }

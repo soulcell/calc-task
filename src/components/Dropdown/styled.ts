@@ -3,7 +3,7 @@ import styled from "styled-components";
 import ScreenSizes from "@/constants/screenSizes";
 
 export const StyledDropdown = styled.div`
-  width: 200px;
+  width: ${({ theme }) => theme.widths.xxl};
   position: relative;
 `;
 
