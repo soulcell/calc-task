@@ -3,9 +3,8 @@ import { useSelector } from "react-redux";
 import { ThemeProvider } from "styled-components";
 
 import selectSettings from "@/store/selectors/settings";
-
-import GlobalStyle from "./globalStyle";
-import { defaultTheme, THEMES } from "./theme";
+import GlobalStyle from "@/styled/globalStyle";
+import { defaultTheme, THEMES } from "@/styled/theme";
 
 export default function StyledApp({
   children,

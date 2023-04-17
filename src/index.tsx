@@ -5,11 +5,11 @@ import { RouterProvider } from "react-router-dom";
 import { PersistGate } from "redux-persist/integration/react";
 
 import ErrorBoundary from "./components/ErrorBoundary";
+import StyledApp from "./components/ThemeProvider";
 import LoadingPage from "./pages/Loading";
 import reportWebVitals from "./reportWebVitals";
 import router from "./router";
 import { persistor, store } from "./store";
-import StyledApp from "./styled";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
