@@ -9,7 +9,7 @@ import keypadHandler from "@/utils/keypadHandler";
 
 import StyledKeypad from "./styled";
 
-class KeypadCC extends React.Component<ConnectedProps<typeof connector>> {
+class KeypadCC extends React.PureComponent<ConnectedProps<typeof connector>> {
   componentDidMount(): void {
     document.addEventListener("keypress", this.keyboardHandler);
   }

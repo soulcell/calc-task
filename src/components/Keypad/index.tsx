@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 
 import Button from "@/components/Button";
 import { BUTTONS } from "@/constants/calculator";
@@ -26,15 +26,17 @@ export default function Keypad(): JSX.Element {
     };
   }, []);
 
-  return (
-    <StyledKeypad>
-      {BUTTONS.map((value) => (
+  const buttons = useMemo(
+    () =>
+      BUTTONS.map((value) => (
         <Button
           key={value}
           buttonType={value}
           onClick={() => keypadHandler(value, dispatch)}
         />
-      ))}
-    </StyledKeypad>
+      )),
+    []
   );
+
+  return <StyledKeypad>{buttons}</StyledKeypad>;
 }

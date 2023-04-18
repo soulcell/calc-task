@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import Dropdown from "@/components/Dropdown";
@@ -12,8 +13,10 @@ export default function ThemeDropdown(): JSX.Element {
   const dispatch = useDispatch();
   const { currentTheme } = useSelector(selectSettings);
 
-  const handleThemeChange = (newTheme: string) =>
-    dispatch(setTheme({ theme: newTheme }));
+  const handleThemeChange = useCallback(
+    (newTheme: string) => dispatch(setTheme({ theme: newTheme })),
+    [dispatch]
+  );
 
   return (
     <>

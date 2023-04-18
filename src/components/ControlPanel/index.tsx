@@ -10,6 +10,7 @@ export default function ControlPanel(): JSX.Element {
   const { showHistory } = useSelector(selectSettings);
   const dispatch = useDispatch();
 
+  const handleToggleHistoryClick = () => dispatch(toggleHistory());
   const handleClearHistoryClick = () => dispatch(clearHistory());
 
   return (
@@ -17,7 +18,7 @@ export default function ControlPanel(): JSX.Element {
       <Button
         name="showHistory"
         hideOnMobile
-        onClick={() => dispatch(toggleHistory())}
+        onClick={handleToggleHistoryClick}
       >
         {showHistory ? "Hide" : "Show"} History
       </Button>
