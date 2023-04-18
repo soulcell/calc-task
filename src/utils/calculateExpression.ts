@@ -1,10 +1,9 @@
-import PRECENDENCE from "@/constants/operatorPrecedence";
-
 import {
   CalculatorCommand,
   CalculatorCommandSymbol,
   createCommandFromObject,
-} from "../commands";
+} from "@/commands";
+import PRECENDENCE from "@/constants/operatorPrecedence";
 
 import {
   isLeftParenthesisToken,
