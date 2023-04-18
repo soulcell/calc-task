@@ -17,4 +17,19 @@ const StyledDisplay = styled.div`
   }
 `;
 
+export const CurrentNumber = styled.div`
+  font-size: ${({ theme }) => theme.fontSizes.xl};
+  @media (max-width: ${ScreenSizes.Desktop}px) {
+    font-size: ${({ theme }) => theme.fontSizes.l};
+  }
+`;
+
+export const Expression = styled.div`
+  font-size: ${({ theme }) => theme.fontSizes.xl};
+  color: ${({ theme }) => theme.colors.header};
+  @media (max-width: ${ScreenSizes.Desktop}px) {
+    font-size: ${({ theme }) => theme.fontSizes.l};
+  }
+`;
+
 export default StyledDisplay;
