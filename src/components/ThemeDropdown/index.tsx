@@ -23,7 +23,7 @@ export default function ThemeDropdown(): JSX.Element {
       <Title>Theme</Title>
       <Dropdown
         onSelectedValueChanged={handleThemeChange}
-        dataCy="themeDropdown"
+        testingAttribute="themeDropdown"
       >
         {Object.keys(THEMES).map((key) => (
           <DropdownItem

@@ -23,7 +23,7 @@ import { DropdownProps, DropdownState } from "./types";
 export default function Dropdown({
   children,
   onSelectedValueChanged,
-  dataCy,
+  testingAttribute,
 }: DropdownProps): JSX.Element {
   const [{ isOpen, selectedIndex, selectedValue, selectedTitle }, setState] =
     useState<DropdownState>({
@@ -92,7 +92,7 @@ export default function Dropdown({
   });
 
   return (
-    <StyledDropdown ref={triggerRef} data-cy={dataCy}>
+    <StyledDropdown ref={triggerRef} data-cy={testingAttribute}>
       <DropdownButton isOpen={isOpen} onClick={toggleOpen}>
         <SelectedTitle>{selectedTitle}</SelectedTitle>
         <SVG icon="arrow" width="24px" height="24px" />
