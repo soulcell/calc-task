@@ -1,5 +1,12 @@
 export interface DropdownProps {
   children: React.ReactNode;
   onSelectedValueChanged?: (value: string) => void;
-  dataCy?: string;
+  testingAttribute?: string;
+}
+
+export interface DropdownState {
+  isOpen: boolean;
+  selectedIndex: number;
+  selectedValue: string;
+  selectedTitle: string;
 }

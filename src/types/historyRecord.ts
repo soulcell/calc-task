@@ -3,7 +3,3 @@ export interface HistoryRecord {
   tokens: string[];
   result: number;
 }
-
-export interface HistoryState {
-  records: HistoryRecord[];
-}

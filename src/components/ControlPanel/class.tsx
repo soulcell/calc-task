@@ -1,8 +1,9 @@
 import React from "react";
 import { connect, ConnectedProps } from "react-redux";
-import { clearHistory } from "@actionCreators/historyActionCreators";
-import { toggleHistory } from "@actionCreators/settingsActionCreators";
-import { AppState } from "@store/reducers/rootReducer";
+
+import { clearHistory } from "@/store/actionCreators/history";
+import { toggleHistory } from "@/store/actionCreators/settings";
+import { AppState } from "@/store/reducers/rootReducer";
 
 import { Button, StyledControlPanel } from "./styled";
 
@@ -12,16 +13,20 @@ class ControlPanelCC extends React.PureComponent<
   render() {
     const { dispatchToggleHistory, dispatchClearHistory, showHistory } =
       this.props;
+
+    const handleToggleHistoryClick = () => dispatchToggleHistory();
+    const handleClearHistoryClick = () => dispatchClearHistory();
+
     return (
       <StyledControlPanel>
         <Button
           name="showHistory"
           hideOnMobile
-          onClick={() => dispatchToggleHistory()}
+          onClick={handleToggleHistoryClick}
         >
           {showHistory ? "Hide" : "Show"} History
         </Button>
-        <Button name="clearHistory" onClick={() => dispatchClearHistory()}>
+        <Button name="clearHistory" onClick={handleClearHistoryClick}>
           Clear History
         </Button>
       </StyledControlPanel>

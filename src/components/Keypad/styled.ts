@@ -1,21 +1,8 @@
-import ScreenSizes from "@constants/screenSizes";
 import styled from "styled-components";
 
-export const Button = styled.button`
-  align-self: center;
-  justify-self: center;
-  width: 1.5em;
-  height: 1.5em;
-  font-size: 2em;
-  border: 1px solid ${({ theme }) => theme.colors.border};
-  border-radius: 16px;
-  padding: 0;
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.border};
-  }
-`;
+import ScreenSizes from "@/constants/screenSizes";
 
-export const StyledKeypad = styled.div`
+const StyledKeypad = styled.div`
   grid-area: keypad;
   display: grid;
   grid-template-columns: repeat(6, auto);
@@ -24,5 +11,7 @@ export const StyledKeypad = styled.div`
   @media (max-width: ${`${ScreenSizes.Desktop}px`}) {
   }
   gap: 5px;
-  padding: 10px;
+  padding: ${({ theme }) => theme.paddings.sm};
 `;
+
+export default StyledKeypad;

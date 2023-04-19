@@ -1,14 +1,11 @@
-import * as actions from "@actionCreators/settingsActionCreators";
+import { createReducer } from "@reduxjs/toolkit";
+
 import {
   DEFAULT_SHOW_HISTORY,
   DEFAULT_THEME,
-} from "@constants/defaultSettings";
-import { createReducer } from "@reduxjs/toolkit";
-
-export interface SettingsState {
-  currentTheme: string;
-  showHistory: boolean;
-}
+} from "@/constants/defaultSettings";
+import * as actions from "@/store/actionCreators/settings";
+import { SettingsState } from "@/types/states";
 
 const initialState: SettingsState = {
   currentTheme: DEFAULT_THEME,

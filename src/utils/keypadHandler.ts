@@ -6,16 +6,15 @@ import {
   clearAll,
   clearValue,
   executeCommand,
-} from "@store/actionCreators/calculatorActionCreators";
-import { AppDispatch } from "@store/index";
-
+} from "@/store/actionCreators/calculator";
+import { AppDispatch } from "@/store/index";
 import ButtonType, {
   isButtonAction,
   isButtonDigit,
   isButtonOperator,
-  isButtonParentheses,
+  isButtonParenthesis,
   isButtonPoint,
-} from "./buttonTypes";
+} from "@/types/button";
 
 export default function keypadHandler(
   buttonType: ButtonType,
@@ -44,7 +43,7 @@ export default function keypadHandler(
     dispatch(appendOperatorToken({ token: buttonType }));
   } else if (isButtonPoint(buttonType)) {
     dispatch(appendNumericToken({ token: "." }));
-  } else if (isButtonParentheses(buttonType)) {
+  } else if (isButtonParenthesis(buttonType)) {
     dispatch(appendParenthesisToken({ token: buttonType }));
   }
 }

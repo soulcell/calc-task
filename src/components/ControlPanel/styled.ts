@@ -1,5 +1,6 @@
-import ScreenSizes from "@constants/screenSizes";
 import styled from "styled-components";
+
+import ScreenSizes from "@/constants/screenSizes";
 
 export const StyledControlPanel = styled.div`
   display: flex;
@@ -9,16 +10,18 @@ export const StyledControlPanel = styled.div`
 `;
 
 export const Button = styled.button<{ hideOnMobile?: boolean }>`
-  font-size: 0.5em;
-  margin: 4px 10px;
+  font-size: ${({ theme }) => theme.fontSizes.s};
+  margin: ${({ theme }) => theme.margins.xs} ${({ theme }) => theme.margins.sm};
   border: 1px solid ${({ theme }) => theme.colors.border};
   background-color: ${({ theme }) => theme.colors.button};
-  border-radius: 4px;
-  padding: 2px 8px;
+  border-radius: ${({ theme }) => theme.borderRadiuses.xs};
+  padding: ${({ theme }) => theme.paddings.xxs}
+    ${({ theme }) => theme.paddings.s};
   &:hover {
     background-color: ${({ theme }) => theme.colors.border};
   }
   @media (max-width: ${`${ScreenSizes.Desktop}px`}) {
     display: ${({ hideOnMobile }) => (hideOnMobile ? "none" : "revert")};
+    font-size: ${({ theme }) => theme.fontSizes.xs};
   }
 `;

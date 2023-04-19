@@ -41,6 +41,40 @@ export const defaultTheme: DefaultTheme = {
     xl: "42px",
     xxl: "64px",
   },
+  borderRadiuses: {
+    xs: "4px",
+    s: "8px",
+    m: "16px",
+  },
+  margins: {
+    zero: "0",
+    xs: "4px",
+    s: "8px",
+    sm: "10px",
+    m: "16px",
+    l: "32px",
+  },
+  paddings: {
+    zero: "0",
+    xxs: "2px",
+    xs: "4px",
+    s: "8px",
+    sm: "10px",
+    m: "16px",
+    l: "32px",
+  },
+  widths: {
+    m: "48px",
+    l: "96px",
+    xl: "128px",
+    xxl: "200px",
+  },
+  heights: {
+    m: "48px",
+    l: "96px",
+    xl: "128px",
+    xxl: "200px",
+  },
 };
 
 export const THEMES: { [id: string]: typeof lightTheme } = {

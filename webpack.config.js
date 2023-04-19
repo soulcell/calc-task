@@ -16,7 +16,6 @@ module.exports = {
       template: "./public/index.html",
       filename: "./index.html",
       favicon: "./public/favicon.ico",
-      manifest: "./public/manifest.json",
     }),
     new CopyWebpackPlugin({
       patterns: [
@@ -47,16 +46,6 @@ module.exports = {
     extensions: ["*", ".ts", ".tsx", ".js", ".json"],
     alias: {
       "@": path.resolve(__dirname, "src"),
-      "@commands": path.resolve(__dirname, "src/commands"),
-      "@components": path.resolve(__dirname, "src/components"),
-      "@constants": path.resolve(__dirname, "src/constants"),
-      "@contexts": path.resolve(__dirname, "src/contexts"),
-      "@hooks": path.resolve(__dirname, "src/hooks"),
-      "@pages": path.resolve(__dirname, "src/pages"),
-      "@store": path.resolve(__dirname, "src/store"),
-      "@actionCreators": path.resolve(__dirname, "src/store/actionCreators"),
-      "@styled": path.resolve(__dirname, "src/styled"),
-      "@utils": path.resolve(__dirname, "src/utils"),
     },
   },
 };

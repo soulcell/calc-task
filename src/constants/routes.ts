@@ -1,14 +1,16 @@
+import { CLASS_PATH, ROOT_PATH, SETTINGS_PATH } from "./paths";
+
 const ROUTES = [
   {
-    path: "/",
+    path: ROOT_PATH,
     name: "Home (FC)",
   },
   {
-    path: "/cc",
+    path: CLASS_PATH,
     name: "Home (CC)",
   },
   {
-    path: "/settings",
+    path: SETTINGS_PATH,
     name: "Settings",
   },
 ];

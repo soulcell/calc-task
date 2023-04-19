@@ -2,9 +2,9 @@ import {
   CalculatorCommand,
   CalculatorCommandSymbol,
   createCommandFromObject,
-} from "../commands";
+} from "@/commands";
+import PRECENDENCE from "@/constants/operatorPrecedence";
 
-import precendence from "./operatorPrecedence";
 import {
   isLeftParenthesisToken,
   isNumericToken,
@@ -22,7 +22,7 @@ function toPostfixNotation(infix: string[]) {
     } else if (isOperatorToken(token)) {
       while (
         stack[stack.length - 1] &&
-        precendence[stack[stack.length - 1]] >= precendence[token]
+        PRECENDENCE[stack[stack.length - 1]] >= PRECENDENCE[token]
       ) {
         outputQueue.push(stack.pop() as string);
       }

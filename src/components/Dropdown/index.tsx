@@ -7,31 +7,47 @@ import {
   useEffect,
   useState,
 } from "react";
-import SVG from "@components/SVG";
-import useClickOutside from "@hooks/useClickOutside";
+
+import SVG from "@/components/SVG";
+import useClickOutside from "@/hooks/useClickOutside";
 
 import { DropdownItemProps } from "./DropdownItem/types";
-import { DropdownButton, DropdownList, StyledDropdown } from "./styled";
-import { DropdownProps } from "./types";
+import {
+  DropdownButton,
+  DropdownList,
+  SelectedTitle,
+  StyledDropdown,
+} from "./styled";
+import { DropdownProps, DropdownState } from "./types";
 
 export default function Dropdown({
   children,
   onSelectedValueChanged,
-  dataCy,
+  testingAttribute,
 }: DropdownProps): JSX.Element {
-  const [isOpen, setOpen] = useState(false);
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  const [selectedValue, setSelectedValue] = useState("");
-  const [selectedTitle, setSelectedTitle] = useState("");
+  const [{ isOpen, selectedIndex, selectedValue, selectedTitle }, setState] =
+    useState<DropdownState>({
+      isOpen: false,
+      selectedIndex: 0,
+      selectedValue: "",
+      selectedTitle: "",
+    });
 
-  const handleClickOutside = useCallback(() => setOpen(false), []);
+  const handleClickOutside = useCallback(
+    () => setState((prevState) => ({ ...prevState, isOpen: false })),
+    []
+  );
   const triggerRef = useClickOutside<HTMLDivElement>(handleClickOutside);
 
   useEffect(() => {
-    const el = Children.toArray(children)[selectedIndex];
-    if (isValidElement<DropdownItemProps>(el)) {
-      setSelectedValue(el.props.value);
-      setSelectedTitle(el.props.title);
+    const selectedChild = Children.toArray(children)[selectedIndex];
+    if (isValidElement<DropdownItemProps>(selectedChild)) {
+      const { value, title } = selectedChild.props;
+      setState((prevState) => ({
+        ...prevState,
+        selectedValue: value,
+        selectedTitle: title,
+      }));
     }
   }, [selectedIndex, children]);
 
@@ -42,36 +58,46 @@ export default function Dropdown({
   }, [selectedValue, onSelectedValueChanged]);
 
   useEffect(() => {
-    let idx = 0;
+    let defaultSelectedIndex = 0;
     Children.forEach(children, (child, index) => {
       if (isValidElement<DropdownItemProps>(child)) {
         if (child.props.default) {
-          idx = index;
+          defaultSelectedIndex = index;
         }
       }
     });
-    setSelectedIndex(idx);
+    setState((prevState) => ({
+      ...prevState,
+      selectedIndex: defaultSelectedIndex,
+    }));
   }, []);
 
+  const toggleOpen = useCallback(
+    () => setState((prevState) => ({ ...prevState, isOpen: !isOpen })),
+    [isOpen]
+  );
+
+  const dropdownItems = Children.map(children, (child, idx) => {
+    if (isValidElement(child)) {
+      return cloneElement(child as ReactElement<DropdownItemProps>, {
+        isSelected: idx === selectedIndex,
+        onClick: () =>
+          setState((prevState) => ({
+            ...prevState,
+            selectedIndex: idx,
+            isOpen: false,
+          })),
+      });
+    }
+  });
+
   return (
-    <StyledDropdown ref={triggerRef} data-cy={dataCy}>
-      <DropdownButton isOpen={isOpen} onClick={() => setOpen(!isOpen)}>
-        <span>{selectedTitle}</span>
+    <StyledDropdown ref={triggerRef} data-cy={testingAttribute}>
+      <DropdownButton isOpen={isOpen} onClick={toggleOpen}>
+        <SelectedTitle>{selectedTitle}</SelectedTitle>
         <SVG icon="arrow" width="24px" height="24px" />
       </DropdownButton>
-      <DropdownList isOpen={isOpen}>
-        {Children.map(children, (child, idx) => {
-          if (isValidElement(child)) {
-            return cloneElement(child as ReactElement<DropdownItemProps>, {
-              isSelected: idx === selectedIndex,
-              onClick: () => {
-                setSelectedIndex(idx);
-                setOpen(false);
-              },
-            });
-          }
-        })}
-      </DropdownList>
+      <DropdownList isOpen={isOpen}>{dropdownItems}</DropdownList>
     </StyledDropdown>
   );
 }

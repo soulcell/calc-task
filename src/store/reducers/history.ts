@@ -1,7 +1,7 @@
-import * as actions from "@actionCreators/historyActionCreators";
 import { createReducer } from "@reduxjs/toolkit";
 
-import { HistoryState } from "./types";
+import * as actions from "@/store/actionCreators/history";
+import { HistoryState } from "@/types/states";
 
 const initialState: HistoryState = {
   records: [],

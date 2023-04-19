@@ -1,14 +1,11 @@
-import * as actions from "@actionCreators/calculatorActionCreators";
 import { createReducer } from "@reduxjs/toolkit";
-import calculateExpression from "@utils/calculateExpression";
-import preExecute from "@utils/preExecute";
-import { isNumericToken } from "@utils/tokenValidation";
 
-export interface CalculatorState {
-  tokens: Array<string>;
-  value: number;
-  errorMessage?: string;
-}
+import * as actions from "@/store/actionCreators/calculator";
+import { CalculatorState } from "@/types/states";
+import appendOrAddNewDigit from "@/utils/appendOrAddNewDigit";
+import calculateExpression from "@/utils/calculateExpression";
+import prepareExpressionBeforeExecute from "@/utils/prepareExpressionBeforeExecute";
+import { isNumericToken } from "@/utils/tokenValidation";
 
 const initialState: CalculatorState = {
   tokens: [],
@@ -26,7 +23,7 @@ const calculatorReducer = createReducer<CalculatorState>(
         state.tokens.pop();
       })
       .addCase(actions.executeCommand, (state) => {
-        state.tokens = preExecute(state.tokens);
+        state.tokens = prepareExpressionBeforeExecute(state.tokens);
         try {
           state.value = calculateExpression(state.tokens);
         } catch (error) {
@@ -47,11 +44,7 @@ const calculatorReducer = createReducer<CalculatorState>(
       .addCase(actions.appendNumericToken, (state, { payload }) => {
         state.errorMessage = initialState.errorMessage;
         const { tokens } = state;
-        if (isNumericToken(tokens[tokens.length - 1])) {
-          if (isNumericToken(tokens[tokens.length - 1] + payload.token)) {
-            tokens[tokens.length - 1] += payload.token;
-          }
-        } else tokens.push(payload.token);
+        appendOrAddNewDigit(tokens, payload.token);
       })
       .addCase(actions.appendOperatorToken, (state, { payload }) => {
         state.tokens.push(payload.token);

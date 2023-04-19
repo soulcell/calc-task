@@ -8,7 +8,7 @@ function insertMultiplicationSign(tokens: string[], index: number) {
   return [...tokens.slice(0, index + 1), "*", ...tokens.slice(index + 1)];
 }
 
-export default function preExecute(tokens: string[]) {
+export default function prepareExpressionBeforeExecute(tokens: string[]) {
   let newTokens = [...tokens];
 
   for (let i = 0; i < newTokens.length - 1; i += 1) {

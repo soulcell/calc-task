@@ -1,16 +1,19 @@
 import styled from "styled-components";
 
+import ScreenSizes from "@/constants/screenSizes";
+
 export const Navbar = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 32px;
+  padding: ${({ theme }) => theme.paddings.zero}
+    ${({ theme }) => theme.paddings.l};
   background-color: ${({ theme }) => theme.colors.header};
   height: ${({ theme }) => theme.headerHeight};
 
   a {
-    font-size: 1em;
-    margin-left: 32px;
+    font-size: ${({ theme }) => theme.fontSizes.l};
+    margin-left: ${({ theme }) => theme.margins.l};
     color: ${({ theme }) => theme.colors.background};
     text-decoration: none;
     &:visited {
@@ -33,17 +36,23 @@ export const NavbarRight = styled.div`
 `;
 
 export const Title = styled.h1`
-  font-size: 1em;
+  font-size: ${({ theme }) => theme.fontSizes.l};
   font-weight: normal;
-  margin: 0;
+  margin: ${({ theme }) => theme.margins.zero};
   color: ${({ theme }) => theme.colors.background};
+
+  @media (max-width: ${ScreenSizes.Desktop}px) {
+    font-size: ${({ theme }) => theme.fontSizes.m};
+  }
 `;
 
 export const Menu = styled.div`
   background: ${({ theme }) => theme.colors.header};
   a {
-    margin: 0 8px;
-    padding: 8px 8px;
+    margin: ${({ theme }) => theme.margins.zero}
+      ${({ theme }) => theme.margins.s};
+    padding: ${({ theme }) => theme.paddings.s}
+      ${({ theme }) => theme.paddings.s};
     display: block;
     color: ${({ theme }) => theme.colors.background};
     border-top: 1px solid ${({ theme }) => theme.colors.border};

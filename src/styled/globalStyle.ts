@@ -1,5 +1,6 @@
-import ScreenSizes from "@constants/screenSizes";
 import { createGlobalStyle } from "styled-components";
+
+import ScreenSizes from "@/constants/screenSizes";
 
 const GlobalStyle = createGlobalStyle`
     *,
@@ -14,7 +15,7 @@ const GlobalStyle = createGlobalStyle`
 
     body {
         height: 100vh;
-        margin: 0;
+        margin: ${({ theme }) => theme.margins.zero};
         font-family: "Helvetica Neue", "Segoe UI", "Droid Sans", sans-serif;
         font-size: ${({ theme }) => theme.fontSizes.l};;
         -webkit-font-smoothing: antialiased;
@@ -29,7 +30,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     button {
-        padding: 0;
+        padding: ${({ theme }) => theme.paddings.zero};
         font-family: "Helvetica Neue", "Segoe UI", "Droid Sans", sans-serif;
         font-size: ${({ theme }) => theme.fontSizes.m};
         color: ${({ theme }) => theme.colors.text};

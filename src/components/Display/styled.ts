@@ -1,17 +1,35 @@
 import styled from "styled-components";
 
-export const StyledDisplay = styled.div`
+import ScreenSizes from "@/constants/screenSizes";
+
+const StyledDisplay = styled.div`
   grid-area: display;
-  height: 2em;
-  padding: 20px;
+  height: ${({ theme }) => theme.heights.xl};
+  padding: ${({ theme }) => theme.paddings.m};
   border-bottom: 1px solid ${({ theme }) => theme.colors.border};
-  font-size: 2em;
+  font-size: ${({ theme }) => theme.fontSizes.xxl};
   text-align: right;
   overflow: hidden;
+
+  @media (max-width: ${ScreenSizes.Desktop}px) {
+    font-size: ${({ theme }) => theme.fontSizes.xl};
+    height: ${({ theme }) => theme.heights.l};
+  }
 `;
 
-export const OperandCommand = styled.div`
-  margin: -16px 0;
-  font-size: 0.5em;
-  color: ${({ theme }) => theme.colors.border};
+export const CurrentNumber = styled.div`
+  font-size: ${({ theme }) => theme.fontSizes.xl};
+  @media (max-width: ${ScreenSizes.Desktop}px) {
+    font-size: ${({ theme }) => theme.fontSizes.l};
+  }
 `;
+
+export const Expression = styled.div`
+  font-size: ${({ theme }) => theme.fontSizes.xl};
+  color: ${({ theme }) => theme.colors.header};
+  @media (max-width: ${ScreenSizes.Desktop}px) {
+    font-size: ${({ theme }) => theme.fontSizes.l};
+  }
+`;
+
+export default StyledDisplay;

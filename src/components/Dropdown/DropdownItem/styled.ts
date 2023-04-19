@@ -6,13 +6,14 @@ const StyledDropdownItem = styled.button`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 50px;
-  padding: 0px 20px;
+  height: ${({ theme }) => theme.heights.m};
+  padding: ${({ theme }) => theme.paddings.zero}
+    ${({ theme }) => theme.paddings.m};
   cursor: pointer;
   text-align: left;
   white-space: nowrap;
   border: none;
-  font-size: 0.5em;
+  font-size: ${({ theme }) => theme.fontSizes.s};
 `;
 
 export default StyledDropdownItem;

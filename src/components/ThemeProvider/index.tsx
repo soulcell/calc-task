@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import ScreenSizeProvider from "@contexts/ScreenSize/provider";
-import selectSettings from "@store/reducers/settings/selector";
 import { ThemeProvider } from "styled-components";
 
-import GlobalStyle from "./globalStyle";
-import { defaultTheme, THEMES } from "./theme";
+import selectSettings from "@/store/selectors/settings";
+import GlobalStyle from "@/styled/globalStyle";
+import { defaultTheme, THEMES } from "@/styled/theme";
 
 export default function StyledApp({
   children,
@@ -21,11 +20,9 @@ export default function StyledApp({
   }, [currentTheme]);
 
   return (
-    <ScreenSizeProvider>
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        {children}
-      </ThemeProvider>
-    </ScreenSizeProvider>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      {children}
+    </ThemeProvider>
   );
 }

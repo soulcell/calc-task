@@ -1,8 +1,8 @@
 import { combineReducers } from "@reduxjs/toolkit";
 
-import calculatorReducer from "./calculator/reducer";
-import historyReducer from "./history/reducer";
-import settingsReducer from "./settings/reducer";
+import calculatorReducer from "./calculator";
+import historyReducer from "./history";
+import settingsReducer from "./settings";
 
 const rootReducer = combineReducers({
   settings: settingsReducer,

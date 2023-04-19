@@ -1,5 +1,6 @@
-import ScreenSizes from "@constants/screenSizes";
 import styled from "styled-components";
+
+import ScreenSizes from "@/constants/screenSizes";
 
 export const StyledHistory = styled.div<{ isHidden?: boolean }>`
   grid-area: history;
@@ -17,9 +18,13 @@ export const StyledHistory = styled.div<{ isHidden?: boolean }>`
   }
 `;
 
-export const H2 = styled.h2`
-  font-size: 1em;
+export const Title = styled.h2`
+  font-size: ${({ theme }) => theme.fontSizes.l};
   font-weight: normal;
-  margin: 20px 0;
+  margin: ${({ theme }) => theme.margins.m} ${({ theme }) => theme.margins.zero};
   text-align: center;
+
+  @media (max-width: ${ScreenSizes.Desktop}px) {
+    font-size: ${({ theme }) => theme.fontSizes.m};
+  }
 `;
