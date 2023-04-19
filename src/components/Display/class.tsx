@@ -19,16 +19,17 @@ class DisplayCC extends React.PureComponent<ConnectedProps<typeof connector>> {
 
     return (
       <StyledDisplay data-cy="display">
-        {errorMessage || tokens.length ? (
-          <>
-            <Expression>{previousTokens.join(" ") || <>&nbsp;</>}</Expression>
-            <CurrentNumber>
-              {lastToken && isNumericToken(lastToken) && lastToken}
-            </CurrentNumber>
-          </>
-        ) : (
-          null || toAccuracy(value)
-        )}
+        {errorMessage ||
+          (tokens.length ? (
+            <>
+              <Expression>{previousTokens.join(" ") || <>&nbsp;</>}</Expression>
+              <CurrentNumber>
+                {lastToken && isNumericToken(lastToken) && lastToken}
+              </CurrentNumber>
+            </>
+          ) : (
+            null || toAccuracy(value)
+          ))}
       </StyledDisplay>
     );
   }
