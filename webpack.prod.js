@@ -1,4 +1,6 @@
 const { merge } = require("webpack-merge");
+const TerserWebpackPlugin = require("terser-webpack-plugin");
+
 const config = require("./webpack.config.js");
 
 module.exports = merge(config, {
@@ -6,5 +8,9 @@ module.exports = merge(config, {
   devtool: false,
   performance: {
     hints: false,
+  },
+  optimization: {
+    minimize: true,
+    minimizer: [new TerserWebpackPlugin()],
   },
 });

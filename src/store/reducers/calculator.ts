@@ -3,13 +3,21 @@ import { createReducer } from "@reduxjs/toolkit";
 import * as actions from "@/store/actionCreators/calculator";
 import { CalculatorState } from "@/types/states";
 import calculateExpression from "@/utils/calculateExpression";
-import preExecute from "@/utils/preExecute";
+import prepareExpressionBeforeExecute from "@/utils/prepareExpressionBeforeExecute";
 import { isNumericToken } from "@/utils/tokenValidation";
 
 const initialState: CalculatorState = {
   tokens: [],
   value: 0,
 };
+
+function appendOrAddNewDigit(tokens: string[], tokenToAppend: string) {
+  if (isNumericToken(tokens[tokens.length - 1])) {
+    if (isNumericToken(tokens[tokens.length - 1] + tokenToAppend)) {
+      tokens[tokens.length - 1] += tokenToAppend;
+    }
+  } else tokens.push(tokenToAppend);
+}
 
 const calculatorReducer = createReducer<CalculatorState>(
   initialState,
@@ -22,7 +30,7 @@ const calculatorReducer = createReducer<CalculatorState>(
         state.tokens.pop();
       })
       .addCase(actions.executeCommand, (state) => {
-        state.tokens = preExecute(state.tokens);
+        state.tokens = prepareExpressionBeforeExecute(state.tokens);
         try {
           state.value = calculateExpression(state.tokens);
         } catch (error) {
@@ -43,11 +51,12 @@ const calculatorReducer = createReducer<CalculatorState>(
       .addCase(actions.appendNumericToken, (state, { payload }) => {
         state.errorMessage = initialState.errorMessage;
         const { tokens } = state;
-        if (isNumericToken(tokens[tokens.length - 1])) {
-          if (isNumericToken(tokens[tokens.length - 1] + payload.token)) {
-            tokens[tokens.length - 1] += payload.token;
-          }
-        } else tokens.push(payload.token);
+        appendOrAddNewDigit(tokens, payload.token);
+        // if (isNumericToken(tokens[tokens.length - 1])) {
+        //   if (isNumericToken(tokens[tokens.length - 1] + payload.token)) {
+        //     tokens[tokens.length - 1] += payload.token;
+        //   }
+        // } else tokens.push(payload.token);
       })
       .addCase(actions.appendOperatorToken, (state, { payload }) => {
         state.tokens.push(payload.token);
