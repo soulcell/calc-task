@@ -3,3 +3,10 @@ export interface DropdownProps {
   onSelectedValueChanged?: (value: string) => void;
   dataCy?: string;
 }
+
+export interface DropdownState {
+  isOpen: boolean;
+  selectedIndex: number;
+  selectedValue: string;
+  selectedTitle: string;
+}
