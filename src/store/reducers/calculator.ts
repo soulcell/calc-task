@@ -2,6 +2,7 @@ import { createReducer } from "@reduxjs/toolkit";
 
 import * as actions from "@/store/actionCreators/calculator";
 import { CalculatorState } from "@/types/states";
+import appendOrAddNewDigit from "@/utils/appendOrAddNewDigit";
 import calculateExpression from "@/utils/calculateExpression";
 import prepareExpressionBeforeExecute from "@/utils/prepareExpressionBeforeExecute";
 import { isNumericToken } from "@/utils/tokenValidation";
@@ -10,14 +11,6 @@ const initialState: CalculatorState = {
   tokens: [],
   value: 0,
 };
-
-function appendOrAddNewDigit(tokens: string[], tokenToAppend: string) {
-  if (isNumericToken(tokens[tokens.length - 1])) {
-    if (isNumericToken(tokens[tokens.length - 1] + tokenToAppend)) {
-      tokens[tokens.length - 1] += tokenToAppend;
-    }
-  } else tokens.push(tokenToAppend);
-}
 
 const calculatorReducer = createReducer<CalculatorState>(
   initialState,
@@ -52,11 +45,6 @@ const calculatorReducer = createReducer<CalculatorState>(
         state.errorMessage = initialState.errorMessage;
         const { tokens } = state;
         appendOrAddNewDigit(tokens, payload.token);
-        // if (isNumericToken(tokens[tokens.length - 1])) {
-        //   if (isNumericToken(tokens[tokens.length - 1] + payload.token)) {
-        //     tokens[tokens.length - 1] += payload.token;
-        //   }
-        // } else tokens.push(payload.token);
       })
       .addCase(actions.appendOperatorToken, (state, { payload }) => {
         state.tokens.push(payload.token);
